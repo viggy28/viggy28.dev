@@ -8,7 +8,7 @@ title: "Make Your Bed"
 
 Admiral William H. McRaven served as Navy SEAL for 37 years. As a Four-Start Admiral, his last assignment was as Commander of all U.S. Special Operations Forces.
 
-He attended University of Texas, Austin. This book is based on his commencement speech at his alma mater. He served as the Chancellor for the University of Texas system between 2015 and 2018.
+He attended the University of Texas, Austin. This book is based on his commencement speech at his alma mater. He served as the Chancellor for the University of Texas system between 2015 and 2018.
 
 # Summary
 
