@@ -4,6 +4,7 @@ baseURL = "https://viggy28.dev"
 languageCode = "en-us"
 theme = "ananke"
 #themesDir = "../.."
+disqusShortname = "viggy28"
 
 MetaDataFormat = "yaml"
 DefaultContentLanguage = "en"
