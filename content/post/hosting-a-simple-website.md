@@ -6,11 +6,11 @@ tags: ["firebase", "hugo", "hosting"]
 title: "How to host a simple static website"
 ---
 
-# We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don't like. I will leave the reason to you
+### We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don't like. I will leave the reason to you
 
 ## Step1: Buying a domain
 
-[this] (<https://viggy28.dev>) websites domain name is **viggy28.dev**. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.
+[This] (<https://viggy28.dev>) websites domain name is **viggy28.dev**. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.
 
 You might've heard [GoDaddy] (<https://godaddy.com>). One of the famous ones. I personally use [Namecheap] (<https://namecheap.com>). I found their customer support much better than GoDaddy's.
 
