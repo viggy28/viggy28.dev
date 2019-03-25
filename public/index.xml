@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vignesh Ravichandran on Home</title>
+    <link>https://viggy28.dev/</link>
+    <description>Recent content in Vignesh Ravichandran on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 Mar 2019 11:00:08 -0400</lastBuildDate>
+    
+	<atom:link href="https://viggy28.dev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Make Your Bed</title>
+      <link>https://viggy28.dev/book/make-your-bed/</link>
+      <pubDate>Sun, 24 Mar 2019 11:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/book/make-your-bed/</guid>
+      <description>Admiral William H. McRaven served as Navy SEAL for 37 years. As a Four-Start Admiral, his last assignment was as Commander of all U.S. Special Operations Forces.
+He attended University of Texas, Austin. This book is based on his commencement speech at his alma mater. He served as the Chancellor for the University of Texas system between 2015 and 2018.
+Summary Chapter 1: Start Your Day With a Task Completed  If you want to change the world&amp;hellip; start off by making your bed.</description>
+    </item>
+    
+    <item>
+      <title>Functions vs Containers</title>
+      <link>https://viggy28.dev/post/functions-vs-containers/</link>
+      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/post/functions-vs-containers/</guid>
+      <description>Mark my word. We had so many competitions in the past. Eg. vim vs emacs, tabs vs spaces etc. The new comparison which is added in this decade is functions vs containers
+Both the functions and containers can be serverless. So, please avoid the notion of serverless means functions. In fact, predominantly all the functions (like lambda, cloud functions) are running behind the screen as containers. (there are few products like Cloudflare workers are running without containers)</description>
+    </item>
+    
+    <item>
+      <title>How to host a simple static website</title>
+      <link>https://viggy28.dev/post/hosting-a-simple-website/</link>
+      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/post/hosting-a-simple-website/</guid>
+      <description>We all at some point in time thought about having a simple personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&amp;rsquo;t like. I will leave the reason to you. The very first step is owning a domain. For eg. this websites domain name is rvignesh.in
+You might&amp;rsquo;ve heard Godaddy.com. One of the famous ones.</description>
+    </item>
+    
+    <item>
+      <title>How to dockerize a python application</title>
+      <link>https://viggy28.dev/post/dockererize-python-application/</link>
+      <pubDate>Sat, 23 Sep 2017 18:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/post/dockererize-python-application/</guid>
+      <description>In this article we will see how to convert a simple python application to a containerized (Docker) one Go to the profile of vignesh ravichandran vignesh ravichandran Sep 23, 2017 TL;DR -&amp;gt; Containerize a python app. Push the image and execute from Google Cloud.
+On a leisurely Saturday afternoon, I thought its nice to play with containers. I was fascinated with the idea of containerizing an app and running it across different environments.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Serverless on Home</title>
+    <link>https://viggy28.dev/tags/serverless/</link>
+    <description>Recent content in Serverless on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 Mar 2019 18:00:08 -0400</lastBuildDate>
+    
+	<atom:link href="https://viggy28.dev/tags/serverless/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Functions vs Containers</title>
+      <link>https://viggy28.dev/post/functions-vs-containers/</link>
+      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/post/functions-vs-containers/</guid>
+      <description>Mark my word. We had so many competitions in the past. Eg. vim vs emacs, tabs vs spaces etc. The new comparison which is added in this decade is functions vs containers
+Both the functions and containers can be serverless. So, please avoid the notion of serverless means functions. In fact, predominantly all the functions (like lambda, cloud functions) are running behind the screen as containers. (there are few products like Cloudflare workers are running without containers)</description>
+    </item>
+    
+  </channel>
+</rss>
