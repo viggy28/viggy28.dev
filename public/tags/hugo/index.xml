@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hosting on Home</title>
-    <link>https://viggy28.dev/tags/hosting/</link>
-    <description>Recent content in Hosting on Home</description>
+    <title>Hugo on Home</title>
+    <link>https://viggy28.dev/tags/hugo/</link>
+    <description>Recent content in Hugo on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 23 Mar 2019 18:00:08 -0400</lastBuildDate>
     
-	<atom:link href="https://viggy28.dev/tags/hosting/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://viggy28.dev/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
