@@ -4,14 +4,15 @@ baseURL = "https://viggy28.dev"
 languageCode = "en-us"
 theme = "ananke"
 #themesDir = "../.."
-disqusShortname = "viggy28"
+disqusShortname = "viggy28-dev"
 
 MetaDataFormat = "yaml"
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
 Paginate = 5 # this is set low for demonstrating with dummy content. Set to a higher number
-googleAnalytics = ""
+googleAnalytics = "UA-75733246-2"
 enableRobotsTXT = true
+HUGO_ENV="production"
 
 [sitemap]
   changefreq = "monthly"
