@@ -12,6 +12,20 @@
     
     
     <item>
+      <title>How to set up active-active replication in postgres using BDR</title>
+      <link>https://viggy28.dev/post/postgres-active-active-replication/</link>
+      <pubDate>Fri, 05 Apr 2019 19:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/post/postgres-active-active-replication/</guid>
+      <description>Postgres doesn&amp;rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with BDR.
+I didn&amp;rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp;amp; docker compose.
+Step1: Running 2 Postgres instances
+Thanks to jgiannuzzi. He created a docker image with Postgres and BDR.
+docker-compose.yml file content
+version: &amp;quot;3&amp;quot; services: database0: image: jgiannuzzi/postgres-bdr restart: always ports: - 54325:5432 volumes: - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data environment: POSTGRES_PASSWORD: &amp;lt;replace with your password&amp;gt; database1: image: jgiannuzzi/postgres-bdr restart: always ports: - 54326:5432 volumes: - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data environment: POSTGRES_PASSWORD: &amp;lt;replace with your password&amp;gt;  Things to note: ports - I am using my local machine&amp;rsquo;s port 54325 and 54326.</description>
+    </item>
+    
+    <item>
       <title>Functions vs Containers</title>
       <link>https://viggy28.dev/post/functions-vs-containers/</link>
       <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>

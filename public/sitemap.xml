@@ -3,6 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://viggy28.dev/post/postgres-active-active-replication/</loc>
+    <lastmod>2019-04-05T19:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://viggy28.dev/book/</loc>
     <lastmod>2019-03-24T11:00:00-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -51,6 +58,13 @@
   </url>
   
   <url>
+    <loc>https://viggy28.dev/tags/bdr/</loc>
+    <lastmod>2019-04-05T19:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://viggy28.dev/tags/books/</loc>
     <lastmod>2019-03-24T11:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -72,7 +86,7 @@
   
   <url>
     <loc>https://viggy28.dev/tags/docker/</loc>
-    <lastmod>2017-09-23T18:00:08-04:00</lastmod>
+    <lastmod>2019-04-05T19:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
@@ -99,6 +113,13 @@
   </url>
   
   <url>
+    <loc>https://viggy28.dev/tags/postgres/</loc>
+    <lastmod>2019-04-05T19:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://viggy28.dev/tags/python/</loc>
     <lastmod>2017-09-23T18:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -114,14 +135,14 @@
   
   <url>
     <loc>https://viggy28.dev/tags/</loc>
-    <lastmod>2019-03-24T11:00:08-04:00</lastmod>
+    <lastmod>2019-04-05T19:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://viggy28.dev/</loc>
-    <lastmod>2019-03-24T11:00:08-04:00</lastmod>
+    <lastmod>2019-04-05T19:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker on Home</title>
-    <link>https://viggy28.dev/tags/docker/</link>
-    <description>Recent content in Docker on Home</description>
+    <title>Postgres on Home</title>
+    <link>https://viggy28.dev/tags/postgres/</link>
+    <description>Recent content in Postgres on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Apr 2019 19:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://viggy28.dev/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://viggy28.dev/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -23,16 +23,6 @@ Step1: Running 2 Postgres instances
 Thanks to jgiannuzzi. He created a docker image with Postgres and BDR.
 docker-compose.yml file content
 version: &amp;quot;3&amp;quot; services: database0: image: jgiannuzzi/postgres-bdr restart: always ports: - 54325:5432 volumes: - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data environment: POSTGRES_PASSWORD: &amp;lt;replace with your password&amp;gt; database1: image: jgiannuzzi/postgres-bdr restart: always ports: - 54326:5432 volumes: - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data environment: POSTGRES_PASSWORD: &amp;lt;replace with your password&amp;gt;  Things to note: ports - I am using my local machine&amp;rsquo;s port 54325 and 54326.</description>
-    </item>
-    
-    <item>
-      <title>How to dockerize a python application</title>
-      <link>https://viggy28.dev/post/dockererize-python-application/</link>
-      <pubDate>Sat, 23 Sep 2017 18:00:08 -0400</pubDate>
-      
-      <guid>https://viggy28.dev/post/dockererize-python-application/</guid>
-      <description>In this article we will see how to convert a simple python application to a containerized (Docker) one Go to the profile of vignesh ravichandran vignesh ravichandran Sep 23, 2017 TL;DR -&amp;gt; Containerize a python app. Push the image and execute from Google Cloud.
-On a leisurely Saturday afternoon, I thought its nice to play with containers. I was fascinated with the idea of containerizing an app and running it across different environments.</description>
     </item>
     
   </channel>

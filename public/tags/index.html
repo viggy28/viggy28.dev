@@ -12,7 +12,7 @@
     <meta name="generator" content="Hugo 0.54.0" />
     
     
-      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     
 
     
@@ -36,7 +36,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://viggy28.dev/tags/" />
 
-<meta property="og:updated_time" content="2019-03-24T11:00:08-04:00"/>
+<meta property="og:updated_time" content="2019-04-05T19:00:00&#43;00:00"/>
 
 <meta itemprop="name" content="Tags">
 <meta itemprop="description" content="The last theme you&#39;ll ever need. Maybe.">
@@ -45,22 +45,9 @@
 <meta name="twitter:title" content="Tags"/>
 <meta name="twitter:description" content="The last theme you&#39;ll ever need. Maybe."/>
 
-      
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-75733246-2', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-    
   </head>
 
-  <body class="ma0 avenir bg-near-white production">
+  <body class="ma0 avenir bg-near-white">
 
     
 
@@ -173,6 +160,33 @@ if (!doNotTrack) {
     <section class="ph4">
       
         <h2 class="f1">
+          <a href="/tags/bdr" class="link blue hover-black">
+            Tag: bdr
+          </a>
+        </h2>
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Post</span>
+    <h1 class="f3 near-black">
+      <a href="/post/postgres-active-active-replication/" class="link black dim">
+        How to set up active-active replication in postgres using BDR
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with BDR.
+I didn&rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp; docker compose.
+Step1: Running 2 Postgres instances
+Thanks to jgiannuzzi. He created a docker image with Postgres and BDR.
+docker-compose.yml file content
+version: &quot;3&quot; services: database0: image: jgiannuzzi/postgres-bdr restart: always ports: - 54325:5432 volumes: - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data environment: POSTGRES_PASSWORD: &lt;replace with your password&gt; database1: image: jgiannuzzi/postgres-bdr restart: always ports: - 54326:5432 volumes: - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data environment: POSTGRES_PASSWORD: &lt;replace with your password&gt;  Things to note: ports - I am using my local machine&rsquo;s port 54325 and 54326.
+    </div>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
           <a href="/tags/books" class="link blue hover-black">
             Tag: books
           </a>
@@ -240,6 +254,26 @@ On a leisurely Saturday afternoon, I thought its nice to play with containers. I
             Tag: docker
           </a>
         </h2>
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Post</span>
+    <h1 class="f3 near-black">
+      <a href="/post/postgres-active-active-replication/" class="link black dim">
+        How to set up active-active replication in postgres using BDR
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with BDR.
+I didn&rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp; docker compose.
+Step1: Running 2 Postgres instances
+Thanks to jgiannuzzi. He created a docker image with Postgres and BDR.
+docker-compose.yml file content
+version: &quot;3&quot; services: database0: image: jgiannuzzi/postgres-bdr restart: always ports: - 54325:5432 volumes: - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data environment: POSTGRES_PASSWORD: &lt;replace with your password&gt; database1: image: jgiannuzzi/postgres-bdr restart: always ports: - 54326:5432 volumes: - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data environment: POSTGRES_PASSWORD: &lt;replace with your password&gt;  Things to note: ports - I am using my local machine&rsquo;s port 54325 and 54326.
+    </div>
+  </div>
+</div>
+
         
           <div class="relative w-100 mb4 bg-white nested-copy-line-height">
   <div class="bg-white mb3 pa4 gray overflow-hidden">
@@ -318,6 +352,33 @@ On a leisurely Saturday afternoon, I thought its nice to play with containers. I
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&rsquo;t like. I will leave the reason to you Step1: Buying a domain This websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.
+    </div>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/tags/postgres" class="link blue hover-black">
+            Tag: postgres
+          </a>
+        </h2>
+        
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Post</span>
+    <h1 class="f3 near-black">
+      <a href="/post/postgres-active-active-replication/" class="link black dim">
+        How to set up active-active replication in postgres using BDR
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with BDR.
+I didn&rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp; docker compose.
+Step1: Running 2 Postgres instances
+Thanks to jgiannuzzi. He created a docker image with Postgres and BDR.
+docker-compose.yml file content
+version: &quot;3&quot; services: database0: image: jgiannuzzi/postgres-bdr restart: always ports: - 54325:5432 volumes: - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data environment: POSTGRES_PASSWORD: &lt;replace with your password&gt; database1: image: jgiannuzzi/postgres-bdr restart: always ports: - 54326:5432 volumes: - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data environment: POSTGRES_PASSWORD: &lt;replace with your password&gt;  Things to note: ports - I am using my local machine&rsquo;s port 54325 and 54326.
     </div>
   </div>
 </div>

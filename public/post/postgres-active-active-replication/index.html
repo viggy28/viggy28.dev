@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Home  | Functions vs Containers</title>
+    <title>Home  | How to set up active-active replication in postgres using BDR</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -28,27 +28,27 @@
 
     
 
-    <meta property="og:title" content="Functions vs Containers" />
-<meta property="og:description" content="Functions vs Containers" />
+    <meta property="og:title" content="How to set up active-active replication in postgres using BDR" />
+<meta property="og:description" content="Postgres Active-Active Replication" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://viggy28.dev/post/functions-vs-containers/" />
-<meta property="article:published_time" content="2019-03-23T18:00:08-04:00"/>
-<meta property="article:modified_time" content="2019-03-23T18:00:08-04:00"/>
+<meta property="og:url" content="https://viggy28.dev/post/postgres-active-active-replication/" />
+<meta property="article:published_time" content="2019-04-05T19:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-04-05T19:00:00&#43;00:00"/>
 
-<meta itemprop="name" content="Functions vs Containers">
-<meta itemprop="description" content="Functions vs Containers">
-
-
-<meta itemprop="datePublished" content="2019-03-23T18:00:08-04:00" />
-<meta itemprop="dateModified" content="2019-03-23T18:00:08-04:00" />
-<meta itemprop="wordCount" content="89">
+<meta itemprop="name" content="How to set up active-active replication in postgres using BDR">
+<meta itemprop="description" content="Postgres Active-Active Replication">
 
 
+<meta itemprop="datePublished" content="2019-04-05T19:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-04-05T19:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="486">
 
-<meta itemprop="keywords" content="serverless,containers," />
+
+
+<meta itemprop="keywords" content="postgres,docker,bdr," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Functions vs Containers"/>
-<meta name="twitter:description" content="Functions vs Containers"/>
+<meta name="twitter:title" content="How to set up active-active replication in postgres using BDR"/>
+<meta name="twitter:description" content="Postgres Active-Active Replication"/>
 
   </head>
 
@@ -60,7 +60,7 @@
 
   
   
-  <header class="cover bg-top" style="background-image: url('https://viggy28.dev/images/containers-ship.png');">
+  <header class="cover bg-top" style="background-image: url('https://viggy28.dev/images/firebase-logo-wide.png');">
     <div class="pb3-m pb6-l bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
@@ -147,10 +147,10 @@
 
       <div class="tc-l pv6 ph3 ph4-ns">
         
-          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Functions vs Containers</h1>
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">How to set up active-active replication in postgres using BDR</h1>
           
             <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
-              Functions vs Containers
+              Postgres Active-Active Replication
             </h2>
           
         
@@ -170,43 +170,156 @@
           
         ARTICLES
       </p>
-      <h1 class="f1 athelas mb1">Functions vs Containers</h1>
+      <h1 class="f1 athelas mb1">How to set up active-active replication in postgres using BDR</h1>
       
-      <time class="f6 mv4 dib tracked" datetime="2019-03-23T18:00:08-04:00">March 23, 2019</time>      
+      <time class="f6 mv4 dib tracked" datetime="2019-04-05T19:00:00Z">April 5, 2019</time>      
       
       
-        <span class="f6 mv4 dib tracked"> - 1 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 89 words</span>
+        <span class="f6 mv4 dib tracked"> - 3 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 486 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Mark my word. We had so many competitions in the past. Eg. vim vs emacs, tabs vs spaces etc. The new comparison which is added in this decade is functions vs containers</p>
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with <a href="https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/">BDR</a>.</p>
 
-<p>Both the functions and containers can be serverless. So, please avoid the notion of serverless means functions. In fact, predominantly all the functions (like lambda, cloud functions) are running behind the screen as containers. (there are few products like Cloudflare workers are running without containers)</p>
+<p>I didn&rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp; docker compose.</p>
 
-<p>Functions Pros:</p>
+<p>Step1: Running 2 Postgres instances</p>
 
-<ul>
-<li><p>Low barrier to entry</p></li>
+<p>Thanks to <a href="https://github.com/jgiannuzzi">jgiannuzzi</a>. He created a docker <a href="https://hub.docker.com/r/jgiannuzzi/postgres-bdr">image</a> with Postgres and BDR.</p>
 
-<li><p>Cheaper</p></li>
-</ul>
+<p>docker-compose.yml file content</p>
 
-<p>Cons:</p>
+<pre><code>version: &quot;3&quot;
 
-<ul>
-<li><p>Flexibility</p></li>
+services:
+ database0:
+   image: jgiannuzzi/postgres-bdr
+   restart: always
+   ports:
+     - 54325:5432
+   volumes:
+     - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data
+   environment:
+     POSTGRES_PASSWORD: &lt;replace with your password&gt;
+ database1:
+   image: jgiannuzzi/postgres-bdr
+   restart: always
+   ports:
+     - 54326:5432
+   volumes:
+     - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data
+   environment:
+     POSTGRES_PASSWORD: &lt;replace with your password&gt;
+</code></pre>
 
-<li><p>Hard to scale</p></li>
-</ul>
+<p>Things to note:
+    ports - I am using my local machine&rsquo;s port 54325 and 54326.
+    volumes - postgresql/data is mounted on postgres0 and postgres1 directory.</p>
+
+<p>execute docker-compose up to create the two containers</p>
+
+<p>You can verify that using docker ps</p>
+
+<p>viggy28@Vigneshs-MacBook-Pro ~ $ docker ps
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                     NAMES
+0213199e6d0b        jgiannuzzi/postgres-bdr   &ldquo;/docker-entrypoint.…&rdquo;   14 minutes ago      Up 9 seconds        0.0.0.0:54326-&gt;5432/tcp   postgres0_database1_1
+beca9adb4b65        jgiannuzzi/postgres-bdr   &ldquo;/docker-entrypoint.…&rdquo;   14 minutes ago      Up 10 seconds       0.0.0.0:54325-&gt;5432/tcp   postgres0_database0_1</p>
+
+<p>Check you can connect to the database running on both the containers using</p>
+
+<pre><code>psql -h localhost -U postgres -p 54325 -d postgres
+psql -h localhost -U postgres -p 54326 -d postgres
+</code></pre>
+
+<p>That&rsquo;s basically running Postgres using the Docker container.</p>
+
+<p>Step2: Setting up active-active replication using BDR
+Connect to database0 (running on port 54325)</p>
+
+<pre><code>create database bdrdemo;
+
+\c bdrdemo
+
+CREATE EXTENSION IF NOT EXISTS btree_gist;
+CREATE EXTENSION IF NOT EXISTS bdr;
+SELECT bdr.bdr_group_create(
+local_node_name := 'postgres0_database0_1',
+node_external_dsn := 'host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password'
+);
+
+select * from bdr.bdr_nodes;
+</code></pre>
+
+<p>Connect to database1 (running on port 54326)</p>
+
+<pre><code>create database bdrdemo;
+
+\c bdrdemo
+
+CREATE EXTENSION IF NOT EXISTS btree_gist;
+CREATE EXTENSION IF NOT EXISTS bdr;
+
+SELECT bdr.bdr_group_join(
+    local_node_name := 'postgres0_database1_1',
+    node_external_dsn := 'host=postgres0_database1_1 port=5432 dbname=bdrdemo password=replace with your password',
+    join_using_dsn := 'host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password'
+);
+
+select * from bdr.bdr_nodes;
+</code></pre>
+
+<p>Things to note:
+    local_node_name or hostname is the container name
+    Don&rsquo;t forget to replace your password
+    If you face issue with connectivity, make sure one container can communicate with the other one (ping command should be good)</p>
+
+<pre><code>    $ docker exec -it postgres0_database0_1 /bin/bash
+    root@beca9adb4b65:/# ping postgres0_database1_1
+64 bytes from 172.20.0.3: icmp_seq=0 ttl=64 time=0.099 ms
+64 bytes from 172.20.0.3: icmp_seq=1 ttl=64 time=0.154 ms
+64 bytes from 172.20.0.3: icmp_seq=2 ttl=64 time=0.113 ms
+^C--- postgres0_database1_1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+</code></pre>
+
+<p>Step3: Verifying that data is getting replicated</p>
+
+<p>On database0 (running on port 54325)</p>
+
+<pre><code>CREATE TABLE names(
+ user_id serial PRIMARY KEY,
+ username VARCHAR (50) UNIQUE NOT NULL,
+ email VARCHAR (355) UNIQUE NOT NULL
+);
+
+insert into names (user_id, username, email) values (1, 'ravichandran', 'ravikchandran14@gmail.com');
+INSERT 0 1
+
+</code></pre>
+
+<p>On database1 (running on port 54326)</p>
+
+<pre><code>bdrdemo=# select * from names;
+ user_id |   username   |           email           
+---------+--------------+---------------------------
+       1 | ravichandran | ravikchandran14@gmail.com
+(1 row)
+</code></pre>
+
+<p>voila. A simple way to set up active-active replication in Postgres.</p>
 <ul class="pa0">
   
    <li class="list">
-     <a href="/tags/serverless" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">serverless</a>
+     <a href="/tags/postgres" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">postgres</a>
    </li>
   
    <li class="list">
-     <a href="/tags/containers" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">containers</a>
+     <a href="/tags/docker" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">docker</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/bdr" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">bdr</a>
    </li>
   
 </ul>

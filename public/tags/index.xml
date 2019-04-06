@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2019 11:00:08 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 05 Apr 2019 19:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://viggy28.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bdr</title>
+      <link>https://viggy28.dev/tags/bdr/</link>
+      <pubDate>Fri, 05 Apr 2019 19:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/tags/bdr/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Books</title>
@@ -32,7 +41,7 @@
     <item>
       <title>Docker</title>
       <link>https://viggy28.dev/tags/docker/</link>
-      <pubDate>Sat, 23 Sep 2017 18:00:08 -0400</pubDate>
+      <pubDate>Fri, 05 Apr 2019 19:00:00 +0000</pubDate>
       
       <guid>https://viggy28.dev/tags/docker/</guid>
       <description></description>
@@ -62,6 +71,15 @@
       <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Postgres</title>
+      <link>https://viggy28.dev/tags/postgres/</link>
+      <pubDate>Fri, 05 Apr 2019 19:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/tags/postgres/</guid>
       <description></description>
     </item>
     

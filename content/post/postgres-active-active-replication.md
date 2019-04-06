@@ -10,13 +10,13 @@ Postgres doesn't support active-active replication natively. As of this writing,
 
 I didn't want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac & docker compose.
 
-Step1: Running 2 Postgres instances
+### Step1: Running 2 Postgres instances using docker container
 
 Thanks to [jgiannuzzi] (<https://github.com/jgiannuzzi>). He created a docker [image] (<https://hub.docker.com/r/jgiannuzzi/postgres-bdr>) with Postgres and BDR.
 
 docker-compose.yml file content
 
-```
+```yml
 version: "3"
 
 services:
@@ -40,73 +40,103 @@ services:
      POSTGRES_PASSWORD: <replace with your password>
 ```
 
-Things to note:
-    ports - I am using my local machine's port 54325 and 54326.
-    volumes - postgresql/data is mounted on postgres0 and postgres1 directory.
+**Note:**
 
-execute docker-compose up to create the two containers
+  1. ports - port forwarding 5432 with 54325 and 54326
+  2. volumes - postgresql/data of the container is mounted on postgres0 and postgres1 directory on my local machine
 
-You can verify that using docker ps
+Create two containers using ***docker-compose***
 
+```bash
+viggy28@Vigneshs-MacBook-Pro postgres0 $ docker-compose -f "docker-compose.yml" up -d --build
+Starting postgres0_database0_1 ... done
+Starting postgres0_database1_1 ... done
+```
+
+You can verify that the two containers are running using ***docker ps***
+
+```shell
 viggy28@Vigneshs-MacBook-Pro ~ $ docker ps
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                     NAMES
 0213199e6d0b        jgiannuzzi/postgres-bdr   "/docker-entrypoint.…"   14 minutes ago      Up 9 seconds        0.0.0.0:54326->5432/tcp   postgres0_database1_1
 beca9adb4b65        jgiannuzzi/postgres-bdr   "/docker-entrypoint.…"   14 minutes ago      Up 10 seconds       0.0.0.0:54325->5432/tcp   postgres0_database0_1
-
-Check you can connect to the database running on both the containers using
-
 ```
+
+Check you can connect to the database running on both the containers using [***psql***] (<https://www.postgresql.org/docs/9.3/app-psql.html>)
+
+```sql
 psql -h localhost -U postgres -p 54325 -d postgres
 psql -h localhost -U postgres -p 54326 -d postgres
 ```
 
 That's basically running Postgres using the Docker container.
 
-Step2: Setting up active-active replication using BDR
+### Step2: Setting up active-active replication using BDR
+
 Connect to database0 (running on port 54325)
 
-```
-create database bdrdemo;
+```sql
+psql -h localhost -U postgres -p 54325 -d postgres
 
-\c bdrdemo
+postgres=# create database bdrdemo;
+CREATE DATABASE
 
-CREATE EXTENSION IF NOT EXISTS btree_gist;
-CREATE EXTENSION IF NOT EXISTS bdr;
-SELECT bdr.bdr_group_create(
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database "bdrdemo" as user "postgres"
+
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS btree_gist;
+CREATE EXTENSION
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS bdr;
+CREATE EXTENSION
+
+bdrdemo=# SELECT bdr.bdr_group_create(
 local_node_name := 'postgres0_database0_1',
 node_external_dsn := 'host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password'
 );
 
-select * from bdr.bdr_nodes;
+bdrdemo=# select * from bdr.bdr_nodes;
+
+(1 row)
 ```
 
 Connect to database1 (running on port 54326)
 
-```
-create database bdrdemo;
+``` sql
+psql -h localhost -U postgres -p 54326 -d postgres
 
-\c bdrdemo
+postgres=# create database bdrdemo;
+CREATE DATABASE
 
-CREATE EXTENSION IF NOT EXISTS btree_gist;
-CREATE EXTENSION IF NOT EXISTS bdr;
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database "bdrdemo" as user "postgres"
 
-SELECT bdr.bdr_group_join(
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS btree_gist;
+CREATE EXTENSION
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS bdr;
+CREATE EXTENSION
+
+bdrdemo=# SELECT bdr.bdr_group_join(
     local_node_name := 'postgres0_database1_1',
     node_external_dsn := 'host=postgres0_database1_1 port=5432 dbname=bdrdemo password=replace with your password',
     join_using_dsn := 'host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password'
 );
 
 select * from bdr.bdr_nodes;
+
+(2 rows)
 ```
 
-Things to note:
-    local_node_name or hostname is the container name
-    Don't forget to replace your password
-    If you face issue with connectivity, make sure one container can communicate with the other one (ping command should be good)
-    
-```
-    $ docker exec -it postgres0_database0_1 /bin/bash
-    root@beca9adb4b65:/# ping postgres0_database1_1
+**Note**:
+  
+  1. local_node_name or hostname is the container name
+  2. Don't forget to replace your password
+  3. If you face issue with connectivity, make sure one container can communicate with the other one
+
+```shell
+$ docker exec -it postgres0_database0_1 /bin/bash
+root@beca9adb4b65:/# ping postgres0_database1_1
 64 bytes from 172.20.0.3: icmp_seq=0 ttl=64 time=0.099 ms
 64 bytes from 172.20.0.3: icmp_seq=1 ttl=64 time=0.154 ms
 64 bytes from 172.20.0.3: icmp_seq=2 ttl=64 time=0.113 ms
@@ -118,7 +148,7 @@ Step3: Verifying that data is getting replicated
 
 On database0 (running on port 54325)
 
-```
+```sql
 CREATE TABLE names(
  user_id serial PRIMARY KEY,
  username VARCHAR (50) UNIQUE NOT NULL,
@@ -132,7 +162,7 @@ INSERT 0 1
 
 On database1 (running on port 54326)
 
-```
+```sql
 bdrdemo=# select * from names;
  user_id |   username   |           email           
 ---------+--------------+---------------------------
