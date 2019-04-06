@@ -1,7 +1,7 @@
 ---
 date: 2019-04-05T19:00:00-00:00
 description: "Postgres Active-Active Replication"
-featured_image: "/images/firebase-logo-wide.png"
+featured_image: "/images/postgres-logo.png"
 tags: ["postgres", "docker", "bdr"]
 title: "How to set up active-active replication in postgres using BDR"
 ---

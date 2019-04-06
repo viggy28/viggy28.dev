@@ -41,7 +41,7 @@
 
 <meta itemprop="datePublished" content="2019-04-05T19:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-04-05T19:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="486">
+<meta itemprop="wordCount" content="577">
 
 
 
@@ -176,21 +176,23 @@
       
       
         <span class="f6 mv4 dib tracked"> - 3 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 486 words</span>
+        <span class="f6 mv4 dib tracked"> - 577 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with <a href="https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/">BDR</a>.</p>
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<p>Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with <a href="https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/">BDR</a>.</p>
 
 <p>I didn&rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp; docker compose.</p>
 
-<p>Step1: Running 2 Postgres instances</p>
+<h3 id="step1-running-2-postgres-instances-using-docker-container">Step1: Running 2 Postgres instances using docker container</h3>
 
 <p>Thanks to <a href="https://github.com/jgiannuzzi">jgiannuzzi</a>. He created a docker <a href="https://hub.docker.com/r/jgiannuzzi/postgres-bdr">image</a> with Postgres and BDR.</p>
 
 <p>docker-compose.yml file content</p>
 
-<pre><code>version: &quot;3&quot;
+<pre><code class="language-yml">version: &quot;3&quot;
 
 services:
  database0:
@@ -213,69 +215,101 @@ services:
      POSTGRES_PASSWORD: &lt;replace with your password&gt;
 </code></pre>
 
-<p>Things to note:
-    ports - I am using my local machine&rsquo;s port 54325 and 54326.
-    volumes - postgresql/data is mounted on postgres0 and postgres1 directory.</p>
+<p><strong>Note:</strong></p>
 
-<p>execute docker-compose up to create the two containers</p>
+<ol>
+<li>ports - port forwarding 5432 with 54325 and 54326</li>
+<li>volumes - postgresql/data of the container is mounted on postgres0 and postgres1 directory on my local machine</li>
+</ol>
 
-<p>You can verify that using docker ps</p>
+<p>Create two containers using <strong><em>docker-compose</em></strong></p>
 
-<p>viggy28@Vigneshs-MacBook-Pro ~ $ docker ps
+<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro postgres0 $ docker-compose -f &quot;docker-compose.yml&quot; up -d --build
+Starting postgres0_database0_1 ... done
+Starting postgres0_database1_1 ... done
+</code></pre>
+
+<p>You can verify that the two containers are running using <strong><em>docker ps</em></strong></p>
+
+<pre><code class="language-shell">viggy28@Vigneshs-MacBook-Pro ~ $ docker ps
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                     NAMES
-0213199e6d0b        jgiannuzzi/postgres-bdr   &ldquo;/docker-entrypoint.…&rdquo;   14 minutes ago      Up 9 seconds        0.0.0.0:54326-&gt;5432/tcp   postgres0_database1_1
-beca9adb4b65        jgiannuzzi/postgres-bdr   &ldquo;/docker-entrypoint.…&rdquo;   14 minutes ago      Up 10 seconds       0.0.0.0:54325-&gt;5432/tcp   postgres0_database0_1</p>
+0213199e6d0b        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   14 minutes ago      Up 9 seconds        0.0.0.0:54326-&gt;5432/tcp   postgres0_database1_1
+beca9adb4b65        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   14 minutes ago      Up 10 seconds       0.0.0.0:54325-&gt;5432/tcp   postgres0_database0_1
+</code></pre>
 
-<p>Check you can connect to the database running on both the containers using</p>
+<p>Check you can connect to the database running on both the containers using <a href="https://www.postgresql.org/docs/9.3/app-psql.html"><strong><em>psql</em></strong></a></p>
 
-<pre><code>psql -h localhost -U postgres -p 54325 -d postgres
+<pre><code class="language-sql">psql -h localhost -U postgres -p 54325 -d postgres
 psql -h localhost -U postgres -p 54326 -d postgres
 </code></pre>
 
 <p>That&rsquo;s basically running Postgres using the Docker container.</p>
 
-<p>Step2: Setting up active-active replication using BDR
-Connect to database0 (running on port 54325)</p>
+<h3 id="step2-setting-up-active-active-replication-using-bdr">Step2: Setting up active-active replication using BDR</h3>
 
-<pre><code>create database bdrdemo;
+<p>Connect to database0 (running on port 54325)</p>
 
-\c bdrdemo
+<pre><code class="language-sql">psql -h localhost -U postgres -p 54325 -d postgres
 
-CREATE EXTENSION IF NOT EXISTS btree_gist;
-CREATE EXTENSION IF NOT EXISTS bdr;
-SELECT bdr.bdr_group_create(
+postgres=# create database bdrdemo;
+CREATE DATABASE
+
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;
+
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS btree_gist;
+CREATE EXTENSION
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS bdr;
+CREATE EXTENSION
+
+bdrdemo=# SELECT bdr.bdr_group_create(
 local_node_name := 'postgres0_database0_1',
 node_external_dsn := 'host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password'
 );
 
-select * from bdr.bdr_nodes;
+bdrdemo=# select * from bdr.bdr_nodes;
+
+(1 row)
 </code></pre>
 
 <p>Connect to database1 (running on port 54326)</p>
 
-<pre><code>create database bdrdemo;
+<pre><code class="language-sql">psql -h localhost -U postgres -p 54326 -d postgres
 
-\c bdrdemo
+postgres=# create database bdrdemo;
+CREATE DATABASE
 
-CREATE EXTENSION IF NOT EXISTS btree_gist;
-CREATE EXTENSION IF NOT EXISTS bdr;
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;
 
-SELECT bdr.bdr_group_join(
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS btree_gist;
+CREATE EXTENSION
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS bdr;
+CREATE EXTENSION
+
+bdrdemo=# SELECT bdr.bdr_group_join(
     local_node_name := 'postgres0_database1_1',
     node_external_dsn := 'host=postgres0_database1_1 port=5432 dbname=bdrdemo password=replace with your password',
     join_using_dsn := 'host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password'
 );
 
 select * from bdr.bdr_nodes;
+
+(2 rows)
 </code></pre>
 
-<p>Things to note:
-    local_node_name or hostname is the container name
-    Don&rsquo;t forget to replace your password
-    If you face issue with connectivity, make sure one container can communicate with the other one (ping command should be good)</p>
+<p><strong>Note</strong>:</p>
 
-<pre><code>    $ docker exec -it postgres0_database0_1 /bin/bash
-    root@beca9adb4b65:/# ping postgres0_database1_1
+<ol>
+<li>local_node_name or hostname is the container name</li>
+<li>Don&rsquo;t forget to replace your password</li>
+<li>If you face issue with connectivity, make sure one container can communicate with the other one</li>
+</ol>
+
+<pre><code class="language-shell">$ docker exec -it postgres0_database0_1 /bin/bash
+root@beca9adb4b65:/# ping postgres0_database1_1
 64 bytes from 172.20.0.3: icmp_seq=0 ttl=64 time=0.099 ms
 64 bytes from 172.20.0.3: icmp_seq=1 ttl=64 time=0.154 ms
 64 bytes from 172.20.0.3: icmp_seq=2 ttl=64 time=0.113 ms
@@ -287,7 +321,7 @@ select * from bdr.bdr_nodes;
 
 <p>On database0 (running on port 54325)</p>
 
-<pre><code>CREATE TABLE names(
+<pre><code class="language-sql">CREATE TABLE names(
  user_id serial PRIMARY KEY,
  username VARCHAR (50) UNIQUE NOT NULL,
  email VARCHAR (355) UNIQUE NOT NULL
@@ -300,7 +334,7 @@ INSERT 0 1
 
 <p>On database1 (running on port 54326)</p>
 
-<pre><code>bdrdemo=# select * from names;
+<pre><code class="language-sql">bdrdemo=# select * from names;
  user_id |   username   |           email           
 ---------+--------------+---------------------------
        1 | ravichandran | ravikchandran14@gmail.com
