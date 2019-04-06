@@ -10,9 +10,9 @@ Postgres doesn't support active-active replication natively. As of this writing,
 
 I didn't want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac & docker compose.
 
-Step1: Running 2 postgres instances
+Step1: Running 2 Postgres instances
 
-Thanks to [jgiannuzzi] (<https://github.com/jgiannuzzi>). He created a docker [image] (<https://hub.docker.com/r/jgiannuzzi/postgres-bdr>) with postgres and bdr.
+Thanks to [jgiannuzzi] (<https://github.com/jgiannuzzi>). He created a docker [image] (<https://hub.docker.com/r/jgiannuzzi/postgres-bdr>) with Postgres and BDR.
 
 docker-compose.yml file content
 
@@ -60,7 +60,7 @@ psql -h localhost -U postgres -p 54325 -d postgres
 psql -h localhost -U postgres -p 54326 -d postgres
 ```
 
-Thats basically running postgres using docker container.
+That's basically running Postgres using the Docker container.
 
 Step2: Setting up active-active replication using BDR
 Connect to database0 (running on port 54325)
@@ -100,7 +100,7 @@ select * from bdr.bdr_nodes;
 ```
 
 Things to note:
-    local_node_name or host name is the container name
+    local_node_name or hostname is the container name
     Don't forget to replace your password
     If you face issue with connectivity, make sure one container can communicate with the other one (ping command should be good)
     
@@ -140,5 +140,4 @@ bdrdemo=# select * from names;
 (1 row)
 ```
 
-voila. A simple way to set up active-active replication in postgres.
-
+voila. A simple way to set up active-active replication in Postgres.
