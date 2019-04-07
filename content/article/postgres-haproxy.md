@@ -13,7 +13,7 @@ Basically, you need to connect to a proxy that routes the request to the underly
 The architecture would look something like this:
 ![Postgres active-active replication using BDR set up with HAProxy](/images/postgres-haproxy-wb1.jpg)
 
-You can continue with your docker-compose.yml file. Add the below section
+You can continue with your [docker-compose.yml] (<https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/docker-compose.yml>) file. Add the below section
 
 ```yml
 version: "3"
