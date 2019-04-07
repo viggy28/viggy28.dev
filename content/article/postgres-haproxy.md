@@ -6,9 +6,9 @@ tags: ["postgres", "docker", "haproxy"]
 title: "Part 2/2: How to set up HAProxy for an active-active postgres databases"
 ---
 ### Step 1: Setting up HAProxy 
-I hope you gone through [Part1] (<https://viggy28.dev/article/postgres-active-active-replication/>) of this series. Perhaps, one thing you might have noticed is that I've to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In production environment, most likely you going to run the databases on different host). The main reason for active-active replication is high availability. If one of the node goes down, you still want your application to behave normally. You don't want to hard-code your DSN on the application or keep checking the health of the database everytime before you make a connection. Fair enough. [HAProxy] (<www.haproxy.org>), an open source project solves this particular change.
+I hope you gone through [Part1] (<https://viggy28.dev/article/postgres-active-active-replication/>) of this series. Perhaps, one thing you might have noticed is that I've to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In a production environment, most likely you going to run the databases on a different host). The main reason for active-active replication is high availability. If one of the nodes goes down, you still want your application to behave normally. You don't want to hard-code your DSN on the application or keep checking the health of the database every time before you make a connection. Fair enough. [HAProxy] (<www.haproxy.org>), an open source project solves this particular change.
 
-Basically, you need to connect to a proxy which routes the request to the underlying database hosts. There are different ways you can configure to route the connections. Default is Round-Robin.
+Basically, you need to connect to a proxy that routes the request to the underlying database hosts. There are different ways you can configure to route the connections. The default is Round-Robin.
 
 The architecture would look something like this:
 ![alt text](../../public/images/postgres-haproxy-wb1.jpg)
@@ -93,7 +93,7 @@ bdrdemo=# select * from names;
 (1 row)
 ```
 
-I am going to stop the container which is running database on port 54325
+I am going to stop the container which is running a database on port 54325
 
 ```bash
 viggy28@Vigneshs-MacBook-Pro haproxy $ docker stop 89cd08ae8c7f
@@ -114,7 +114,7 @@ psql (11.2, server 9.4.17)
 Type "help" for help.
 ```
 
-Let me stop the other container which is running database on 54326
+Let me stop the other container which is running a database on 54326
 
 ```bash
 viggy28@Vigneshs-MacBook-Pro haproxy $ docker stop 764dc76bada7
@@ -130,8 +130,8 @@ Guess what !!?
 ```bash
 viggy28@Vigneshs-MacBook-Pro ~ $ psql -h localhost -U postgres -p 15432 -d postgres
 psql: server closed the connection unexpectedly
-	This probably means the server terminated abnormally
-	before or while processing the request.
+    This probably means the server terminated abnormally
+    before or while processing the request.
 ```
 
-I hope it make sense. Basically, all the databases behind the proxy is down.
+I hope it makes sense. Basically, all the databases behind the proxy are down.
