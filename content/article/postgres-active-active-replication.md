@@ -3,7 +3,7 @@ date: 2019-04-05T19:00:00-00:00
 description: "Postgres Active-Active Replication"
 featured_image: "/images/postgres-logo.png"
 tags: ["postgres", "docker", "bdr"]
-title: "How to set up active-active replication in postgres using BDR"
+title: "Part 1/2: How to set up active-active replication in postgres using BDR"
 ---
 
 Postgres doesn't support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with [BDR] (<https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/>).
@@ -146,25 +146,56 @@ root@beca9adb4b65:/# ping postgres0_database1_1
 
 Step3: Verifying that data is getting replicated
 
-On database0 (running on port 54325)
+Insert a record on database0 (running on port 54325)
 
 ```sql
+viggy28@Vigneshs-MacBook-Pro haproxy $ psql -h localhost -U postgres -p 54325 -d postgres
+Password for user postgres:
+psql (11.2, server 9.4.17)
+Type "help" for help.
+
 CREATE TABLE names(
  user_id serial PRIMARY KEY,
  username VARCHAR (50) UNIQUE NOT NULL,
  email VARCHAR (355) UNIQUE NOT NULL
 );
 
-insert into names (user_id, username, email) values (1, 'ravichandran', 'ravikchandran14@gmail.com');
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database "bdrdemo" as user "postgres".
+
+postgres=# insert into names (user_id, username, email) values (1, 'ravichandran', 'ravikchandran14@gmail.com');
 INSERT 0 1
 
 ```
 
-On database1 (running on port 54326)
+Select the data from database1 (running on port 54326)
 
 ```sql
+viggy28@Vigneshs-MacBook-Pro haproxy $ psql -h localhost -U postgres -p 54326 -d postgres
+Password for user postgres:
+psql (11.2, server 9.4.17)
+Type "help" for help.
+
+postgres=# \l
+                                    List of databases
+       Name       |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
+------------------+----------+----------+------------+------------+-----------------------
+ bdr_supervisordb | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ bdrdemo          | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ postgres         | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0        | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+                  |          |          |            |            | postgres=CTc/postgres
+ template1        | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+                  |          |          |            |            | postgres=CTc/postgres
+(5 rows)
+
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database "bdrdemo" as user "postgres".
+bdrdemo=#
 bdrdemo=# select * from names;
- user_id |   username   |           email           
+ user_id |   username   |           email
 ---------+--------------+---------------------------
        1 | ravichandran | ravikchandran14@gmail.com
 (1 row)
