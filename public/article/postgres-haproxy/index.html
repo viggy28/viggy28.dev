@@ -58,8 +58,10 @@
    
   
 
-  <header>
-    <div class="bg-black">
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://viggy28.dev/images/postgres-logo.png');">
+    <div class="pb3-m pb6-l bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
     <a href="https://viggy28.dev" class="f3 fw2 hover-white no-underline white-90 dib">
@@ -143,6 +145,16 @@
   </div>
 </nav>
 
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Part 2/2: How to set up HAProxy for an active-active postgres databases</h1>
+          
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Postgres Active-Active Replication
+            </h2>
+          
+        
+      </div>
     </div>
   </header>
 
@@ -177,7 +189,7 @@
 <p>Basically, you need to connect to a proxy that routes the request to the underlying database hosts. There are different ways you can configure to route the connections. The default is Round-Robin.</p>
 
 <p>The architecture would look something like this:
-<img src="../../public/images/postgres-haproxy-wb1.jpg" alt="alt text" /></p>
+<img src="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/public/images/postgres-haproxy-wb1.jpg" alt="alt text" title="wb1" /></p>
 
 <p>You can continue with your docker-compose.yml file. Add the below section</p>
 

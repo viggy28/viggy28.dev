@@ -11,7 +11,7 @@ I hope you gone through [Part1] (<https://viggy28.dev/article/postgres-active-ac
 Basically, you need to connect to a proxy that routes the request to the underlying database hosts. There are different ways you can configure to route the connections. The default is Round-Robin.
 
 The architecture would look something like this:
-![alt text](https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/public/images/postgres-haproxy-wb1.jpg "wb1")
+![Postgres active-active replication using BDR set up with HAProxy](/images/postgres-haproxy-wb1.jpg)
 
 You can continue with your docker-compose.yml file. Add the below section
 
