@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Home </title>
+    <title>Home  | Part 2/2: How to set up HAProxy for an active-active postgres databases</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -27,34 +27,39 @@
     
 
     
-      <link href="https://viggy28.dev/tags/firebase/index.xml" rel="alternate" type="application/rss+xml" title="Home" />
-      <link href="https://viggy28.dev/tags/firebase/index.xml" rel="feed" type="application/rss+xml" title="Home" />
-    
 
-    <meta property="og:title" content="Firebase" />
-<meta property="og:description" content="The last theme you&#39;ll ever need. Maybe." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://viggy28.dev/tags/firebase/" />
+    <meta property="og:title" content="Part 2/2: How to set up HAProxy for an active-active postgres databases" />
+<meta property="og:description" content="Postgres Active-Active Replication" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://viggy28.dev/article/postgres-haproxy/" />
+<meta property="article:published_time" content="2019-04-06T18:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-04-06T18:00:00&#43;00:00"/>
 
-<meta property="og:updated_time" content="2019-03-23T18:00:08-04:00"/>
+<meta itemprop="name" content="Part 2/2: How to set up HAProxy for an active-active postgres databases">
+<meta itemprop="description" content="Postgres Active-Active Replication">
 
-<meta itemprop="name" content="Firebase">
-<meta itemprop="description" content="The last theme you&#39;ll ever need. Maybe.">
 
+<meta itemprop="datePublished" content="2019-04-06T18:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-04-06T18:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="616">
+
+
+
+<meta itemprop="keywords" content="postgres,docker,haproxy," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Firebase"/>
-<meta name="twitter:description" content="The last theme you&#39;ll ever need. Maybe."/>
+<meta name="twitter:title" content="Part 2/2: How to set up HAProxy for an active-active postgres databases"/>
+<meta name="twitter:description" content="Postgres Active-Active Replication"/>
 
   </head>
 
   <body class="ma0 avenir bg-near-white">
 
     
+   
+  
 
-  
-  
-  <header class="cover bg-top" style="background-image: url('https://viggy28.dev/images/gohugo-default-sample-hero-image.jpg');">
-    <div class="bg-black-60">
+  <header>
+    <div class="bg-black">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
     <a href="https://viggy28.dev" class="f3 fw2 hover-white no-underline white-90 dib">
@@ -138,45 +143,221 @@
   </div>
 </nav>
 
-      <div class="tc-l pv4 pv6-l ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">
-          Firebase
-        </h1>
-        
-      </div>
     </div>
   </header>
 
 
+
     <main class="pb7" role="main">
       
-  <article class="cf pa3 pa4-m pa4-l">
-    <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links nested-img mid-gray">
-      <p>Below you will find pages that utilize the taxonomy term “Firebase”</p>
-    </div>
-  </article>
-  <div class="mw8 center">    
-    <section class="flex-ns flex-wrap justify-around mt5">
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        ARTICLES
+      </p>
+      <h1 class="f1 athelas mb1">Part 2/2: How to set up HAProxy for an active-active postgres databases</h1>
       
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Article</span>
-    <h1 class="f3 near-black">
-      <a href="/article/hosting-a-simple-website/" class="link black dim">
-        How to host a simple static website
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&rsquo;t like. I will leave the reason to you Step1: Buying a domain This websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.
-    </div>
-  </div>
+      <time class="f6 mv4 dib tracked" datetime="2019-04-06T18:00:00Z">April 6, 2019</time>      
+      
+      
+        <span class="f6 mv4 dib tracked"> - 3 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 616 words</span>
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<h3 id="step-1-setting-up-haproxy">Step 1: Setting up HAProxy</h3>
+
+<p>I hope you gone through <a href="https://viggy28.dev/article/postgres-active-active-replication/">Part1</a> of this series. Perhaps, one thing you might have noticed is that I&rsquo;ve to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In a production environment, most likely you going to run the databases on a different host). The main reason for active-active replication is high availability. If one of the nodes goes down, you still want your application to behave normally. You don&rsquo;t want to hard-code your DSN on the application or keep checking the health of the database every time before you make a connection. Fair enough. <a href="www.haproxy.org">HAProxy</a>, an open source project solves this particular change.</p>
+
+<p>Basically, you need to connect to a proxy that routes the request to the underlying database hosts. There are different ways you can configure to route the connections. The default is Round-Robin.</p>
+
+<p>The architecture would look something like this:
+<img src="../../public/images/postgres-haproxy-wb1.jpg" alt="alt text" /></p>
+
+<p>You can continue with your docker-compose.yml file. Add the below section</p>
+
+<pre><code class="language-yml">version: &quot;3&quot;
+ 
+services:
+ database0:
+   image: jgiannuzzi/postgres-bdr
+   restart: always
+   ports:
+     - 54325:5432
+   environment:
+     - SERVICE_PORTS=5432
+   volumes:
+     - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data
+   environment:
+     POSTGRES_PASSWORD: &quot;replace with your password&quot;
+     TCP_PORTS: &quot;5432&quot;
+
+ database1:
+   image: jgiannuzzi/postgres-bdr
+   restart: always
+   ports:
+     - 54326:5432
+   environment:
+     - SERVICE_PORTS=5432
+   volumes:
+     - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data
+   environment:
+     POSTGRES_PASSWORD: &quot;replace with your password&quot;
+     TCP_PORTS: &quot;5432&quot;
+
+ proxy:
+   image: dockercloud/haproxy
+   links:
+     - database0
+     - database1
+   volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+   ports:
+     - &quot;15432:5432&quot;
+</code></pre>
+
+<p>Note:</p>
+
+<ol>
+<li>links: links the database0 and database1 services with proxy service</li>
+<li>environment: have to export port 5432 where the database is running</li>
+<li>ports: in proxy service, port 5432 is forwarded to port 15432 of localhost</li>
+</ol>
+
+<h3 id="step-2-connecting-to-the-haproxy-and-verifying-its-benefit">Step 2: Connecting to the HAProxy and verifying its benefit</h3>
+
+<p>Verify that all the three services are running</p>
+
+<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro ~ $ docker ps
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                                                NAMES
+5a7f75295722        dockercloud/haproxy       &quot;/sbin/tini -- docke…&quot;   About an hour ago   Up About an hour    80/tcp, 443/tcp, 1936/tcp, 0.0.0.0:15432-&gt;5432/tcp   postgres0_proxy_1
+764dc76bada7        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   About an hour ago   Up About an hour    0.0.0.0:54326-&gt;5432/tcp                              postgres0_database1_1
+89cd08ae8c7f        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   About an hour ago   Up About an hour    0.0.0.0:54325-&gt;5432/tcp                              postgres0_database0_1
+</code></pre>
+
+<p>Connect to the port 15432 and verify the data</p>
+
+<pre><code class="language-sql">viggy28@Vigneshs-MacBook-Pro ~ $ psql -h localhost -U postgres -p 15432 -d postgres
+Password for user postgres:
+psql (11.2, server 9.4.17)
+Type &quot;help&quot; for help.
+
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;.
+bdrdemo=#
+bdrdemo=# select * from names;
+ user_id |   username   |           email
+---------+--------------+---------------------------
+       1 | ravichandran | ravikchandran14@gmail.com
+(1 row)
+</code></pre>
+
+<p>I am going to stop the container which is running a database on port 54325</p>
+
+<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro haproxy $ docker stop 89cd08ae8c7f
+89cd08ae8c7f
+
+viggy28@Vigneshs-MacBook-Pro haproxy $ docker ps
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                                                NAMES
+5a7f75295722        dockercloud/haproxy       &quot;/sbin/tini -- docke…&quot;   About an hour ago   Up About an hour    80/tcp, 443/tcp, 1936/tcp, 0.0.0.0:15432-&gt;5432/tcp   postgres0_proxy_1
+764dc76bada7        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   About an hour ago   Up About an hour    0.0.0.0:54326-&gt;5432/tcp                              postgres0_database1_1
+</code></pre>
+
+<p>However, I can still able to connect to the database</p>
+
+<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro ~ $ psql -h localhost -U postgres -p 15432 -d postgres
+Password for user postgres:
+psql (11.2, server 9.4.17)
+Type &quot;help&quot; for help.
+</code></pre>
+
+<p>Let me stop the other container which is running a database on 54326</p>
+
+<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro haproxy $ docker stop 764dc76bada7
+764dc76bada7
+viggy28@Vigneshs-MacBook-Pro haproxy $
+viggy28@Vigneshs-MacBook-Pro haproxy $ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                NAMES
+5a7f75295722        dockercloud/haproxy   &quot;/sbin/tini -- docke…&quot;   About an hour ago   Up About an hour    80/tcp, 443/tcp, 1936/tcp, 0.0.0.0:15432-&gt;5432/tcp   postgres0_proxy_1
+</code></pre>
+
+<p>Guess what !!?</p>
+
+<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro ~ $ psql -h localhost -U postgres -p 15432 -d postgres
+psql: server closed the connection unexpectedly
+    This probably means the server terminated abnormally
+    before or while processing the request.
+</code></pre>
+
+<p>I hope it makes sense. Basically, all the databases behind the proxy are down.</p>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/postgres" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">postgres</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/docker" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">docker</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/haproxy" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">haproxy</a>
+   </li>
+  
+</ul>
+<div class="mt6">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "viggy28-dev" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/article/postgres-active-active-replication/">Part 1/2: How to set up active-active replication in postgres using BDR</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/article/dockererize-python-application/">How to dockerize a python application</a>
+        </li>
+	    
+    </ul>
 </div>
 
-        </div>
-      
-    </section>
-  </div>
+</aside>
+
+  </article>
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">

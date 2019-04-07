@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Home </title>
+    <title>Home  | Part 1/2: How to set up active-active replication in postgres using BDR</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -27,34 +27,41 @@
     
 
     
-      <link href="https://viggy28.dev/tags/firebase/index.xml" rel="alternate" type="application/rss+xml" title="Home" />
-      <link href="https://viggy28.dev/tags/firebase/index.xml" rel="feed" type="application/rss+xml" title="Home" />
-    
 
-    <meta property="og:title" content="Firebase" />
-<meta property="og:description" content="The last theme you&#39;ll ever need. Maybe." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://viggy28.dev/tags/firebase/" />
+    <meta property="og:title" content="Part 1/2: How to set up active-active replication in postgres using BDR" />
+<meta property="og:description" content="Postgres Active-Active Replication" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://viggy28.dev/article/postgres-active-active-replication/" />
+<meta property="article:published_time" content="2019-04-05T19:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-04-05T19:00:00&#43;00:00"/>
 
-<meta property="og:updated_time" content="2019-03-23T18:00:08-04:00"/>
+<meta itemprop="name" content="Part 1/2: How to set up active-active replication in postgres using BDR">
+<meta itemprop="description" content="Postgres Active-Active Replication">
 
-<meta itemprop="name" content="Firebase">
-<meta itemprop="description" content="The last theme you&#39;ll ever need. Maybe.">
 
+<meta itemprop="datePublished" content="2019-04-05T19:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-04-05T19:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="753">
+
+
+
+<meta itemprop="keywords" content="postgres,docker,bdr," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Firebase"/>
-<meta name="twitter:description" content="The last theme you&#39;ll ever need. Maybe."/>
+<meta name="twitter:title" content="Part 1/2: How to set up active-active replication in postgres using BDR"/>
+<meta name="twitter:description" content="Postgres Active-Active Replication"/>
 
   </head>
 
   <body class="ma0 avenir bg-near-white">
 
     
+   
+  
 
   
   
-  <header class="cover bg-top" style="background-image: url('https://viggy28.dev/images/gohugo-default-sample-hero-image.jpg');">
-    <div class="bg-black-60">
+  <header class="cover bg-top" style="background-image: url('https://viggy28.dev/images/postgres-logo.png');">
+    <div class="pb3-m pb6-l bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
     <a href="https://viggy28.dev" class="f3 fw2 hover-white no-underline white-90 dib">
@@ -138,45 +145,292 @@
   </div>
 </nav>
 
-      <div class="tc-l pv4 pv6-l ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">
-          Firebase
-        </h1>
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Part 1/2: How to set up active-active replication in postgres using BDR</h1>
+          
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Postgres Active-Active Replication
+            </h2>
+          
         
       </div>
     </div>
   </header>
 
 
+
     <main class="pb7" role="main">
       
-  <article class="cf pa3 pa4-m pa4-l">
-    <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links nested-img mid-gray">
-      <p>Below you will find pages that utilize the taxonomy term “Firebase”</p>
-    </div>
-  </article>
-  <div class="mw8 center">    
-    <section class="flex-ns flex-wrap justify-around mt5">
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        ARTICLES
+      </p>
+      <h1 class="f1 athelas mb1">Part 1/2: How to set up active-active replication in postgres using BDR</h1>
       
-        <div class="relative w-100  mb4 bg-white">
-          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Article</span>
-    <h1 class="f3 near-black">
-      <a href="/article/hosting-a-simple-website/" class="link black dim">
-        How to host a simple static website
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&rsquo;t like. I will leave the reason to you Step1: Buying a domain This websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.
-    </div>
-  </div>
+      <time class="f6 mv4 dib tracked" datetime="2019-04-05T19:00:00Z">April 5, 2019</time>      
+      
+      
+        <span class="f6 mv4 dib tracked"> - 4 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 753 words</span>
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<p>Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with <a href="https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/">BDR</a>.</p>
+
+<p>I didn&rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp; docker compose.</p>
+
+<h3 id="step1-running-2-postgres-instances-using-docker-container">Step1: Running 2 Postgres instances using docker container</h3>
+
+<p>Thanks to <a href="https://github.com/jgiannuzzi">jgiannuzzi</a>. He created a docker <a href="https://hub.docker.com/r/jgiannuzzi/postgres-bdr">image</a> with Postgres and BDR.</p>
+
+<p>docker-compose.yml file content</p>
+
+<pre><code class="language-yml">version: &quot;3&quot;
+
+services:
+ database0:
+   image: jgiannuzzi/postgres-bdr
+   restart: always
+   ports:
+     - 54325:5432
+   volumes:
+     - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data
+   environment:
+     POSTGRES_PASSWORD: &lt;replace with your password&gt;
+ database1:
+   image: jgiannuzzi/postgres-bdr
+   restart: always
+   ports:
+     - 54326:5432
+   volumes:
+     - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data
+   environment:
+     POSTGRES_PASSWORD: &lt;replace with your password&gt;
+</code></pre>
+
+<p><strong>Note:</strong></p>
+
+<ol>
+<li>ports - port forwarding 5432 with 54325 and 54326</li>
+<li>volumes - postgresql/data of the container is mounted on postgres0 and postgres1 directory on my local machine</li>
+</ol>
+
+<p>Create two containers using <strong><em>docker-compose</em></strong></p>
+
+<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro postgres0 $ docker-compose -f &quot;docker-compose.yml&quot; up -d --build
+Starting postgres0_database0_1 ... done
+Starting postgres0_database1_1 ... done
+</code></pre>
+
+<p>You can verify that the two containers are running using <strong><em>docker ps</em></strong></p>
+
+<pre><code class="language-shell">viggy28@Vigneshs-MacBook-Pro ~ $ docker ps
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                     NAMES
+0213199e6d0b        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   14 minutes ago      Up 9 seconds        0.0.0.0:54326-&gt;5432/tcp   postgres0_database1_1
+beca9adb4b65        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   14 minutes ago      Up 10 seconds       0.0.0.0:54325-&gt;5432/tcp   postgres0_database0_1
+</code></pre>
+
+<p>Check you can connect to the database running on both the containers using <a href="https://www.postgresql.org/docs/9.3/app-psql.html"><strong><em>psql</em></strong></a></p>
+
+<pre><code class="language-sql">psql -h localhost -U postgres -p 54325 -d postgres
+psql -h localhost -U postgres -p 54326 -d postgres
+</code></pre>
+
+<p>That&rsquo;s basically running Postgres using the Docker container.</p>
+
+<h3 id="step2-setting-up-active-active-replication-using-bdr">Step2: Setting up active-active replication using BDR</h3>
+
+<p>Connect to database0 (running on port 54325)</p>
+
+<pre><code class="language-sql">psql -h localhost -U postgres -p 54325 -d postgres
+
+postgres=# create database bdrdemo;
+CREATE DATABASE
+
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;
+
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS btree_gist;
+CREATE EXTENSION
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS bdr;
+CREATE EXTENSION
+
+bdrdemo=# SELECT bdr.bdr_group_create(
+local_node_name := 'postgres0_database0_1',
+node_external_dsn := 'host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password'
+);
+
+bdrdemo=# select * from bdr.bdr_nodes;
+
+(1 row)
+</code></pre>
+
+<p>Connect to database1 (running on port 54326)</p>
+
+<pre><code class="language-sql">psql -h localhost -U postgres -p 54326 -d postgres
+
+postgres=# create database bdrdemo;
+CREATE DATABASE
+
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;
+
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS btree_gist;
+CREATE EXTENSION
+bdrdemo=# CREATE EXTENSION IF NOT EXISTS bdr;
+CREATE EXTENSION
+
+bdrdemo=# SELECT bdr.bdr_group_join(
+    local_node_name := 'postgres0_database1_1',
+    node_external_dsn := 'host=postgres0_database1_1 port=5432 dbname=bdrdemo password=replace with your password',
+    join_using_dsn := 'host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password'
+);
+
+select * from bdr.bdr_nodes;
+
+(2 rows)
+</code></pre>
+
+<p><strong>Note</strong>:</p>
+
+<ol>
+<li>local_node_name or hostname is the container name</li>
+<li>Don&rsquo;t forget to replace your password</li>
+<li>If you face issue with connectivity, make sure one container can communicate with the other one</li>
+</ol>
+
+<pre><code class="language-shell">$ docker exec -it postgres0_database0_1 /bin/bash
+root@beca9adb4b65:/# ping postgres0_database1_1
+64 bytes from 172.20.0.3: icmp_seq=0 ttl=64 time=0.099 ms
+64 bytes from 172.20.0.3: icmp_seq=1 ttl=64 time=0.154 ms
+64 bytes from 172.20.0.3: icmp_seq=2 ttl=64 time=0.113 ms
+^C--- postgres0_database1_1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+</code></pre>
+
+<p>Step3: Verifying that data is getting replicated</p>
+
+<p>Insert a record on database0 (running on port 54325)</p>
+
+<pre><code class="language-sql">viggy28@Vigneshs-MacBook-Pro haproxy $ psql -h localhost -U postgres -p 54325 -d postgres
+Password for user postgres:
+psql (11.2, server 9.4.17)
+Type &quot;help&quot; for help.
+
+CREATE TABLE names(
+ user_id serial PRIMARY KEY,
+ username VARCHAR (50) UNIQUE NOT NULL,
+ email VARCHAR (355) UNIQUE NOT NULL
+);
+
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;.
+
+postgres=# insert into names (user_id, username, email) values (1, 'ravichandran', 'ravikchandran14@gmail.com');
+INSERT 0 1
+
+</code></pre>
+
+<p>Select the data from database1 (running on port 54326)</p>
+
+<pre><code class="language-sql">viggy28@Vigneshs-MacBook-Pro haproxy $ psql -h localhost -U postgres -p 54326 -d postgres
+Password for user postgres:
+psql (11.2, server 9.4.17)
+Type &quot;help&quot; for help.
+
+postgres=# \l
+                                    List of databases
+       Name       |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
+------------------+----------+----------+------------+------------+-----------------------
+ bdr_supervisordb | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ bdrdemo          | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ postgres         | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0        | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+                  |          |          |            |            | postgres=CTc/postgres
+ template1        | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+                  |          |          |            |            | postgres=CTc/postgres
+(5 rows)
+
+postgres=# \c bdrdemo
+psql (11.2, server 9.4.17)
+You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;.
+bdrdemo=#
+bdrdemo=# select * from names;
+ user_id |   username   |           email
+---------+--------------+---------------------------
+       1 | ravichandran | ravikchandran14@gmail.com
+(1 row)
+</code></pre>
+
+<p>voila. A simple way to set up active-active replication in Postgres.</p>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/postgres" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">postgres</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/docker" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">docker</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/bdr" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">bdr</a>
+   </li>
+  
+</ul>
+<div class="mt6">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "viggy28-dev" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/article/dockererize-python-application/">How to dockerize a python application</a>
+        </li>
+	    
+    </ul>
 </div>
 
-        </div>
-      
-    </section>
-  </div>
+</aside>
+
+  </article>
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">

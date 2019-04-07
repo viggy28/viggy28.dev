@@ -36,7 +36,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://viggy28.dev/" />
 
-<meta property="og:updated_time" content="2019-04-05T19:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2019-04-06T18:00:00&#43;00:00"/>
 
 <meta itemprop="name" content="Vignesh Ravichandran">
 <meta itemprop="description" content="Yet another engineer">
@@ -71,7 +71,7 @@
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+            <a class="hover-white no-underline white-90" href="/article/" title="Articles page">
               Articles
             </a>
           </li>
@@ -185,18 +185,42 @@
   <div class="db pv4 ph3 ph0-l no-underline dark-gray">
     <div class="flex flex-column flex-row-ns">
       
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/article/postgres-haproxy/" class="color-inherit dim link">
+            Part 2/2: How to set up HAProxy for an active-active postgres databases
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          Step 1: Setting up HAProxy I hope you gone through Part1 of this series. Perhaps, one thing you might have noticed is that I&rsquo;ve to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In a production environment, most likely you going to run the databases on a different host). The main reason for active-active replication is high availability.
+        </div>
+          <a href="/article/postgres-haproxy/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
           
         
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/post/postgres-active-active-replication/" class="db grow">
-            <img src="https://viggy28.dev/images/postgres-logo.png" class="img" alt="image from How to set up active-active replication in postgres using BDR">
+          <a href="/article/postgres-active-active-replication/" class="db grow">
+            <img src="https://viggy28.dev/images/postgres-logo.png" class="img" alt="image from Part 1/2: How to set up active-active replication in postgres using BDR">
           </a>
         </div>
       
       <div class="blah w-100 w-60-ns pl3-ns">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/post/postgres-active-active-replication/" class="color-inherit dim link">
-            How to set up active-active replication in postgres using BDR
+          <a href="/article/postgres-active-active-replication/" class="color-inherit dim link">
+            Part 1/2: How to set up active-active replication in postgres using BDR
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
@@ -205,7 +229,7 @@ I didn&rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. M
 Step1: Running 2 Postgres instances using docker container Thanks to jgiannuzzi. He created a docker image with Postgres and BDR.
 docker-compose.yml file content
         </div>
-          <a href="/post/postgres-active-active-replication/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+          <a href="/article/postgres-active-active-replication/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
         
       </div>
     </div>
@@ -223,14 +247,14 @@ docker-compose.yml file content
           
         
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/post/functions-vs-containers/" class="db grow">
+          <a href="/article/functions-vs-containers/" class="db grow">
             <img src="https://viggy28.dev/images/containers-ship.png" class="img" alt="image from Functions vs Containers">
           </a>
         </div>
       
       <div class="blah w-100 w-60-ns pl3-ns">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/post/functions-vs-containers/" class="color-inherit dim link">
+          <a href="/article/functions-vs-containers/" class="color-inherit dim link">
             Functions vs Containers
             </a>
         </h1>
@@ -238,7 +262,7 @@ docker-compose.yml file content
           Mark my word. We had so many competitions in the past. Eg. vim vs emacs, tabs vs spaces etc. The new comparison which is added in this decade is functions vs containers
 Both the functions and containers can be serverless. So, please avoid the notion of serverless means functions. In fact, predominantly all the functions (like lambda, cloud functions) are running behind the screen as containers. (there are few products like Cloudflare workers are running without containers)
         </div>
-          <a href="/post/functions-vs-containers/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+          <a href="/article/functions-vs-containers/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
         
       </div>
     </div>
@@ -256,21 +280,21 @@ Both the functions and containers can be serverless. So, please avoid the notion
           
         
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/post/hosting-a-simple-website/" class="db grow">
+          <a href="/article/hosting-a-simple-website/" class="db grow">
             <img src="https://viggy28.dev/images/firebase-logo-wide.png" class="img" alt="image from How to host a simple static website">
           </a>
         </div>
       
       <div class="blah w-100 w-60-ns pl3-ns">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/post/hosting-a-simple-website/" class="color-inherit dim link">
+          <a href="/article/hosting-a-simple-website/" class="color-inherit dim link">
             How to host a simple static website
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
           We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&rsquo;t like. I will leave the reason to you Step1: Buying a domain This websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.
         </div>
-          <a href="/post/hosting-a-simple-website/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+          <a href="/article/hosting-a-simple-website/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
         
       </div>
     </div>
@@ -288,14 +312,14 @@ Both the functions and containers can be serverless. So, please avoid the notion
           
         
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/post/dockererize-python-application/" class="db grow">
+          <a href="/article/dockererize-python-application/" class="db grow">
             <img src="https://viggy28.dev/images/docker-logo.png" class="img" alt="image from How to dockerize a python application">
           </a>
         </div>
       
       <div class="blah w-100 w-60-ns pl3-ns">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/post/dockererize-python-application/" class="color-inherit dim link">
+          <a href="/article/dockererize-python-application/" class="color-inherit dim link">
             How to dockerize a python application
             </a>
         </h1>
@@ -303,7 +327,7 @@ Both the functions and containers can be serverless. So, please avoid the notion
           In this article we will see how to convert a simple python application to a containerized (Docker) one Go to the profile of vignesh ravichandran vignesh ravichandran Sep 23, 2017 TL;DR -&gt; Containerize a python app. Push the image and execute from Google Cloud.
 On a leisurely Saturday afternoon, I thought its nice to play with containers. I was fascinated with the idea of containerizing an app and running it across different environments.
         </div>
-          <a href="/post/dockererize-python-application/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+          <a href="/article/dockererize-python-application/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
         
       </div>
     </div>

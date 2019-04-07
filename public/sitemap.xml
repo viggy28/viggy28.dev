@@ -3,7 +3,14 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://viggy28.dev/post/postgres-active-active-replication/</loc>
+    <loc>https://viggy28.dev/article/postgres-haproxy/</loc>
+    <lastmod>2019-04-06T18:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/article/postgres-active-active-replication/</loc>
     <lastmod>2019-04-05T19:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -24,28 +31,28 @@
   </url>
   
   <url>
-    <loc>https://viggy28.dev/post/functions-vs-containers/</loc>
+    <loc>https://viggy28.dev/article/functions-vs-containers/</loc>
     <lastmod>2019-03-23T18:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://viggy28.dev/post/hosting-a-simple-website/</loc>
+    <loc>https://viggy28.dev/article/hosting-a-simple-website/</loc>
     <lastmod>2019-03-23T18:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://viggy28.dev/post/dockererize-python-application/</loc>
+    <loc>https://viggy28.dev/article/dockererize-python-application/</loc>
     <lastmod>2017-09-23T18:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://viggy28.dev/post/</loc>
+    <loc>https://viggy28.dev/article/</loc>
     <lastmod>2017-03-02T12:00:00-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -86,7 +93,7 @@
   
   <url>
     <loc>https://viggy28.dev/tags/docker/</loc>
-    <lastmod>2019-04-05T19:00:00+00:00</lastmod>
+    <lastmod>2019-04-06T18:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
@@ -94,6 +101,13 @@
   <url>
     <loc>https://viggy28.dev/tags/firebase/</loc>
     <lastmod>2019-03-23T18:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/haproxy/</loc>
+    <lastmod>2019-04-06T18:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
@@ -114,7 +128,7 @@
   
   <url>
     <loc>https://viggy28.dev/tags/postgres/</loc>
-    <lastmod>2019-04-05T19:00:00+00:00</lastmod>
+    <lastmod>2019-04-06T18:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
@@ -142,7 +156,7 @@
   
   <url>
     <loc>https://viggy28.dev/</loc>
-    <lastmod>2019-04-05T19:00:00+00:00</lastmod>
+    <lastmod>2019-04-06T18:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -13,10 +13,10 @@
     
     <item>
       <title>Functions vs Containers</title>
-      <link>https://viggy28.dev/post/functions-vs-containers/</link>
+      <link>https://viggy28.dev/article/functions-vs-containers/</link>
       <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
       
-      <guid>https://viggy28.dev/post/functions-vs-containers/</guid>
+      <guid>https://viggy28.dev/article/functions-vs-containers/</guid>
       <description>Mark my word. We had so many competitions in the past. Eg. vim vs emacs, tabs vs spaces etc. The new comparison which is added in this decade is functions vs containers
 Both the functions and containers can be serverless. So, please avoid the notion of serverless means functions. In fact, predominantly all the functions (like lambda, cloud functions) are running behind the screen as containers. (there are few products like Cloudflare workers are running without containers)</description>
     </item>

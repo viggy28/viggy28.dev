@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Postgres on Home</title>
-    <link>https://viggy28.dev/tags/postgres/</link>
-    <description>Recent content in Postgres on Home</description>
+    <title>Haproxy on Home</title>
+    <link>https://viggy28.dev/tags/haproxy/</link>
+    <description>Recent content in Haproxy on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Apr 2019 18:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://viggy28.dev/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://viggy28.dev/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,18 +18,6 @@
       
       <guid>https://viggy28.dev/article/postgres-haproxy/</guid>
       <description>Step 1: Setting up HAProxy I hope you gone through Part1 of this series. Perhaps, one thing you might have noticed is that I&amp;rsquo;ve to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In a production environment, most likely you going to run the databases on a different host). The main reason for active-active replication is high availability.</description>
-    </item>
-    
-    <item>
-      <title>Part 1/2: How to set up active-active replication in postgres using BDR</title>
-      <link>https://viggy28.dev/article/postgres-active-active-replication/</link>
-      <pubDate>Fri, 05 Apr 2019 19:00:00 +0000</pubDate>
-      
-      <guid>https://viggy28.dev/article/postgres-active-active-replication/</guid>
-      <description>Postgres doesn&amp;rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with BDR.
-I didn&amp;rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp;amp; docker compose.
-Step1: Running 2 Postgres instances using docker container Thanks to jgiannuzzi. He created a docker image with Postgres and BDR.
-docker-compose.yml file content</description>
     </item>
     
   </channel>
