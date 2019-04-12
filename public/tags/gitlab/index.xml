@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gitlab on Home</title>
+    <link>https://viggy28.dev/tags/gitlab/</link>
+    <description>Recent content in Gitlab on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 09 Apr 2019 20:00:08 -0400</lastBuildDate>
+    
+	<atom:link href="https://viggy28.dev/tags/gitlab/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to deploy a cloud run application using Gitlab CI/CD</title>
+      <link>https://viggy28.dev/article/cloudrun-cicd/</link>
+      <pubDate>Tue, 09 Apr 2019 20:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/cloudrun-cicd/</guid>
+      <description>In Google Cloud Next 2019, they introduced a new product called Cloud Run. I&amp;rsquo;ve been using it from the EAP (Early Access Program) days. [As the name suggests, basically it runs your docker image. You might be familiar with other serverless products such as Cloud Function or lambda where you provide your source code instead of a docker image. In my opinion, Cloud Run is more flexible than functions. Let me explain why.</description>
+    </item>
+    
+  </channel>
+</rss>

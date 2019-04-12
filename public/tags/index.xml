@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>Cloud Run</title>
+      <link>https://viggy28.dev/tags/cloud-run/</link>
+      <pubDate>Tue, 09 Apr 2019 20:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/tags/cloud-run/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Containers</title>
       <link>https://viggy28.dev/tags/containers/</link>
       <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
@@ -41,7 +50,7 @@
     <item>
       <title>Docker</title>
       <link>https://viggy28.dev/tags/docker/</link>
-      <pubDate>Sat, 06 Apr 2019 18:00:00 +0000</pubDate>
+      <pubDate>Tue, 09 Apr 2019 20:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/tags/docker/</guid>
       <description></description>
@@ -53,6 +62,15 @@
       <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/tags/firebase/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gitlab</title>
+      <link>https://viggy28.dev/tags/gitlab/</link>
+      <pubDate>Tue, 09 Apr 2019 20:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/tags/gitlab/</guid>
       <description></description>
     </item>
     

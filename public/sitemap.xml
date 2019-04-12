@@ -3,6 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://viggy28.dev/article/cloudrun-cicd/</loc>
+    <lastmod>2019-04-09T20:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://viggy28.dev/article/postgres-haproxy/</loc>
     <lastmod>2019-04-06T18:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -85,6 +92,13 @@
   </url>
   
   <url>
+    <loc>https://viggy28.dev/tags/cloud-run/</loc>
+    <lastmod>2019-04-09T20:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://viggy28.dev/tags/containers/</loc>
     <lastmod>2019-03-23T18:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -93,7 +107,7 @@
   
   <url>
     <loc>https://viggy28.dev/tags/docker/</loc>
-    <lastmod>2019-04-06T18:00:00+00:00</lastmod>
+    <lastmod>2019-04-09T20:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
@@ -101,6 +115,13 @@
   <url>
     <loc>https://viggy28.dev/tags/firebase/</loc>
     <lastmod>2019-03-23T18:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/gitlab/</loc>
+    <lastmod>2019-04-09T20:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
@@ -156,7 +177,7 @@
   
   <url>
     <loc>https://viggy28.dev/</loc>
-    <lastmod>2019-04-06T18:00:00+00:00</lastmod>
+    <lastmod>2019-04-09T20:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
