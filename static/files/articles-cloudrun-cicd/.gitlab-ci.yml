@@ -3,7 +3,7 @@ stages:
   - deploy-new-service
 
 variables:
-    projectid: "cloudrundemo-237205"
+    projectid: "replace-your-project-id"
     service: "cloudrun-cicd"
     region: "us-central1"
     image_name: "cloudrun-cicd"

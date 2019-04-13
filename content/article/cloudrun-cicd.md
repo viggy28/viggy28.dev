@@ -18,9 +18,9 @@ So far so good. What happens if I need to make a code change. Easy right? create
 
 This article is about how to automate those steps using [Gitlab CI/CD] (<https://docs.gitlab.com/ce/ci/>). The gitlab repository is available [here] (<https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd>)
 
-Let's deploy that [go application] (<https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd/blob/master/main.go>) to cloud run.
+Let's deploy that [go application] (<https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/main.go>) to cloud run.
 
-[Dockerfile] (<https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd/blob/master/Dockerfile>) to build a Docker image.
+[Dockerfile] (<https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/Dockerfile>) to build a Docker image.
 
 ```Dockerfile
 
@@ -58,7 +58,7 @@ Note:
 + Doing go get of the external package
 + To minimize the size of the docker image, We are doing multi-stage builds
 
-Up next is the [.gitlab-ci.yml] (<https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd/blob/master/.gitlab-ci.yml>) file.
+Up next is the [.gitlab-ci.yml] (<https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/.gitlab-ci.yml>) file.
 
 ```yml
 stages:
