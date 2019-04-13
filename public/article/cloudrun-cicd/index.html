@@ -182,9 +182,9 @@
 
 <p>This article is about how to automate those steps using <a href="https://docs.gitlab.com/ce/ci/">Gitlab CI/CD</a>. The gitlab repository is available <a href="https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd">here</a></p>
 
-<p>Let&rsquo;s deploy that <a href="https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd/blob/master/main.go">go application</a> to cloud run.</p>
+<p>Let&rsquo;s deploy that <a href="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/main.go">go application</a> to cloud run.</p>
 
-<p><a href="https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd/blob/master/Dockerfile">Dockerfile</a> to build a Docker image.</p>
+<p><a href="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/Dockerfile">Dockerfile</a> to build a Docker image.</p>
 
 <pre><code class="language-Dockerfile">
 # Use the official Golang alpine image to create a build artifact.
@@ -223,7 +223,7 @@ CMD [&quot;/cloudrun-cicd&quot;]
 <li>To minimize the size of the docker image, We are doing multi-stage builds</li>
 </ul>
 
-<p>Up next is the <a href="https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd/blob/master/.gitlab-ci.yml">.gitlab-ci.yml</a> file.</p>
+<p>Up next is the <a href="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/.gitlab-ci.yml">.gitlab-ci.yml</a> file.</p>
 
 <pre><code class="language-yml">stages:
   - build-push-docker
