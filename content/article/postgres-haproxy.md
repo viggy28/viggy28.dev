@@ -136,7 +136,10 @@ psql: server closed the connection unexpectedly
 
 I hope it makes sense. Basically, all the databases behind the proxy are down.
 
-ps: You can add [pgbouncer] (<https://pgbouncer.github.io/>) to improve the speed of the db connection and efficiency. Extended [docker-compose] (<https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose-with-pgbouncer.yml>) file which includes pgbouncer set up. A simple [go program](<https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/main.go>) to compare the ![connection time](files/postgres-haproxy/haproxy-vs-pgbouncer-connection-time.png).
+ps: You can add [pgbouncer] (<https://pgbouncer.github.io/>) to improve the speed of the db connection and efficiency. Extended [docker-compose] (<https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose-with-pgbouncer.yml>) file which includes pgbouncer set up.
+
+Benchmark:
+A simple [go program](<https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/main.go>) to compare the connection time ![benchmark](/files/postgres-haproxy/haproxy-vs-pgbouncer-connection-time.png).
 
 
 

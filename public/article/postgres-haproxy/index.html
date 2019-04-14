@@ -41,7 +41,7 @@
 
 <meta itemprop="datePublished" content="2019-04-06T18:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-04-06T18:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="647">
+<meta itemprop="wordCount" content="650">
 
 
 
@@ -176,7 +176,7 @@
       
       
         <span class="f6 mv4 dib tracked"> - 4 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 647 words</span>
+        <span class="f6 mv4 dib tracked"> - 650 words</span>
       
     </header>
 
@@ -309,7 +309,10 @@ psql: server closed the connection unexpectedly
 
 <p>I hope it makes sense. Basically, all the databases behind the proxy are down.</p>
 
-<p>ps: You can add <a href="https://pgbouncer.github.io/">pgbouncer</a> to improve the speed of the db connection and efficiency. Extended <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose-with-pgbouncer.yml">docker-compose</a> file which includes pgbouncer set up. A simple <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/main.go">go program</a> to compare the <img src="../../public/files/postgres-haproxy/haproxy-vs-pgbouncer-connection-time.png" alt="connection time" />.</p>
+<p>ps: You can add <a href="https://pgbouncer.github.io/">pgbouncer</a> to improve the speed of the db connection and efficiency. Extended <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose-with-pgbouncer.yml">docker-compose</a> file which includes pgbouncer set up.</p>
+
+<p>Benchmark:
+A simple <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/main.go">go program</a> to compare the connection time <img src="/files/postgres-haproxy/haproxy-vs-pgbouncer-connection-time.png" alt="benchmark" />.</p>
 <ul class="pa0">
   
    <li class="list">
