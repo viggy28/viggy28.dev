@@ -44,6 +44,7 @@ services:
 
   1. ports - port forwarding 5432 with 54325 and 54326
   2. volumes - postgresql/data of the container is mounted on postgres0 and postgres1 directory on my local machine
+  3. names - container names depend on the directory name
 
 Create two containers using ***docker-compose***
 
