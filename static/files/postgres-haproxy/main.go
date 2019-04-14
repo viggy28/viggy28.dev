@@ -16,7 +16,7 @@ import (
 
 const (
 	dbUser     = "postgres"
-	dbPassword = "Test_1234"
+	dbPassword = "<replace your password>"
 	dbName     = "bdrdemo"
 	dbHost     = "localhost"
 )
