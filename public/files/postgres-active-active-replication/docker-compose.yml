@@ -1,38 +1,21 @@
 version: "3"
- 
+
 services:
  database0:
    image: jgiannuzzi/postgres-bdr
    restart: always
    ports:
      - 54325:5432
-   environment:
-     - SERVICE_PORTS=5432
    volumes:
      - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data
    environment:
-     POSTGRES_PASSWORD: "Test_1234"
-     TCP_PORTS: "5432"
-
+     POSTGRES_PASSWORD: <replace with your password>
  database1:
    image: jgiannuzzi/postgres-bdr
    restart: always
    ports:
      - 54326:5432
-   environment:
-     - SERVICE_PORTS=5432
    volumes:
      - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data
    environment:
-     POSTGRES_PASSWORD: "Test_1234"
-     TCP_PORTS: "5432"
-
- proxy:
-   image: dockercloud/haproxy 
-   links:
-     - database0
-     - database1
-   volumes:
-     - /var/run/docker.sock:/var/run/docker.sock
-   ports:
-     - "15432:5432"
+     POSTGRES_PASSWORD: <replace with your password>

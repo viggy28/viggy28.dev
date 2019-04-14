@@ -13,7 +13,7 @@ Basically, you need to connect to a proxy that routes the request to the underly
 The architecture would look something like this:
 ![Postgres active-active replication using BDR set up with HAProxy](/images/postgres-haproxy-wb1.jpg)
 
-You can continue with your [docker-compose.yml] (<https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/docker-compose.yml>) file. Add the below section
+You can continue with your [docker-compose.yml] (<https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose.yml>) file. Add the below section
 
 ```yml
 version: "3"
@@ -135,3 +135,5 @@ psql: server closed the connection unexpectedly
 ```
 
 I hope it makes sense. Basically, all the databases behind the proxy are down.
+
+ps: You can add [pgbouncer] (<https://pgbouncer.github.io/>) to improve the speed of the db connection and efficiency. Extended [docker-compose] (<https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose-with-pgbouncer.yml>) file.

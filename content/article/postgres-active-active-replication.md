@@ -12,7 +12,7 @@ I didn't want to spin up multiple VMs. So, the obvious choice is docker. Make su
 
 ### Step1: Running 2 Postgres instances using docker container
 
-Thanks to [jgiannuzzi] (<https://github.com/jgiannuzzi>). He created a docker [image] (<https://hub.docker.com/r/jgiannuzzi/postgres-bdr>) with Postgres and BDR.
+Thanks to [jgiannuzzi] (<https://github.com/jgiannuzzi>), who created a docker [image] (<https://hub.docker.com/r/jgiannuzzi/postgres-bdr>) with Postgres and BDR.
 
 docker-compose.yml file content
 

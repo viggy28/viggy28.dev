@@ -41,7 +41,7 @@
 
 <meta itemprop="datePublished" content="2019-04-06T18:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-04-06T18:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="616">
+<meta itemprop="wordCount" content="634">
 
 
 
@@ -176,7 +176,7 @@
       
       
         <span class="f6 mv4 dib tracked"> - 3 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 616 words</span>
+        <span class="f6 mv4 dib tracked"> - 634 words</span>
       
     </header>
 
@@ -191,7 +191,7 @@
 <p>The architecture would look something like this:
 <img src="/images/postgres-haproxy-wb1.jpg" alt="Postgres active-active replication using BDR set up with HAProxy" /></p>
 
-<p>You can continue with your <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/docker-compose.yml">docker-compose.yml</a> file. Add the below section</p>
+<p>You can continue with your <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose.yml">docker-compose.yml</a> file. Add the below section</p>
 
 <pre><code class="language-yml">version: &quot;3&quot;
  
@@ -308,6 +308,8 @@ psql: server closed the connection unexpectedly
 </code></pre>
 
 <p>I hope it makes sense. Basically, all the databases behind the proxy are down.</p>
+
+<p>ps: You can add <a href="https://pgbouncer.github.io/">pgbouncer</a> to improve the speed of the db connection and efficiency. Extended <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose-with-pgbouncer.yml">docker-compose</a> file.</p>
 <ul class="pa0">
   
    <li class="list">
