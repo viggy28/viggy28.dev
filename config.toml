@@ -9,8 +9,8 @@ disqusShortname = "viggy28-dev"
 MetaDataFormat = "yaml"
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
-Paginate = 5 # this is set low for demonstrating with dummy content. Set to a higher number
-googleAnalytics = "UA-75733246-2"
+Paginate = 6 # this is set low for demonstrating with dummy content. Set to a higher number
+googleAnalytics = "UA-138247776-1"
 enableRobotsTXT = true
 HUGO_ENV="production"
 
