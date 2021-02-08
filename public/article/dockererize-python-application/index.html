@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.66.0" />
     
     
       <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -32,21 +32,17 @@
 <meta property="og:description" content="Dockerize python applicatio" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://viggy28.dev/article/dockererize-python-application/" />
-<meta property="article:published_time" content="2017-09-23T18:00:08-04:00"/>
-<meta property="article:modified_time" content="2017-09-23T18:00:08-04:00"/>
-
+<meta property="article:published_time" content="2017-09-23T18:00:08-04:00" />
+<meta property="article:modified_time" content="2017-09-23T18:00:08-04:00" />
 <meta itemprop="name" content="How to dockerize a python application">
 <meta itemprop="description" content="Dockerize python applicatio">
-
-
 <meta itemprop="datePublished" content="2017-09-23T18:00:08-04:00" />
 <meta itemprop="dateModified" content="2017-09-23T18:00:08-04:00" />
-<meta itemprop="wordCount" content="441">
+<meta itemprop="wordCount" content="445">
 
 
 
-<meta itemprop="keywords" content="docker,python,containers," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="docker,python,containers," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to dockerize a python application"/>
 <meta name="twitter:description" content="Dockerize python applicatio"/>
 
@@ -189,22 +185,17 @@ if (!doNotTrack) {
       
       
         <span class="f6 mv4 dib tracked"> - 3 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 441 words</span>
+        <span class="f6 mv4 dib tracked"> - 445 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
-
-<h3 id="in-this-article-we-will-see-how-to-convert-a-simple-python-application-to-a-containerized-docker-one">In this article we will see how to convert a simple python application to a containerized (Docker) one</h3>
-
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h3 id="in-this-article-we-will-see-how-to-convert-a-simple-python-application-to-a-containerized-docker-one">In this article we will see how to convert a simple python application to a containerized (Docker) one</h3>
 <p>Go to the profile of vignesh ravichandran
 vignesh ravichandran
 Sep 23, 2017
 TL;DR -&gt; Containerize a python app. Push the image and execute from Google Cloud.</p>
-
 <p>On a leisurely Saturday afternoon, I thought its nice to play with containers.
 I was fascinated with the idea of containerizing an app and running it across different environments. Its easier (for me) to understand something when I do, instead of just reading.</p>
-
 <pre><code>Requirements:
 
 python ≥2.7 (and pip)
@@ -212,73 +203,47 @@ python ≥2.7 (and pip)
 Docker ≥1.13.1
 
 An account in docker hub and google cloud. (Both have free tier $)
-</code></pre>
-
-<p>This is the simple python program which I wanted to containerize.</p>
-
+</code></pre><p>This is the simple python program which I wanted to containerize.</p>
 <pre><code>import requests
 city = “Los Angeles”
 print “I am from %s” %city
 r = requests.get(‘http://www.google.com')
 print r.status_code
-</code></pre>
-
-<p>Install the package requests using pip to execute this program locally.</p>
-
+</code></pre><p>Install the package requests using pip to execute this program locally.</p>
 <p>Next, I wrote a Dockerfile which basically bundles base image, commands to execute and install other packages.</p>
-
-<p>Then build a docker image by executing docker build -t <imageName> . You can verify the image by running docker images. (note down the image id) To test the image is working as expected docker run <imageName></p>
-
+<p>Then build a docker image by executing docker build -t <!-- raw HTML omitted --> . You can verify the image by running docker images. (note down the image id) To test the image is working as expected docker run <!-- raw HTML omitted --></p>
 <p>Didn’t want to stop there. How cool it will be to run the image in a different server!!?.</p>
-
 <p>Alright, you need to push the docker image which you build locally to the docker hub, so that you can pull and run the image from different servers.</p>
-
 <p>Preparation to push the docker image.</p>
-
 <pre><code>docker tag &lt;imageid&gt;&lt;dockerHubUserName&gt;/&lt;imageName:latest&gt;
 
 docker login ( provide dockerHubUserName/Password)
 
 docker push &lt;dockerHubUserName&gt;/&lt;imageName&gt;
-</code></pre>
-
-<p>Successfully, you have pushed a docker image to the docker hub !!.</p>
-
+</code></pre><p>Successfully, you have pushed a docker image to the docker hub !!.</p>
 <p>To really appreciate the use of containerization, you need to run this image from a different environment. Hmm!!? The easiest way is if you have a VM, you can use that (or a different computer). If you don’t have both, then you can spin up a VM from Google Cloud. (or from any other provider).</p>
-
 <p>Note : There are OS images which includes Docker. So, you don’t even have to install Docker in the VM.</p>
-
 <p>Boot Disk : Container-Optimized OS 61–9765.66.0 stable</p>
-
 <p>Kernel: ChromiumOS-4.4.70 Kubernetes: 1.6.10 Docker: 17.03.2</p>
-
 <figure>
     <img src="/images/gcp.png"/> <figcaption>
             <h4>Spinning up a Google Compute Engine (VM)</h4>
         </figcaption>
 </figure>
 
-
 <p>Once you created the VM, ssh to the box. You should see on the dashboard. Then follow the commands in the below screenshot.</p>
-
 <figure>
     <img src="/images/bash.png"/> <figcaption>
             <h4>Running a docker image from Google Compute Engine</h4>
         </figcaption>
 </figure>
 
-
 <p>You don’t have to install Python, no need to install the package (requests). Everything is bundled in the image and just execute it !!</p>
-
-<p><a href="https://github.com/vr001/python_docker">Source Code</a></p>
-
-<p><a href="https://hub.docker.com/r/vira28/python_docker/">Docker Image</a></p>
-
+<p>[Source Code] (<a href="https://github.com/vr001/python_docker">https://github.com/vr001/python_docker</a>)</p>
+<p>[Docker Image] (<a href="https://hub.docker.com/r/vira28/python_docker/">https://hub.docker.com/r/vira28/python_docker/</a>)</p>
 <p>Reference :</p>
-
-<p><a href="http://www.python-requests.org/en/master/">Requests: HTTP for Humans - Requests 2.18.4 documentation</a></p>
-
-<p><a href="https://runnable.com/docker/python/dockerize-your-python-application">Dockerize your Python Application</a></p>
+<p>[Requests: HTTP for Humans - Requests 2.18.4 documentation] (<a href="http://www.python-requests.org/en/master/">http://www.python-requests.org/en/master/</a>)</p>
+<p>[Dockerize your Python Application] (<a href="https://runnable.com/docker/python/dockerize-your-python-application">https://runnable.com/docker/python/dockerize-your-python-application</a>)</p>
 <ul class="pa0">
   
    <li class="list">
@@ -331,7 +296,7 @@ docker push &lt;dockerHubUserName&gt;/&lt;imageName&gt;
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://viggy28.dev" >
-    &copy; 2019 Home
+    &copy; 2020 Home
   </a>
     <div>
 

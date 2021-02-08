@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.66.0" />
     
     
       <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -32,21 +32,17 @@
 <meta property="og:description" content="Postgres Active-Active Replication" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://viggy28.dev/article/postgres-haproxy/" />
-<meta property="article:published_time" content="2019-04-06T18:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-04-06T18:00:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2019-04-06T18:00:00+00:00" />
+<meta property="article:modified_time" content="2019-04-06T18:00:00+00:00" />
 <meta itemprop="name" content="Part 2/2: How to set up HAProxy for an active-active postgres databases">
 <meta itemprop="description" content="Postgres Active-Active Replication">
-
-
 <meta itemprop="datePublished" content="2019-04-06T18:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-04-06T18:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="650">
+<meta itemprop="wordCount" content="655">
 
 
 
-<meta itemprop="keywords" content="postgres,docker,haproxy," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="postgres,docker,haproxy," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Part 2/2: How to set up HAProxy for an active-active postgres databases"/>
 <meta name="twitter:description" content="Postgres Active-Active Replication"/>
 
@@ -189,143 +185,111 @@ if (!doNotTrack) {
       
       
         <span class="f6 mv4 dib tracked"> - 4 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 650 words</span>
+        <span class="f6 mv4 dib tracked"> - 655 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
-
-<h3 id="step-1-setting-up-haproxy">Step 1: Setting up HAProxy</h3>
-
-<p>I hope you gone through <a href="https://viggy28.dev/article/postgres-active-active-replication/">Part1</a> of this series. Perhaps, one thing you might have noticed is that I&rsquo;ve to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In a production environment, most likely you going to run the databases on a different host). The main reason for active-active replication is high availability. If one of the nodes goes down, you still want your application to behave normally. You don&rsquo;t want to hard-code your DSN on the application or keep checking the health of the database every time before you make a connection. Fair enough. <a href="www.haproxy.org">HAProxy</a>, an open source project solves this particular change.</p>
-
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h3 id="step-1-setting-up-haproxy">Step 1: Setting up HAProxy</h3>
+<p>I hope you gone through [Part1] (<a href="https://viggy28.dev/article/postgres-active-active-replication/">https://viggy28.dev/article/postgres-active-active-replication/</a>) of this series. Perhaps, one thing you might have noticed is that I&rsquo;ve to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In a production environment, most likely you going to run the databases on a different host). The main reason for active-active replication is high availability. If one of the nodes goes down, you still want your application to behave normally. You don&rsquo;t want to hard-code your DSN on the application or keep checking the health of the database every time before you make a connection. Fair enough. [HAProxy] (&lt;www.haproxy.org&gt;), an open source project solves this particular change.</p>
 <p>Basically, you need to connect to a proxy that routes the request to the underlying database hosts. There are different ways you can configure to route the connections. The default is Round-Robin.</p>
-
 <p>The architecture would look something like this:
-<img src="/images/postgres-haproxy-wb1.jpg" alt="Postgres active-active replication using BDR set up with HAProxy" /></p>
-
-<p>You can continue with your <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose.yml">docker-compose.yml</a> file. Add the below section</p>
-
-<pre><code class="language-yml">version: &quot;3&quot;
+<img src="/images/postgres-haproxy-wb1.jpg" alt="Postgres active-active replication using BDR set up with HAProxy"></p>
+<p>You can continue with your [docker-compose.yml] (<a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose.yml">https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose.yml</a>) file. Add the below section</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
  
-services:
- database0:
-   image: jgiannuzzi/postgres-bdr
-   restart: always
-   ports:
-     - 54325:5432
-   environment:
-     - SERVICE_PORTS=5432
-   volumes:
+<span style="color:#66d9ef">services</span>:
+ <span style="color:#66d9ef">database0</span>:
+   <span style="color:#66d9ef">image</span>: jgiannuzzi/postgres-bdr
+   <span style="color:#66d9ef">restart</span>: always
+   <span style="color:#66d9ef">ports</span>:
+     - <span style="color:#ae81ff">54325</span>:<span style="color:#ae81ff">5432</span>
+   <span style="color:#66d9ef">environment</span>:
+     - SERVICE_PORTS=<span style="color:#ae81ff">5432</span>
+   <span style="color:#66d9ef">volumes</span>:
      - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data
-   environment:
-     POSTGRES_PASSWORD: &quot;replace with your password&quot;
-     TCP_PORTS: &quot;5432&quot;
+   <span style="color:#66d9ef">environment</span>:
+     <span style="color:#66d9ef">POSTGRES_PASSWORD</span>: <span style="color:#e6db74">&#34;replace with your password&#34;</span>
+     <span style="color:#66d9ef">TCP_PORTS</span>: <span style="color:#e6db74">&#34;5432&#34;</span>
 
- database1:
-   image: jgiannuzzi/postgres-bdr
-   restart: always
-   ports:
-     - 54326:5432
-   environment:
-     - SERVICE_PORTS=5432
-   volumes:
+ <span style="color:#66d9ef">database1</span>:
+   <span style="color:#66d9ef">image</span>: jgiannuzzi/postgres-bdr
+   <span style="color:#66d9ef">restart</span>: always
+   <span style="color:#66d9ef">ports</span>:
+     - <span style="color:#ae81ff">54326</span>:<span style="color:#ae81ff">5432</span>
+   <span style="color:#66d9ef">environment</span>:
+     - SERVICE_PORTS=<span style="color:#ae81ff">5432</span>
+   <span style="color:#66d9ef">volumes</span>:
      - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data
-   environment:
-     POSTGRES_PASSWORD: &quot;replace with your password&quot;
-     TCP_PORTS: &quot;5432&quot;
+   <span style="color:#66d9ef">environment</span>:
+     <span style="color:#66d9ef">POSTGRES_PASSWORD</span>: <span style="color:#e6db74">&#34;replace with your password&#34;</span>
+     <span style="color:#66d9ef">TCP_PORTS</span>: <span style="color:#e6db74">&#34;5432&#34;</span>
 
- proxy:
-   image: dockercloud/haproxy
-   links:
+ <span style="color:#66d9ef">proxy</span>:
+   <span style="color:#66d9ef">image</span>: dockercloud/haproxy
+   <span style="color:#66d9ef">links</span>:
      - database0
      - database1
-   volumes:
+   <span style="color:#66d9ef">volumes</span>:
      - /var/run/docker.sock:/var/run/docker.sock
-   ports:
-     - &quot;15432:5432&quot;
-</code></pre>
-
-<p>Note:</p>
-
+   <span style="color:#66d9ef">ports</span>:
+     - <span style="color:#e6db74">&#34;15432:5432&#34;</span>
+</code></pre></div><p>Note:</p>
 <ol>
 <li>links: links the database0 and database1 services with proxy service</li>
 <li>environment: have to export port 5432 where the database is running</li>
 <li>ports: in proxy service, port 5432 is forwarded to port 15432 of localhost</li>
 </ol>
-
 <h3 id="step-2-connecting-to-the-haproxy-and-verifying-its-benefit">Step 2: Connecting to the HAProxy and verifying its benefit</h3>
-
 <p>Verify that all the three services are running</p>
-
-<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro ~ $ docker ps
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">viggy28@Vigneshs-MacBook-Pro ~ $ docker ps
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                                                NAMES
-5a7f75295722        dockercloud/haproxy       &quot;/sbin/tini -- docke…&quot;   About an hour ago   Up About an hour    80/tcp, 443/tcp, 1936/tcp, 0.0.0.0:15432-&gt;5432/tcp   postgres0_proxy_1
-764dc76bada7        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   About an hour ago   Up About an hour    0.0.0.0:54326-&gt;5432/tcp                              postgres0_database1_1
-89cd08ae8c7f        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   About an hour ago   Up About an hour    0.0.0.0:54325-&gt;5432/tcp                              postgres0_database0_1
-</code></pre>
+5a7f75295722        dockercloud/haproxy       <span style="color:#e6db74">&#34;/sbin/tini -- docke…&#34;</span>   About an hour ago   Up About an hour    80/tcp, 443/tcp, 1936/tcp, 0.0.0.0:15432-&gt;5432/tcp   postgres0_proxy_1
+764dc76bada7        jgiannuzzi/postgres-bdr   <span style="color:#e6db74">&#34;/docker-entrypoint.…&#34;</span>   About an hour ago   Up About an hour    0.0.0.0:54326-&gt;5432/tcp                              postgres0_database1_1
+89cd08ae8c7f        jgiannuzzi/postgres-bdr   <span style="color:#e6db74">&#34;/docker-entrypoint.…&#34;</span>   About an hour ago   Up About an hour    0.0.0.0:54325-&gt;5432/tcp                              postgres0_database0_1
+</code></pre></div><p>Connect to the port 15432 and verify the data</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">viggy28<span style="color:#f92672">@</span>Vigneshs<span style="color:#f92672">-</span>MacBook<span style="color:#f92672">-</span>Pro <span style="color:#f92672">~</span> <span style="color:#960050;background-color:#1e0010">$</span> psql <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>U postgres <span style="color:#f92672">-</span>p <span style="color:#ae81ff">15432</span> <span style="color:#f92672">-</span>d postgres
+Password <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">user</span> postgres:
+psql (<span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">2</span>, server <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">17</span>)
+<span style="color:#66d9ef">Type</span> <span style="color:#e6db74">&#34;help&#34;</span> <span style="color:#66d9ef">for</span> help.
 
-<p>Connect to the port 15432 and verify the data</p>
-
-<pre><code class="language-sql">viggy28@Vigneshs-MacBook-Pro ~ $ psql -h localhost -U postgres -p 15432 -d postgres
-Password for user postgres:
-psql (11.2, server 9.4.17)
-Type &quot;help&quot; for help.
-
-postgres=# \c bdrdemo
-psql (11.2, server 9.4.17)
-You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;.
-bdrdemo=#
-bdrdemo=# select * from names;
- user_id |   username   |           email
----------+--------------+---------------------------
-       1 | ravichandran | ravikchandran14@gmail.com
-(1 row)
-</code></pre>
-
-<p>I am going to stop the container which is running a database on port 54325</p>
-
-<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro haproxy $ docker stop 89cd08ae8c7f
+postgres<span style="color:#f92672">=#</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">c</span> bdrdemo
+psql (<span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">2</span>, server <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">17</span>)
+You <span style="color:#66d9ef">are</span> now connected <span style="color:#66d9ef">to</span> <span style="color:#66d9ef">database</span> <span style="color:#e6db74">&#34;bdrdemo&#34;</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">&#34;postgres&#34;</span>.
+bdrdemo<span style="color:#f92672">=#</span>
+bdrdemo<span style="color:#f92672">=#</span> <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">names</span>;
+ user_id <span style="color:#f92672">|</span>   username   <span style="color:#f92672">|</span>           email
+<span style="color:#75715e">---------+--------------+---------------------------
+</span><span style="color:#75715e"></span>       <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> ravichandran <span style="color:#f92672">|</span> ravikchandran14<span style="color:#f92672">@</span>gmail.com
+(<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span>)
+</code></pre></div><p>I am going to stop the container which is running a database on port 54325</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">viggy28@Vigneshs-MacBook-Pro haproxy $ docker stop 89cd08ae8c7f
 89cd08ae8c7f
 
 viggy28@Vigneshs-MacBook-Pro haproxy $ docker ps
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                                                NAMES
-5a7f75295722        dockercloud/haproxy       &quot;/sbin/tini -- docke…&quot;   About an hour ago   Up About an hour    80/tcp, 443/tcp, 1936/tcp, 0.0.0.0:15432-&gt;5432/tcp   postgres0_proxy_1
-764dc76bada7        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   About an hour ago   Up About an hour    0.0.0.0:54326-&gt;5432/tcp                              postgres0_database1_1
-</code></pre>
-
-<p>However, I can still able to connect to the database</p>
-
-<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro ~ $ psql -h localhost -U postgres -p 15432 -d postgres
-Password for user postgres:
-psql (11.2, server 9.4.17)
-Type &quot;help&quot; for help.
-</code></pre>
-
-<p>Let me stop the other container which is running a database on 54326</p>
-
-<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro haproxy $ docker stop 764dc76bada7
+5a7f75295722        dockercloud/haproxy       <span style="color:#e6db74">&#34;/sbin/tini -- docke…&#34;</span>   About an hour ago   Up About an hour    80/tcp, 443/tcp, 1936/tcp, 0.0.0.0:15432-&gt;5432/tcp   postgres0_proxy_1
+764dc76bada7        jgiannuzzi/postgres-bdr   <span style="color:#e6db74">&#34;/docker-entrypoint.…&#34;</span>   About an hour ago   Up About an hour    0.0.0.0:54326-&gt;5432/tcp                              postgres0_database1_1
+</code></pre></div><p>However, I can still able to connect to the database</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">viggy28@Vigneshs-MacBook-Pro ~ $ psql -h localhost -U postgres -p <span style="color:#ae81ff">15432</span> -d postgres
+Password <span style="color:#66d9ef">for</span> user postgres:
+psql <span style="color:#f92672">(</span>11.2, server 9.4.17<span style="color:#f92672">)</span>
+Type <span style="color:#e6db74">&#34;help&#34;</span> <span style="color:#66d9ef">for</span> help.
+</code></pre></div><p>Let me stop the other container which is running a database on 54326</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">viggy28@Vigneshs-MacBook-Pro haproxy $ docker stop 764dc76bada7
 764dc76bada7
 viggy28@Vigneshs-MacBook-Pro haproxy $
 viggy28@Vigneshs-MacBook-Pro haproxy $ docker ps
 CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                NAMES
-5a7f75295722        dockercloud/haproxy   &quot;/sbin/tini -- docke…&quot;   About an hour ago   Up About an hour    80/tcp, 443/tcp, 1936/tcp, 0.0.0.0:15432-&gt;5432/tcp   postgres0_proxy_1
-</code></pre>
-
-<p>Guess what !!?</p>
-
-<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro ~ $ psql -h localhost -U postgres -p 15432 -d postgres
+5a7f75295722        dockercloud/haproxy   <span style="color:#e6db74">&#34;/sbin/tini -- docke…&#34;</span>   About an hour ago   Up About an hour    80/tcp, 443/tcp, 1936/tcp, 0.0.0.0:15432-&gt;5432/tcp   postgres0_proxy_1
+</code></pre></div><p>Guess what !!?</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">viggy28@Vigneshs-MacBook-Pro ~ $ psql -h localhost -U postgres -p <span style="color:#ae81ff">15432</span> -d postgres
 psql: server closed the connection unexpectedly
     This probably means the server terminated abnormally
-    before or while processing the request.
-</code></pre>
-
-<p>I hope it makes sense. Basically, all the databases behind the proxy are down.</p>
-
-<p>ps: You can add <a href="https://pgbouncer.github.io/">pgbouncer</a> to improve the speed of the db connection and efficiency. Extended <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose-with-pgbouncer.yml">docker-compose</a> file which includes pgbouncer set up.</p>
-
+    before or <span style="color:#66d9ef">while</span> processing the request.
+</code></pre></div><p>I hope it makes sense. Basically, all the databases behind the proxy are down.</p>
+<p>ps: You can add [pgbouncer] (<a href="https://pgbouncer.github.io/">https://pgbouncer.github.io/</a>) to improve the speed of the db connection and efficiency. Extended [docker-compose] (<a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose-with-pgbouncer.yml">https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose-with-pgbouncer.yml</a>) file which includes pgbouncer set up.</p>
 <p>Benchmark:
-A simple <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/main.go">go program</a> to compare the connection time <img src="/files/postgres-haproxy/haproxy-vs-pgbouncer-connection-time.png" alt="benchmark" />.</p>
+A simple <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/main.go">go program</a> to compare the connection time <img src="/files/postgres-haproxy/haproxy-vs-pgbouncer-connection-time.png" alt="benchmark">.</p>
 <ul class="pa0">
   
    <li class="list">
@@ -393,7 +357,7 @@ A simple <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/st
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://viggy28.dev" >
-    &copy; 2019 Home
+    &copy; 2020 Home
   </a>
     <div>
 

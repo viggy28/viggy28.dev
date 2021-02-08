@@ -1,15 +1,67 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Books on Home</title>
+    <title>books on Home</title>
     <link>https://viggy28.dev/tags/books/</link>
-    <description>Recent content in Books on Home</description>
+    <description>Recent content in books on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2019 11:00:08 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2020 11:00:08 -0400</lastBuildDate>
     
 	<atom:link href="https://viggy28.dev/tags/books/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hooked</title>
+      <link>https://viggy28.dev/book/hooked/</link>
+      <pubDate>Sat, 02 May 2020 11:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/book/hooked/</guid>
+      <description>TLDR; A short book on Product Development and especially explains how B2C (especially social media) companies make their users hooked on their products. Though Product owners, designers, and founders can use this book in improving their products, every user can read this to understand why some of the popular apps do things (like infinite scroll, weekly digest emails, notifications) which we use day-to-day. Hooked also overlaps with Nir Eyal&amp;rsquo;s other book Undistractable</description>
+    </item>
+    
+    <item>
+      <title>One Up on Wall Street</title>
+      <link>https://viggy28.dev/book/one-up-on-wall-street/</link>
+      <pubDate>Sat, 02 May 2020 11:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/book/one-up-on-wall-street/</guid>
+      <description>Disclaimer: This book was published in 1989. So, we have to time travel to understand a few things, but overall the concepts are still relevant. Also, read this during COVID-19 (middle of a global pandemic).
+This review is a little different than other books. Going to share most of the notes as points.
+Peter Lynch is America&amp;rsquo;s money manager. He was Vice-Chairman of the Fidelity Management &amp;amp; Research Company. He was the portfolio manager of Fidelity Magellan Fund, which was the best performing fund in the world from May 1977 to May 1990.</description>
+    </item>
+    
+    <item>
+      <title>indistractable</title>
+      <link>https://viggy28.dev/book/indistractable/</link>
+      <pubDate>Sat, 25 Apr 2020 11:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/book/indistractable/</guid>
+      <description>Part 1 is about Master Internal Triggers which talks about that distractions are mainly caused by discomfort. Most people don&amp;rsquo;t want to acknolwedge the uncomfortable truth that distraction is always an unhealthy escape from reality. Being indistractable means striving to do what you say you will do.
+ We are compelled to reach for things we supposedly need but really don&amp;rsquo;t. (eg. checking emails)
+ We tend to blame things like television, junk food, social media etc - but these are all promiate causes of our distraction, but not the root cause.</description>
+    </item>
+    
+    <item>
+      <title>Give and Take</title>
+      <link>https://viggy28.dev/book/give-and-take/</link>
+      <pubDate>Mon, 23 Mar 2020 11:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/book/give-and-take/</guid>
+      <description>Chapter 1 is Good Returns which explains the Dangers and Rewards of Giving more than you get with multiple examples. One of the things which striked me
+ You can&amp;rsquo;t just ignore someone because you don&amp;rsquo;t think they&amp;rsquo;re important enough.
+ I can&amp;rsquo;t agree more on that. I have seen first class that founders making this mistake. Its so easy to just ignore, but think about the long term or big picture.</description>
+    </item>
+    
+    <item>
+      <title>Books recommendation</title>
+      <link>https://viggy28.dev/book/books-recommendation/</link>
+      <pubDate>Sun, 24 Mar 2019 11:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/book/books-recommendation/</guid>
+      <description>Here is a list of books which I really enjoyed reading. They are mostly around the topics such as Self Development, Management, Finance, Technology.
+ Give and Take by Adam Grant Atomic Habits by James Clear A random walkdown wall street Designing Data Intensive Application surely you&amp;rsquo;re joking mr. feynman How To Win Friends and Influence People Lean Startup The Go programming languate Make your bed Hard thing about hard things One Up On Wall Street Indistractable Thinking fast and slow (I couldn&amp;rsquo;t complete this book.</description>
+    </item>
     
     <item>
       <title>Make Your Bed</title>
@@ -20,6 +72,17 @@
       <description>Admiral William H. McRaven served as Navy SEAL for 37 years. As a Four-Start Admiral, his last assignment was as Commander of all U.S. Special Operations Forces.
 He attended the University of Texas, Austin. This book is based on his commencement speech at his alma mater. He served as the Chancellor for the University of Texas system between 2015 and 2018.
 Summary Chapter 1: Start Your Day With a Task Completed  If you want to change the world&amp;hellip; start off by making your bed.</description>
+    </item>
+    
+    <item>
+      <title>The Go Programming Language</title>
+      <link>https://viggy28.dev/book/the-go-programming-language/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/book/the-go-programming-language/</guid>
+      <description>Summary Chapter 1: Tutorial  Introduction to various major compoents of Golang
+ Topics such as data types, functions, packages, concurrency in Go was illustrated using simple programs.
+Chapter 2: Program Structure For every type T, there is a corresponding conversion operation T(x) that converts value of x to type T (if applicable)</description>
     </item>
     
   </channel>

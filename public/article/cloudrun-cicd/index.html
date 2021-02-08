@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.66.0" />
     
     
       <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -32,21 +32,17 @@
 <meta property="og:description" content="Deploying cloud run using Gitlab" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://viggy28.dev/article/cloudrun-cicd/" />
-<meta property="article:published_time" content="2019-04-09T20:00:08-04:00"/>
-<meta property="article:modified_time" content="2019-04-09T20:00:08-04:00"/>
-
+<meta property="article:published_time" content="2019-04-09T20:00:08-04:00" />
+<meta property="article:modified_time" content="2019-04-09T20:00:08-04:00" />
 <meta itemprop="name" content="How to deploy a cloud run application using Gitlab CI/CD">
 <meta itemprop="description" content="Deploying cloud run using Gitlab">
-
-
 <meta itemprop="datePublished" content="2019-04-09T20:00:08-04:00" />
 <meta itemprop="dateModified" content="2019-04-09T20:00:08-04:00" />
-<meta itemprop="wordCount" content="586">
+<meta itemprop="wordCount" content="573">
 
 
 
-<meta itemprop="keywords" content="cloud run,gitlab,docker," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="cloud run,gitlab,docker," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to deploy a cloud run application using Gitlab CI/CD"/>
 <meta name="twitter:description" content="Deploying cloud run using Gitlab"/>
 
@@ -177,124 +173,116 @@ if (!doNotTrack) {
       
       
         <span class="f6 mv4 dib tracked"> - 3 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 586 words</span>
+        <span class="f6 mv4 dib tracked"> - 573 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>In Google Cloud Next 2019, they introduced a new product called <a href="https://cloud.google.com/run/">Cloud Run</a>. I&rsquo;ve been using it from the EAP (Early Access Program) days. [As the name suggests,  basically it runs your docker image. You might be familiar with other serverless products such as <a href="https://cloud.google.com/functions/">Cloud Function</a> or <a href="https://aws.amazon.com/lambda/">lambda</a> where you provide your source code instead of a docker image. In my opinion, Cloud Run is more flexible than functions. Let me explain why.</p>
-
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>In Google Cloud Next 2019, they introduced a new product called [Cloud Run] (<a href="https://cloud.google.com/run/">https://cloud.google.com/run/</a>). I&rsquo;ve been using it from the EAP (Early Access Program) days. [As the name suggests,  basically it runs your docker image. You might be familiar with other serverless products such as [Cloud Function] (<a href="https://cloud.google.com/functions/">https://cloud.google.com/functions/</a>) or [lambda] (<a href="https://aws.amazon.com/lambda/">https://aws.amazon.com/lambda/</a>) where you provide your source code instead of a docker image. In my opinion, Cloud Run is more flexible than functions. Let me explain why.</p>
 <ul>
-<li><p>You can write your application in any language and any version you wish</p></li>
-
-<li><p>You can easily migrate it from one provider to another. Docker is <strong>THE</strong> standard for running container workloads.</p></li>
-
-<li><p>Don&rsquo;t have to deal with handler or file names or zipping source code.</p></li>
+<li>
+<p>You can write your application in any language and any version you wish</p>
+</li>
+<li>
+<p>You can easily migrate it from one provider to another. Docker is <strong>THE</strong> standard for running container workloads.</p>
+</li>
+<li>
+<p>Don&rsquo;t have to deal with handler or file names or zipping source code.</p>
+</li>
 </ul>
-
 <p>So far so good. What happens if I need to make a code change. Easy right? create a Docker image, push it to Google Container Registry and then create a new cloud run service. Imagine doing this manually every time.</p>
-
-<p>This article is about how to automate those steps using <a href="https://docs.gitlab.com/ce/ci/">Gitlab CI/CD</a>. The gitlab repository is available <a href="https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd">here</a></p>
-
-<p>Let&rsquo;s deploy that <a href="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/main.go">go application</a> to cloud run.</p>
-
-<p><a href="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/Dockerfile">Dockerfile</a> to build a Docker image.</p>
-
-<pre><code class="language-Dockerfile">
-# Use the official Golang alpine image to create a build artifact.
-# https://hub.docker.com/_/golang
-FROM golang:alpine as builder
-
-# Copy local code to the container image.
-WORKDIR /go/src/github.com/viggy28/cloudrun-cicd
-COPY . .
-
-# (You may fetch or manage dependencies here,
-# either manually or with a tool like &quot;godep&quot;.)
-RUN apk add git \
-&amp;&amp; go get github.com/sirupsen/logrus
-
-# Build the command inside the container.
-RUN CGO_ENABLED=0 GOOS=linux go build -v -o cloudrun-cicd
-
-# Use a Docker multi-stage build to create a lean production image.
-# https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
-FROM alpine
-
-# Copy the binary to the production image from the builder stage.
-COPY --from=builder /go/src/github.com/viggy28/cloudrun-cicd/cloudrun-cicd /cloudrun-cicd
-
-# Run the web service on container startup.
-CMD [&quot;/cloudrun-cicd&quot;]
-
-</code></pre>
-
-<p>Note:</p>
-
+<p>This article is about how to automate those steps using [Gitlab CI/CD] (<a href="https://docs.gitlab.com/ce/ci/">https://docs.gitlab.com/ce/ci/</a>). The gitlab repository is available [here] (<a href="https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd">https://gitlab.com/viggy28-websites/code-samples/cloudrun-cicd</a>)</p>
+<p>Let&rsquo;s deploy that [go application] (<a href="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/main.go">https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/main.go</a>) to cloud run.</p>
+<p>[Dockerfile] (<a href="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/Dockerfile">https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/Dockerfile</a>) to build a Docker image.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Use the official Golang alpine image to create a build artifact.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># https://hub.docker.com/_/golang</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> golang:alpine as builder</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy local code to the container image.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /go/src/github.com/viggy28/cloudrun-cicd</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># (You may fetch or manage dependencies here,</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># either manually or with a tool like &#34;godep&#34;.)</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk add git <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span><span style="color:#f92672">&amp;&amp;</span> go get github.com/sirupsen/logrus<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Build the command inside the container.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> CGO_ENABLED<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> GOOS<span style="color:#f92672">=</span>linux go build -v -o cloudrun-cicd<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Use a Docker multi-stage build to create a lean production image.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> alpine</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy the binary to the production image from the builder stage.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>builder /go/src/github.com/viggy28/cloudrun-cicd/cloudrun-cicd /cloudrun-cicd<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Run the web service on container startup.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/cloudrun-cicd&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Note:</p>
 <ul>
 <li>Using golang:alpine docker image as the base</li>
 <li>Doing go get of the external package</li>
 <li>To minimize the size of the docker image, We are doing multi-stage builds</li>
 </ul>
-
-<p>Up next is the <a href="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/.gitlab-ci.yml">.gitlab-ci.yml</a> file.</p>
-
-<pre><code class="language-yml">stages:
+<p>Up next is the [.gitlab-ci.yml] (<a href="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/.gitlab-ci.yml">https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/.gitlab-ci.yml</a>) file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">stages</span>:
   - build-push-docker
   - deploy-new-service
 
-variables:
-    projectid: &quot;cloudrundemo-237205&quot;
-    service: &quot;cloudrun-cicd&quot;
-    region: &quot;us-central1&quot;
-    image_name: &quot;cloudrun-cicd&quot;
+<span style="color:#66d9ef">variables</span>:
+    <span style="color:#66d9ef">projectid</span>: <span style="color:#e6db74">&#34;cloudrundemo-237205&#34;</span>
+    <span style="color:#66d9ef">service</span>: <span style="color:#e6db74">&#34;cloudrun-cicd&#34;</span>
+    <span style="color:#66d9ef">region</span>: <span style="color:#e6db74">&#34;us-central1&#34;</span>
+    <span style="color:#66d9ef">image_name</span>: <span style="color:#e6db74">&#34;cloudrun-cicd&#34;</span>
 
-build-push-docker-job:
-  stage: build-push-docker
-  image: docker:latest
-  services:
+<span style="color:#66d9ef">build-push-docker-job</span>:
+  <span style="color:#66d9ef">stage</span>: build-push-docker
+  <span style="color:#66d9ef">image</span>: docker:latest
+  <span style="color:#66d9ef">services</span>:
     - docker:dind
-  before_script:
+  <span style="color:#66d9ef">before_script</span>:
     - echo $CLOUDRUN_CICD_SA_KEY &gt; ${HOME}/service_key.json
     - cat ${HOME}/service_key.json | docker login -u _json_key --password-stdin https://gcr.io
-  script:
+  <span style="color:#66d9ef">script</span>:
     - docker build -t gcr.io/$projectid/$image_name:latest .
     - docker push gcr.io/$projectid/$image_name:latest
 
-deploy-new-service-job:
-  stage: deploy-new-service
-  before_script:
-    # Download and install Google Cloud SDK. Source it so you can use it from any where
+<span style="color:#66d9ef">deploy-new-service-job</span>:
+  <span style="color:#66d9ef">stage</span>: deploy-new-service
+  <span style="color:#66d9ef">before_script</span>:
+    <span style="color:#75715e"># Download and install Google Cloud SDK. Source it so you can use it from any where</span>
     - mkdir /software
     - cd /software
     - wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz
-    - tar zxvf google-cloud-sdk.tar.gz &amp;&amp; ./google-cloud-sdk/install.sh --usage-reporting=false --path-update=true
+    - tar zxvf google-cloud-sdk.tar.gz <span style="color:#75715e">&amp;&amp;</span> ./google-cloud-sdk/install.sh --usage-reporting=<span style="color:#66d9ef">false</span> --path-update=<span style="color:#66d9ef">true</span>
     - source /root/.bashrc
     - gcloud components install beta
-    # Write our GCP service account private key into a file
+    <span style="color:#75715e"># Write our GCP service account private key into a file</span>
     - echo $CLOUDRUN_CICD_SA_KEY &gt; ${HOME}/service_key.json
-  script:
+  <span style="color:#66d9ef">script</span>:
     - gcloud auth activate-service-account --key-file ${HOME}/service_key.json
     - gcloud beta run deploy $service --region $region --project $projectid --image gcr.io/$projectid/$image_name:latest
-    - gcloud beta run services add-iam-policy-binding $service --project $projectid --member=&quot;allUsers&quot; --role=&quot;roles/run.invoker&quot; --region $region
-</code></pre>
-
-<p><strong>Prerequisites</strong>:</p>
-
+    - gcloud beta run services add-iam-policy-binding $service --project $projectid --member=<span style="color:#e6db74">&#34;allUsers&#34;</span> --role=<span style="color:#e6db74">&#34;roles/run.invoker&#34;</span> --region $region
+</code></pre></div><p><strong>Prerequisites</strong>:</p>
 <ul>
-<li><p>Create a Service Account (SA) in GCP. I prefer to have a dedicated SA for CI/CD. (Of course, you can use your existing one)</p></li>
-
-<li><p>Grant &ldquo;Service Account User&rdquo;, &ldquo;Cloud Run Admin&rdquo; and &ldquo;Storage Admin&rdquo; roles to the newly created.</p>
-
-<p><img src="/images/cloudrun-cicd-iam.png" alt="SA" /></p></li>
-
-<li><p>Download the SA JSON key and copy it</p></li>
-
-<li><p>Create an environment variable in Gitlab CI/CD with the JSON key as the value. CLOUDRUN_CICD_SA_KEY is an environment variable which contains the key value copied in the above step</p></li>
+<li>
+<p>Create a Service Account (SA) in GCP. I prefer to have a dedicated SA for CI/CD. (Of course, you can use your existing one)</p>
+</li>
+<li>
+<p>Grant &ldquo;Service Account User&rdquo;, &ldquo;Cloud Run Admin&rdquo; and &ldquo;Storage Admin&rdquo; roles to the newly created.</p>
+<p><img src="/images/cloudrun-cicd-iam.png" alt="SA"></p>
+</li>
+<li>
+<p>Download the SA JSON key and copy it</p>
+</li>
+<li>
+<p>Create an environment variable in Gitlab CI/CD with the JSON key as the value. CLOUDRUN_CICD_SA_KEY is an environment variable which contains the key value copied in the above step</p>
+</li>
 </ul>
-
 <p>That should be it. Just make changes to your code and push it to gitlab. build-push-docker and deploy-new-service stages should trigger automatically every time when you push the code</p>
-
-<p><img src="/images/cloudrun-cicd-jobstatus.png" alt="Your CI/CD job should look something like this" /></p>
+<p><img src="/images/cloudrun-cicd-jobstatus.png" alt="Your CI/CD job should look something like this"></p>
 <ul class="pa0">
   
    <li class="list">
@@ -366,7 +354,7 @@ deploy-new-service-job:
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://viggy28.dev" >
-    &copy; 2019 Home
+    &copy; 2020 Home
   </a>
     <div>
 

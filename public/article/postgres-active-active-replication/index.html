@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.66.0" />
     
     
       <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -32,21 +32,17 @@
 <meta property="og:description" content="Postgres Active-Active Replication" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://viggy28.dev/article/postgres-active-active-replication/" />
-<meta property="article:published_time" content="2019-04-05T19:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-04-05T19:00:00&#43;00:00"/>
-
+<meta property="article:published_time" content="2019-04-05T19:00:00+00:00" />
+<meta property="article:modified_time" content="2019-04-05T19:00:00+00:00" />
 <meta itemprop="name" content="Part 1/2: How to set up active-active replication in postgres using BDR">
 <meta itemprop="description" content="Postgres Active-Active Replication">
-
-
 <meta itemprop="datePublished" content="2019-04-05T19:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-04-05T19:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="762">
+<meta itemprop="wordCount" content="766">
 
 
 
-<meta itemprop="keywords" content="postgres,docker,bdr," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="postgres,docker,bdr," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Part 1/2: How to set up active-active replication in postgres using BDR"/>
 <meta name="twitter:description" content="Postgres Active-Active Replication"/>
 
@@ -189,204 +185,165 @@ if (!doNotTrack) {
       
       
         <span class="f6 mv4 dib tracked"> - 4 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 762 words</span>
+        <span class="f6 mv4 dib tracked"> - 766 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
-
-<p>Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with <a href="https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/">BDR</a>.</p>
-
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with [BDR] (<a href="https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/">https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/</a>).</p>
 <p>I didn&rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp; docker compose.</p>
-
 <h3 id="step1-running-2-postgres-instances-using-docker-container">Step1: Running 2 Postgres instances using docker container</h3>
-
-<p>Thanks to <a href="https://github.com/jgiannuzzi">jgiannuzzi</a>, who created a docker <a href="https://hub.docker.com/r/jgiannuzzi/postgres-bdr">image</a> with Postgres and BDR.</p>
-
+<p>Thanks to [jgiannuzzi] (<a href="https://github.com/jgiannuzzi">https://github.com/jgiannuzzi</a>), who created a docker [image] (<a href="https://hub.docker.com/r/jgiannuzzi/postgres-bdr">https://hub.docker.com/r/jgiannuzzi/postgres-bdr</a>) with Postgres and BDR.</p>
 <p>docker-compose.yml file content</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
 
-<pre><code class="language-yml">version: &quot;3&quot;
-
-services:
- database0:
-   image: jgiannuzzi/postgres-bdr
-   restart: always
-   ports:
-     - 54325:5432
-   volumes:
+<span style="color:#66d9ef">services</span>:
+ <span style="color:#66d9ef">database0</span>:
+   <span style="color:#66d9ef">image</span>: jgiannuzzi/postgres-bdr
+   <span style="color:#66d9ef">restart</span>: always
+   <span style="color:#66d9ef">ports</span>:
+     - <span style="color:#ae81ff">54325</span>:<span style="color:#ae81ff">5432</span>
+   <span style="color:#66d9ef">volumes</span>:
      - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data
-   environment:
-     POSTGRES_PASSWORD: &lt;replace with your password&gt;
- database1:
-   image: jgiannuzzi/postgres-bdr
-   restart: always
-   ports:
-     - 54326:5432
-   volumes:
+   <span style="color:#66d9ef">environment</span>:
+     <span style="color:#66d9ef">POSTGRES_PASSWORD</span>: &lt;replace with your password<span style="color:#e6db74">&gt;
+</span><span style="color:#e6db74"> database1:</span>
+   <span style="color:#66d9ef">image</span>: jgiannuzzi/postgres-bdr
+   <span style="color:#66d9ef">restart</span>: always
+   <span style="color:#66d9ef">ports</span>:
+     - <span style="color:#ae81ff">54326</span>:<span style="color:#ae81ff">5432</span>
+   <span style="color:#66d9ef">volumes</span>:
      - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data
-   environment:
-     POSTGRES_PASSWORD: &lt;replace with your password&gt;
-</code></pre>
-
-<p><strong>Note:</strong></p>
-
+   <span style="color:#66d9ef">environment</span>:
+     <span style="color:#66d9ef">POSTGRES_PASSWORD</span>: &lt;replace with your password&gt;
+</code></pre></div><p><strong>Note:</strong></p>
 <ol>
 <li>ports - port forwarding 5432 with 54325 and 54326</li>
 <li>volumes - postgresql/data of the container is mounted on postgres0 and postgres1 directory on my local machine</li>
 <li>names - container names depend on the directory name</li>
 </ol>
-
-<p>Create two containers using <strong><em>docker-compose</em></strong></p>
-
-<pre><code class="language-bash">viggy28@Vigneshs-MacBook-Pro postgres0 $ docker-compose -f &quot;docker-compose.yml&quot; up -d --build
-Starting postgres0_database0_1 ... done
-Starting postgres0_database1_1 ... done
-</code></pre>
-
-<p>You can verify that the two containers are running using <strong><em>docker ps</em></strong></p>
-
-<pre><code class="language-shell">viggy28@Vigneshs-MacBook-Pro ~ $ docker ps
+<p>Create two containers using <em><strong>docker-compose</strong></em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">viggy28@Vigneshs-MacBook-Pro postgres0 $ docker-compose -f <span style="color:#e6db74">&#34;docker-compose.yml&#34;</span> up -d --build
+Starting postgres0_database0_1 ... <span style="color:#66d9ef">done</span>
+Starting postgres0_database1_1 ... <span style="color:#66d9ef">done</span>
+</code></pre></div><p>You can verify that the two containers are running using <em><strong>docker ps</strong></em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">viggy28@Vigneshs-MacBook-Pro ~ $ docker ps
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                     NAMES
-0213199e6d0b        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   14 minutes ago      Up 9 seconds        0.0.0.0:54326-&gt;5432/tcp   postgres0_database1_1
-beca9adb4b65        jgiannuzzi/postgres-bdr   &quot;/docker-entrypoint.…&quot;   14 minutes ago      Up 10 seconds       0.0.0.0:54325-&gt;5432/tcp   postgres0_database0_1
-</code></pre>
-
-<p>Check you can connect to the database running on both the containers using <a href="https://www.postgresql.org/docs/9.3/app-psql.html"><strong><em>psql</em></strong></a></p>
-
-<pre><code class="language-sql">psql -h localhost -U postgres -p 54325 -d postgres
-psql -h localhost -U postgres -p 54326 -d postgres
-</code></pre>
-
-<p>That&rsquo;s basically running Postgres using the Docker container.</p>
-
+0213199e6d0b        jgiannuzzi/postgres-bdr   <span style="color:#e6db74">&#34;/docker-entrypoint.…&#34;</span>   <span style="color:#ae81ff">14</span> minutes ago      Up <span style="color:#ae81ff">9</span> seconds        0.0.0.0:54326-&gt;5432/tcp   postgres0_database1_1
+beca9adb4b65        jgiannuzzi/postgres-bdr   <span style="color:#e6db74">&#34;/docker-entrypoint.…&#34;</span>   <span style="color:#ae81ff">14</span> minutes ago      Up <span style="color:#ae81ff">10</span> seconds       0.0.0.0:54325-&gt;5432/tcp   postgres0_database0_1
+</code></pre></div><p>Check you can connect to the database running on both the containers using [<em><strong>psql</strong></em>] (<a href="https://www.postgresql.org/docs/9.3/app-psql.html">https://www.postgresql.org/docs/9.3/app-psql.html</a>)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">psql <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>U postgres <span style="color:#f92672">-</span>p <span style="color:#ae81ff">54325</span> <span style="color:#f92672">-</span>d postgres
+psql <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>U postgres <span style="color:#f92672">-</span>p <span style="color:#ae81ff">54326</span> <span style="color:#f92672">-</span>d postgres
+</code></pre></div><p>That&rsquo;s basically running Postgres using the Docker container.</p>
 <h3 id="step2-setting-up-active-active-replication-using-bdr">Step2: Setting up active-active replication using BDR</h3>
-
 <p>Connect to database0 (running on port 54325)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">psql <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>U postgres <span style="color:#f92672">-</span>p <span style="color:#ae81ff">54325</span> <span style="color:#f92672">-</span>d postgres
 
-<pre><code class="language-sql">psql -h localhost -U postgres -p 54325 -d postgres
+postgres<span style="color:#f92672">=#</span> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">database</span> bdrdemo;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span>
 
-postgres=# create database bdrdemo;
-CREATE DATABASE
+postgres<span style="color:#f92672">=#</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">c</span> bdrdemo
+psql (<span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">2</span>, server <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">17</span>)
+You <span style="color:#66d9ef">are</span> now connected <span style="color:#66d9ef">to</span> <span style="color:#66d9ef">database</span> <span style="color:#e6db74">&#34;bdrdemo&#34;</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">&#34;postgres&#34;</span>
 
-postgres=# \c bdrdemo
-psql (11.2, server 9.4.17)
-You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;
+bdrdemo<span style="color:#f92672">=#</span> <span style="color:#66d9ef">CREATE</span> EXTENSION <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> btree_gist;
+<span style="color:#66d9ef">CREATE</span> EXTENSION
+bdrdemo<span style="color:#f92672">=#</span> <span style="color:#66d9ef">CREATE</span> EXTENSION <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> bdr;
+<span style="color:#66d9ef">CREATE</span> EXTENSION
 
-bdrdemo=# CREATE EXTENSION IF NOT EXISTS btree_gist;
-CREATE EXTENSION
-bdrdemo=# CREATE EXTENSION IF NOT EXISTS bdr;
-CREATE EXTENSION
-
-bdrdemo=# SELECT bdr.bdr_group_create(
-local_node_name := 'postgres0_database0_1',
-node_external_dsn := 'host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password'
+bdrdemo<span style="color:#f92672">=#</span> <span style="color:#66d9ef">SELECT</span> bdr.bdr_group_create(
+local_node_name :<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;postgres0_database0_1&#39;</span>,
+node_external_dsn :<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password&#39;</span>
 );
 
-bdrdemo=# select * from bdr.bdr_nodes;
+bdrdemo<span style="color:#f92672">=#</span> <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> bdr.bdr_nodes;
 
-(1 row)
-</code></pre>
+(<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span>)
+</code></pre></div><p>Connect to database1 (running on port 54326)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">psql <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>U postgres <span style="color:#f92672">-</span>p <span style="color:#ae81ff">54326</span> <span style="color:#f92672">-</span>d postgres
 
-<p>Connect to database1 (running on port 54326)</p>
+postgres<span style="color:#f92672">=#</span> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">database</span> bdrdemo;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span>
 
-<pre><code class="language-sql">psql -h localhost -U postgres -p 54326 -d postgres
+postgres<span style="color:#f92672">=#</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">c</span> bdrdemo
+psql (<span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">2</span>, server <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">17</span>)
+You <span style="color:#66d9ef">are</span> now connected <span style="color:#66d9ef">to</span> <span style="color:#66d9ef">database</span> <span style="color:#e6db74">&#34;bdrdemo&#34;</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">&#34;postgres&#34;</span>
 
-postgres=# create database bdrdemo;
-CREATE DATABASE
+bdrdemo<span style="color:#f92672">=#</span> <span style="color:#66d9ef">CREATE</span> EXTENSION <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> btree_gist;
+<span style="color:#66d9ef">CREATE</span> EXTENSION
+bdrdemo<span style="color:#f92672">=#</span> <span style="color:#66d9ef">CREATE</span> EXTENSION <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> bdr;
+<span style="color:#66d9ef">CREATE</span> EXTENSION
 
-postgres=# \c bdrdemo
-psql (11.2, server 9.4.17)
-You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;
-
-bdrdemo=# CREATE EXTENSION IF NOT EXISTS btree_gist;
-CREATE EXTENSION
-bdrdemo=# CREATE EXTENSION IF NOT EXISTS bdr;
-CREATE EXTENSION
-
-bdrdemo=# SELECT bdr.bdr_group_join(
-    local_node_name := 'postgres0_database1_1',
-    node_external_dsn := 'host=postgres0_database1_1 port=5432 dbname=bdrdemo password=replace with your password',
-    join_using_dsn := 'host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password'
+bdrdemo<span style="color:#f92672">=#</span> <span style="color:#66d9ef">SELECT</span> bdr.bdr_group_join(
+    local_node_name :<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;postgres0_database1_1&#39;</span>,
+    node_external_dsn :<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;host=postgres0_database1_1 port=5432 dbname=bdrdemo password=replace with your password&#39;</span>,
+    join_using_dsn :<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;host=postgres0_database0_1 port=5432 dbname=bdrdemo password=replace with your password&#39;</span>
 );
 
-select * from bdr.bdr_nodes;
+<span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> bdr.bdr_nodes;
 
-(2 rows)
-</code></pre>
-
-<p><strong>Note</strong>:</p>
-
+(<span style="color:#ae81ff">2</span> <span style="color:#66d9ef">rows</span>)
+</code></pre></div><p><strong>Note</strong>:</p>
 <ol>
 <li>local_node_name or hostname is the container name</li>
 <li>Don&rsquo;t forget to replace your password</li>
 <li>If you face issue with connectivity, make sure one container can communicate with the other one</li>
 </ol>
-
-<pre><code class="language-shell">$ docker exec -it postgres0_database0_1 /bin/bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker exec -it postgres0_database0_1 /bin/bash
 root@beca9adb4b65:/# ping postgres0_database1_1
-64 bytes from 172.20.0.3: icmp_seq=0 ttl=64 time=0.099 ms
-64 bytes from 172.20.0.3: icmp_seq=1 ttl=64 time=0.154 ms
-64 bytes from 172.20.0.3: icmp_seq=2 ttl=64 time=0.113 ms
+<span style="color:#ae81ff">64</span> bytes from 172.20.0.3: icmp_seq<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> ttl<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span> time<span style="color:#f92672">=</span>0.099 ms
+<span style="color:#ae81ff">64</span> bytes from 172.20.0.3: icmp_seq<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> ttl<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span> time<span style="color:#f92672">=</span>0.154 ms
+<span style="color:#ae81ff">64</span> bytes from 172.20.0.3: icmp_seq<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> ttl<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span> time<span style="color:#f92672">=</span>0.113 ms
 ^C--- postgres0_database1_1 ping statistics ---
-3 packets transmitted, 3 packets received, 0% packet loss
-</code></pre>
-
-<p>Step3: Verifying that data is getting replicated</p>
-
+<span style="color:#ae81ff">3</span> packets transmitted, <span style="color:#ae81ff">3</span> packets received, 0% packet loss
+</code></pre></div><p>Step3: Verifying that data is getting replicated</p>
 <p>Insert a record on database0 (running on port 54325)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">viggy28<span style="color:#f92672">@</span>Vigneshs<span style="color:#f92672">-</span>MacBook<span style="color:#f92672">-</span>Pro haproxy <span style="color:#960050;background-color:#1e0010">$</span> psql <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>U postgres <span style="color:#f92672">-</span>p <span style="color:#ae81ff">54325</span> <span style="color:#f92672">-</span>d postgres
+Password <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">user</span> postgres:
+psql (<span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">2</span>, server <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">17</span>)
+<span style="color:#66d9ef">Type</span> <span style="color:#e6db74">&#34;help&#34;</span> <span style="color:#66d9ef">for</span> help.
 
-<pre><code class="language-sql">viggy28@Vigneshs-MacBook-Pro haproxy $ psql -h localhost -U postgres -p 54325 -d postgres
-Password for user postgres:
-psql (11.2, server 9.4.17)
-Type &quot;help&quot; for help.
-
-CREATE TABLE names(
- user_id serial PRIMARY KEY,
- username VARCHAR (50) UNIQUE NOT NULL,
- email VARCHAR (355) UNIQUE NOT NULL
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">names</span>(
+ user_id serial <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+ username VARCHAR (<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">UNIQUE</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+ email VARCHAR (<span style="color:#ae81ff">355</span>) <span style="color:#66d9ef">UNIQUE</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>
 );
 
-postgres=# \c bdrdemo
-psql (11.2, server 9.4.17)
-You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;.
+postgres<span style="color:#f92672">=#</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">c</span> bdrdemo
+psql (<span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">2</span>, server <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">17</span>)
+You <span style="color:#66d9ef">are</span> now connected <span style="color:#66d9ef">to</span> <span style="color:#66d9ef">database</span> <span style="color:#e6db74">&#34;bdrdemo&#34;</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">&#34;postgres&#34;</span>.
 
-postgres=# insert into names (user_id, username, email) values (1, 'ravichandran', 'ravikchandran14@gmail.com');
-INSERT 0 1
+postgres<span style="color:#f92672">=#</span> <span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> <span style="color:#66d9ef">names</span> (user_id, username, email) <span style="color:#66d9ef">values</span> (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;ravichandran&#39;</span>, <span style="color:#e6db74">&#39;ravikchandran14@gmail.com&#39;</span>);
+<span style="color:#66d9ef">INSERT</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span>
 
-</code></pre>
+</code></pre></div><p>Select the data from database1 (running on port 54326)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">viggy28<span style="color:#f92672">@</span>Vigneshs<span style="color:#f92672">-</span>MacBook<span style="color:#f92672">-</span>Pro haproxy <span style="color:#960050;background-color:#1e0010">$</span> psql <span style="color:#f92672">-</span>h localhost <span style="color:#f92672">-</span>U postgres <span style="color:#f92672">-</span>p <span style="color:#ae81ff">54326</span> <span style="color:#f92672">-</span>d postgres
+Password <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">user</span> postgres:
+psql (<span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">2</span>, server <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">17</span>)
+<span style="color:#66d9ef">Type</span> <span style="color:#e6db74">&#34;help&#34;</span> <span style="color:#66d9ef">for</span> help.
 
-<p>Select the data from database1 (running on port 54326)</p>
+postgres<span style="color:#f92672">=#</span> <span style="color:#960050;background-color:#1e0010">\</span>l
+                                    List <span style="color:#66d9ef">of</span> databases
+       Name       <span style="color:#f92672">|</span>  <span style="color:#66d9ef">Owner</span>   <span style="color:#f92672">|</span> <span style="color:#66d9ef">Encoding</span> <span style="color:#f92672">|</span>  <span style="color:#66d9ef">Collate</span>   <span style="color:#f92672">|</span>   Ctype    <span style="color:#f92672">|</span>   <span style="color:#66d9ef">Access</span> <span style="color:#66d9ef">privileges</span>
+<span style="color:#75715e">------------------+----------+----------+------------+------------+-----------------------
+</span><span style="color:#75715e"></span> bdr_supervisordb <span style="color:#f92672">|</span> postgres <span style="color:#f92672">|</span> UTF8     <span style="color:#f92672">|</span> en_US.utf8 <span style="color:#f92672">|</span> en_US.utf8 <span style="color:#f92672">|</span>
+ bdrdemo          <span style="color:#f92672">|</span> postgres <span style="color:#f92672">|</span> UTF8     <span style="color:#f92672">|</span> en_US.utf8 <span style="color:#f92672">|</span> en_US.utf8 <span style="color:#f92672">|</span>
+ postgres         <span style="color:#f92672">|</span> postgres <span style="color:#f92672">|</span> UTF8     <span style="color:#f92672">|</span> en_US.utf8 <span style="color:#f92672">|</span> en_US.utf8 <span style="color:#f92672">|</span>
+ template0        <span style="color:#f92672">|</span> postgres <span style="color:#f92672">|</span> UTF8     <span style="color:#f92672">|</span> en_US.utf8 <span style="color:#f92672">|</span> en_US.utf8 <span style="color:#f92672">|</span> <span style="color:#f92672">=</span><span style="color:#66d9ef">c</span><span style="color:#f92672">/</span>postgres          <span style="color:#f92672">+</span>
+                  <span style="color:#f92672">|</span>          <span style="color:#f92672">|</span>          <span style="color:#f92672">|</span>            <span style="color:#f92672">|</span>            <span style="color:#f92672">|</span> postgres<span style="color:#f92672">=</span>CTc<span style="color:#f92672">/</span>postgres
+ template1        <span style="color:#f92672">|</span> postgres <span style="color:#f92672">|</span> UTF8     <span style="color:#f92672">|</span> en_US.utf8 <span style="color:#f92672">|</span> en_US.utf8 <span style="color:#f92672">|</span> <span style="color:#f92672">=</span><span style="color:#66d9ef">c</span><span style="color:#f92672">/</span>postgres          <span style="color:#f92672">+</span>
+                  <span style="color:#f92672">|</span>          <span style="color:#f92672">|</span>          <span style="color:#f92672">|</span>            <span style="color:#f92672">|</span>            <span style="color:#f92672">|</span> postgres<span style="color:#f92672">=</span>CTc<span style="color:#f92672">/</span>postgres
+(<span style="color:#ae81ff">5</span> <span style="color:#66d9ef">rows</span>)
 
-<pre><code class="language-sql">viggy28@Vigneshs-MacBook-Pro haproxy $ psql -h localhost -U postgres -p 54326 -d postgres
-Password for user postgres:
-psql (11.2, server 9.4.17)
-Type &quot;help&quot; for help.
-
-postgres=# \l
-                                    List of databases
-       Name       |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
-------------------+----------+----------+------------+------------+-----------------------
- bdr_supervisordb | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
- bdrdemo          | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
- postgres         | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
- template0        | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
-                  |          |          |            |            | postgres=CTc/postgres
- template1        | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
-                  |          |          |            |            | postgres=CTc/postgres
-(5 rows)
-
-postgres=# \c bdrdemo
-psql (11.2, server 9.4.17)
-You are now connected to database &quot;bdrdemo&quot; as user &quot;postgres&quot;.
-bdrdemo=#
-bdrdemo=# select * from names;
- user_id |   username   |           email
----------+--------------+---------------------------
-       1 | ravichandran | ravikchandran14@gmail.com
-(1 row)
-</code></pre>
-
-<p>voila. A simple way to set up active-active replication in Postgres.</p>
+postgres<span style="color:#f92672">=#</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">c</span> bdrdemo
+psql (<span style="color:#ae81ff">11</span>.<span style="color:#ae81ff">2</span>, server <span style="color:#ae81ff">9</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">17</span>)
+You <span style="color:#66d9ef">are</span> now connected <span style="color:#66d9ef">to</span> <span style="color:#66d9ef">database</span> <span style="color:#e6db74">&#34;bdrdemo&#34;</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">&#34;postgres&#34;</span>.
+bdrdemo<span style="color:#f92672">=#</span>
+bdrdemo<span style="color:#f92672">=#</span> <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">names</span>;
+ user_id <span style="color:#f92672">|</span>   username   <span style="color:#f92672">|</span>           email
+<span style="color:#75715e">---------+--------------+---------------------------
+</span><span style="color:#75715e"></span>       <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> ravichandran <span style="color:#f92672">|</span> ravikchandran14<span style="color:#f92672">@</span>gmail.com
+(<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span>)
+</code></pre></div><p>voila. A simple way to set up active-active replication in Postgres.</p>
 <ul class="pa0">
   
    <li class="list">
@@ -450,7 +407,7 @@ bdrdemo=# select * from names;
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://viggy28.dev" >
-    &copy; 2019 Home
+    &copy; 2020 Home
   </a>
     <div>
 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cryptography on Home</title>
+    <link>https://viggy28.dev/tags/cryptography/</link>
+    <description>Recent content in cryptography on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Mar 2020 18:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://viggy28.dev/tags/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GPG in Simple Terms</title>
+      <link>https://viggy28.dev/article/gpg-in-simple-terms/</link>
+      <pubDate>Mon, 09 Mar 2020 18:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/article/gpg-in-simple-terms/</guid>
+      <description>When I first heard GPG it was little daunting. I haven&amp;rsquo;t used it exactly, even though I was familar with the concept. So, I decided to dig deeper and understand how to use it.
+GnuPG (GPG) is an implementation of PGP
+The simple idea is that you generate a key pair: secret or private key and a public key. You can provide your public key to anyone. They can then encrypt either a secret or file using your public key.</description>
+    </item>
+    
+  </channel>
+</rss>

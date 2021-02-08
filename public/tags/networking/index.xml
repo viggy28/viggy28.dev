@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>networking on Home</title>
+    <link>https://viggy28.dev/tags/networking/</link>
+    <description>Recent content in networking on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Mar 2020 18:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://viggy28.dev/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to secure your remote applications</title>
+      <link>https://viggy28.dev/article/how-to-secure-your-remote-applications/</link>
+      <pubDate>Thu, 12 Mar 2020 18:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/article/how-to-secure-your-remote-applications/</guid>
+      <description>I am writing this around the time where we are at the beginning of a global pandemic. Everyone is trying to figure out how to keep their business up and running during this challenging period. Most of the employers have mandated work from remote policy. One of the main challenges is how to connect to your applications remotely. Traditionally the answer is VPN. There are so many challenges wrt scalability, availability, and performance of these traditional VPN software.</description>
+    </item>
+    
+  </channel>
+</rss>

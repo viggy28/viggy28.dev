@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Articles on Home</title>
@@ -12,12 +12,42 @@
     
     
     <item>
+      <title>How to secure your remote applications</title>
+      <link>https://viggy28.dev/article/how-to-secure-your-remote-applications/</link>
+      <pubDate>Thu, 12 Mar 2020 18:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/article/how-to-secure-your-remote-applications/</guid>
+      <description>I am writing this around the time where we are at the beginning of a global pandemic. Everyone is trying to figure out how to keep their business up and running during this challenging period. Most of the employers have mandated work from remote policy. One of the main challenges is how to connect to your applications remotely. Traditionally the answer is VPN. There are so many challenges wrt scalability, availability, and performance of these traditional VPN software.</description>
+    </item>
+    
+    <item>
+      <title>GPG in Simple Terms</title>
+      <link>https://viggy28.dev/article/gpg-in-simple-terms/</link>
+      <pubDate>Mon, 09 Mar 2020 18:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/article/gpg-in-simple-terms/</guid>
+      <description>When I first heard GPG it was little daunting. I haven&amp;rsquo;t used it exactly, even though I was familar with the concept. So, I decided to dig deeper and understand how to use it.
+GnuPG (GPG) is an implementation of PGP
+The simple idea is that you generate a key pair: secret or private key and a public key. You can provide your public key to anyone. They can then encrypt either a secret or file using your public key.</description>
+    </item>
+    
+    <item>
+      <title>Here is one way how I can help</title>
+      <link>https://viggy28.dev/article/companies-where-i-can-refer/</link>
+      <pubDate>Sat, 07 Mar 2020 18:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/article/companies-where-i-can-refer/</guid>
+      <description>This aricle is inspired by [Give and Take] (https://www.adamgrant.net/give-and-take) by [Adam Grant] (https://www.adamgrant.net/). I was wondering how can I help my friends and network. Searching a job is something stressful and we all have been through. Once my wife and I searched for a year and finally we moved to San Francisco.
+So far its been a challenge for my network to know whether I can refer to a particular company.</description>
+    </item>
+    
+    <item>
       <title>How to deploy a cloud run application using Gitlab CI/CD</title>
       <link>https://viggy28.dev/article/cloudrun-cicd/</link>
       <pubDate>Tue, 09 Apr 2019 20:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/article/cloudrun-cicd/</guid>
-      <description>In Google Cloud Next 2019, they introduced a new product called Cloud Run. I&amp;rsquo;ve been using it from the EAP (Early Access Program) days. [As the name suggests, basically it runs your docker image. You might be familiar with other serverless products such as Cloud Function or lambda where you provide your source code instead of a docker image. In my opinion, Cloud Run is more flexible than functions. Let me explain why.</description>
+      <description>In Google Cloud Next 2019, they introduced a new product called [Cloud Run] (https://cloud.google.com/run/). I&amp;rsquo;ve been using it from the EAP (Early Access Program) days. [As the name suggests, basically it runs your docker image. You might be familiar with other serverless products such as [Cloud Function] (https://cloud.google.com/functions/) or [lambda] (https://aws.amazon.com/lambda/) where you provide your source code instead of a docker image. In my opinion, Cloud Run is more flexible than functions.</description>
     </item>
     
     <item>
@@ -26,7 +56,7 @@
       <pubDate>Sat, 06 Apr 2019 18:00:00 +0000</pubDate>
       
       <guid>https://viggy28.dev/article/postgres-haproxy/</guid>
-      <description>Step 1: Setting up HAProxy I hope you gone through Part1 of this series. Perhaps, one thing you might have noticed is that I&amp;rsquo;ve to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In a production environment, most likely you going to run the databases on a different host). The main reason for active-active replication is high availability.</description>
+      <description>Step 1: Setting up HAProxy I hope you gone through [Part1] (https://viggy28.dev/article/postgres-active-active-replication/) of this series. Perhaps, one thing you might have noticed is that I&amp;rsquo;ve to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In a production environment, most likely you going to run the databases on a different host). The main reason for active-active replication is high availability.</description>
     </item>
     
     <item>
@@ -35,10 +65,9 @@
       <pubDate>Fri, 05 Apr 2019 19:00:00 +0000</pubDate>
       
       <guid>https://viggy28.dev/article/postgres-active-active-replication/</guid>
-      <description>Postgres doesn&amp;rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with BDR.
+      <description>Postgres doesn&amp;rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with [BDR] (https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/).
 I didn&amp;rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp;amp; docker compose.
-Step1: Running 2 Postgres instances using docker container Thanks to jgiannuzzi, who created a docker image with Postgres and BDR.
-docker-compose.yml file content</description>
+Step1: Running 2 Postgres instances using docker container Thanks to [jgiannuzzi] (https://github.com/jgiannuzzi), who created a docker [image] (https://hub.docker.com/r/jgiannuzzi/postgres-bdr) with Postgres and BDR.</description>
     </item>
     
     <item>
@@ -57,7 +86,7 @@ Both the functions and containers can be serverless. So, please avoid the notion
       <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/article/hosting-a-simple-website/</guid>
-      <description>We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&amp;rsquo;t like. I will leave the reason to you Step1: Buying a domain This websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.</description>
+      <description>We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&amp;rsquo;t like. I will leave the reason to you Step1: Buying a domain [This] (https://viggy28.dev) websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.</description>
     </item>
     
     <item>

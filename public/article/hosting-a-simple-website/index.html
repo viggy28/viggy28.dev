@@ -9,7 +9,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="generator" content="Hugo 0.66.0" />
     
     
       <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -32,21 +32,17 @@
 <meta property="og:description" content="Hosting a simple website" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://viggy28.dev/article/hosting-a-simple-website/" />
-<meta property="article:published_time" content="2019-03-23T18:00:08-04:00"/>
-<meta property="article:modified_time" content="2019-03-23T18:00:08-04:00"/>
-
+<meta property="article:published_time" content="2019-03-23T18:00:08-04:00" />
+<meta property="article:modified_time" content="2019-03-23T18:00:08-04:00" />
 <meta itemprop="name" content="How to host a simple static website">
 <meta itemprop="description" content="Hosting a simple website">
-
-
 <meta itemprop="datePublished" content="2019-03-23T18:00:08-04:00" />
 <meta itemprop="dateModified" content="2019-03-23T18:00:08-04:00" />
-<meta itemprop="wordCount" content="224">
+<meta itemprop="wordCount" content="232">
 
 
 
-<meta itemprop="keywords" content="firebase,hugo,hosting," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="firebase,hugo,hosting," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to host a simple static website"/>
 <meta name="twitter:description" content="Hosting a simple website"/>
 
@@ -189,43 +185,35 @@ if (!doNotTrack) {
       
       
         <span class="f6 mv4 dib tracked"> - 2 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 224 words</span>
+        <span class="f6 mv4 dib tracked"> - 232 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
-
-<h3 id="we-all-at-some-point-in-time-thought-about-having-a-personal-website-it-may-be-for-writing-about-your-travel-trips-posting-pictures-of-food-that-you-cooked-or-ranting-about-the-tech-which-you-don-t-like-i-will-leave-the-reason-to-you">We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&rsquo;t like. I will leave the reason to you</h3>
-
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h3 id="we-all-at-some-point-in-time-thought-about-having-a-personal-website-it-may-be-for-writing-about-your-travel-trips-posting-pictures-of-food-that-you-cooked-or-ranting-about-the-tech-which-you-dont-like-i-will-leave-the-reason-to-you">We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&rsquo;t like. I will leave the reason to you</h3>
 <h2 id="step1-buying-a-domain">Step1: Buying a domain</h2>
-
-<p><a href="https://viggy28.dev">This</a> websites domain name is <strong>viggy28.dev</strong>. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.</p>
-
-<p>You might&rsquo;ve heard <a href="https://godaddy.com">GoDaddy</a>. One of the famous ones. I personally use <a href="https://namecheap.com">Namecheap</a>. I found their customer support much better than GoDaddy&rsquo;s.</p>
-
+<p>[This] (<a href="https://viggy28.dev">https://viggy28.dev</a>) websites domain name is <strong>viggy28.dev</strong>. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.</p>
+<p>You might&rsquo;ve heard [GoDaddy] (<a href="https://godaddy.com">https://godaddy.com</a>). One of the famous ones. I personally use [Namecheap] (<a href="https://namecheap.com">https://namecheap.com</a>). I found their customer support much better than GoDaddy&rsquo;s.</p>
 <h2 id="step2-hosting">Step2: Hosting</h2>
-
 <p>Hosting the website is similar to hosting your relative. Basically, a place where you can host your website. Hosting can be expensive. Your domain registrar might provide hosting too.</p>
-
-<p>There is a bunch of hosting providers. Find the comparison table by <a href="https://www.pcmag.com/roundup/316108/the-best-web-hosting-services">pcmag</a>.</p>
-
-<p>I am using <a href="https://firebase.com">Firebase</a> for few reasons.</p>
-
+<p>There is a bunch of hosting providers. Find the comparison table by [pcmag] (<a href="https://www.pcmag.com/roundup/316108/the-best-web-hosting-services">https://www.pcmag.com/roundup/316108/the-best-web-hosting-services</a>).</p>
+<p>I am using [Firebase] (<a href="https://firebase.com">https://firebase.com</a>) for few reasons.</p>
 <ol>
-<li><p>My familiarity with the platform.</p></li>
-
-<li><p>Its based of Google&rsquo;s infrastructure.</p></li>
-
-<li><p>Ease of use (automatic SSL, quick deployments, other services such as firestore, authentication).</p></li>
-
-<li><p>Its free tier is sufficient enough to run my site.</p></li>
+<li>
+<p>My familiarity with the platform.</p>
+</li>
+<li>
+<p>Its based of Google&rsquo;s infrastructure.</p>
+</li>
+<li>
+<p>Ease of use (automatic SSL, quick deployments, other services such as firestore, authentication).</p>
+</li>
+<li>
+<p>Its free tier is sufficient enough to run my site.</p>
+</li>
 </ol>
-
 <h2 id="step3-building-the-website">Step3: Building the website</h2>
-
-<p>You can build it from the scratch by writing all the HTML/CSS. I am using <a href="https://gohugo.io">hugo</a> (a static site template builder) and <a href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a> theme.</p>
-
-<p>You can find the <a href="https://gitlab.com/viggy28-websites/viggy28.dev">source</a> of this website. It concludes my config, assets and themes.</p>
+<p>You can build it from the scratch by writing all the HTML/CSS. I am using [hugo] (<a href="https://gohugo.io">https://gohugo.io</a>) (a static site template builder) and [Ananke] (<a href="https://github.com/budparr/gohugo-theme-ananke">https://github.com/budparr/gohugo-theme-ananke</a>) theme.</p>
+<p>You can find the [source] (<a href="https://gitlab.com/viggy28-websites/viggy28.dev">https://gitlab.com/viggy28-websites/viggy28.dev</a>) of this website. It concludes my config, assets and themes.</p>
 <ul class="pa0">
   
    <li class="list">
@@ -278,7 +266,7 @@ if (!doNotTrack) {
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://viggy28.dev" >
-    &copy; 2019 Home
+    &copy; 2020 Home
   </a>
     <div>
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>network on Home</title>
+    <link>https://viggy28.dev/tags/network/</link>
+    <description>Recent content in network on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Mar 2020 18:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://viggy28.dev/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Here is one way how I can help</title>
+      <link>https://viggy28.dev/article/companies-where-i-can-refer/</link>
+      <pubDate>Sat, 07 Mar 2020 18:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/article/companies-where-i-can-refer/</guid>
+      <description>This aricle is inspired by [Give and Take] (https://www.adamgrant.net/give-and-take) by [Adam Grant] (https://www.adamgrant.net/). I was wondering how can I help my friends and network. Searching a job is something stressful and we all have been through. Once my wife and I searched for a year and finally we moved to San Francisco.
+So far its been a challenge for my network to know whether I can refer to a particular company.</description>
+    </item>
+    
+  </channel>
+</rss>
