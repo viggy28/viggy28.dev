@@ -1,0 +1,12 @@
+stages:
+  - deploy
+
+deploy-job:
+  stage: deploy
+  image: vira28/firebase-cli:1.0
+  script:
+    - firebase --token "$FIREBASE_TOKEN" --project $PROD_GCP_PROJECTID deploy
+  environment:
+    name: prod
+  only:
+  - master
