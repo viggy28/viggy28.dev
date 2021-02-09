@@ -9,10 +9,10 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.66.0" />
+    <meta name="generator" content="Hugo 0.80.0" />
     
     
-      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     
 
     
@@ -36,32 +36,20 @@
 <meta property="article:modified_time" content="2019-04-05T19:00:00+00:00" />
 <meta itemprop="name" content="Part 1/2: How to set up active-active replication in postgres using BDR">
 <meta itemprop="description" content="Postgres Active-Active Replication">
-<meta itemprop="datePublished" content="2019-04-05T19:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-04-05T19:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-04-05T19:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-04-05T19:00:00+00:00" />
 <meta itemprop="wordCount" content="766">
 
 
 
-<meta itemprop="keywords" content="postgres,docker,bdr," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="postgres,docker,bdr," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Part 1/2: How to set up active-active replication in postgres using BDR"/>
 <meta name="twitter:description" content="Postgres Active-Active Replication"/>
 
-      
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-138247776-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-    
   </head>
 
-  <body class="ma0 avenir bg-near-white production">
+  <body class="ma0 avenir bg-near-white">
 
     
    
@@ -194,27 +182,27 @@ if (!doNotTrack) {
 <h3 id="step1-running-2-postgres-instances-using-docker-container">Step1: Running 2 Postgres instances using docker container</h3>
 <p>Thanks to [jgiannuzzi] (<a href="https://github.com/jgiannuzzi">https://github.com/jgiannuzzi</a>), who created a docker [image] (<a href="https://hub.docker.com/r/jgiannuzzi/postgres-bdr">https://hub.docker.com/r/jgiannuzzi/postgres-bdr</a>) with Postgres and BDR.</p>
 <p>docker-compose.yml file content</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
 
-<span style="color:#66d9ef">services</span>:
- <span style="color:#66d9ef">database0</span>:
-   <span style="color:#66d9ef">image</span>: jgiannuzzi/postgres-bdr
-   <span style="color:#66d9ef">restart</span>: always
-   <span style="color:#66d9ef">ports</span>:
+<span style="color:#f92672">services</span>:
+ <span style="color:#f92672">database0</span>:
+   <span style="color:#f92672">image</span>: <span style="color:#ae81ff">jgiannuzzi/postgres-bdr</span>
+   <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+   <span style="color:#f92672">ports</span>:
      - <span style="color:#ae81ff">54325</span>:<span style="color:#ae81ff">5432</span>
-   <span style="color:#66d9ef">volumes</span>:
-     - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data
-   <span style="color:#66d9ef">environment</span>:
-     <span style="color:#66d9ef">POSTGRES_PASSWORD</span>: &lt;replace with your password<span style="color:#e6db74">&gt;
-</span><span style="color:#e6db74"> database1:</span>
-   <span style="color:#66d9ef">image</span>: jgiannuzzi/postgres-bdr
-   <span style="color:#66d9ef">restart</span>: always
-   <span style="color:#66d9ef">ports</span>:
+   <span style="color:#f92672">volumes</span>:
+     - <span style="color:#ae81ff">/Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data</span>
+   <span style="color:#f92672">environment</span>:
+     <span style="color:#f92672">POSTGRES_PASSWORD</span>: <span style="color:#ae81ff">&lt;replace with your password&gt;</span>
+ <span style="color:#f92672">database1</span>:
+   <span style="color:#f92672">image</span>: <span style="color:#ae81ff">jgiannuzzi/postgres-bdr</span>
+   <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+   <span style="color:#f92672">ports</span>:
      - <span style="color:#ae81ff">54326</span>:<span style="color:#ae81ff">5432</span>
-   <span style="color:#66d9ef">volumes</span>:
-     - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data
-   <span style="color:#66d9ef">environment</span>:
-     <span style="color:#66d9ef">POSTGRES_PASSWORD</span>: &lt;replace with your password&gt;
+   <span style="color:#f92672">volumes</span>:
+     - <span style="color:#ae81ff">/Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data</span>
+   <span style="color:#f92672">environment</span>:
+     <span style="color:#f92672">POSTGRES_PASSWORD</span>: <span style="color:#ae81ff">&lt;replace with your password&gt;</span>
 </code></pre></div><p><strong>Note:</strong></p>
 <ol>
 <li>ports - port forwarding 5432 with 54325 and 54326</li>
@@ -407,7 +395,7 @@ bdrdemo<span style="color:#f92672">=#</span> <span style="color:#66d9ef">select<
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://viggy28.dev" >
-    &copy; 2020 Home
+    &copy; 2021 Home
   </a>
     <div>
 

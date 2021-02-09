@@ -6,11 +6,7 @@
     <description>Recent content in python on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Sep 2017 18:00:08 -0400</lastBuildDate>
-    
-	<atom:link href="https://viggy28.dev/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 23 Sep 2017 18:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to dockerize a python application</title>
       <link>https://viggy28.dev/article/dockererize-python-application/</link>

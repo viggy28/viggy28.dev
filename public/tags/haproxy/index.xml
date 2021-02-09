@@ -6,11 +6,7 @@
     <description>Recent content in haproxy on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 06 Apr 2019 18:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://viggy28.dev/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 06 Apr 2019 18:00:00 +0000</lastBuildDate><atom:link href="https://viggy28.dev/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Part 2/2: How to set up HAProxy for an active-active postgres databases</title>
       <link>https://viggy28.dev/article/postgres-haproxy/</link>

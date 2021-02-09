@@ -4,7 +4,28 @@
   
   <url>
     <loc>https://viggy28.dev/tags/books/</loc>
-    <lastmod>2020-05-02T11:00:08-04:00</lastmod>
+    <lastmod>2021-02-08T11:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/book/dont-make-me-think/</loc>
+    <lastmod>2021-02-08T11:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/</loc>
+    <lastmod>2021-02-08T11:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/</loc>
+    <lastmod>2021-02-08T11:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -24,20 +45,6 @@
   </url>
   
   <url>
-    <loc>https://viggy28.dev/tags/</loc>
-    <lastmod>2020-05-02T11:00:08-04:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/</loc>
-    <lastmod>2020-05-02T11:00:08-04:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://viggy28.dev/book/indistractable/</loc>
     <lastmod>2020-04-25T11:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -45,57 +52,15 @@
   </url>
   
   <url>
+    <loc>https://viggy28.dev/book/books-recommendation/</loc>
+    <lastmod>2020-03-24T11:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://viggy28.dev/book/give-and-take/</loc>
     <lastmod>2020-03-23T11:00:08-04:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/tags/cloudflare/</loc>
-    <lastmod>2020-03-12T18:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/article/how-to-secure-your-remote-applications/</loc>
-    <lastmod>2020-03-12T18:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/tags/network/</loc>
-    <lastmod>2020-03-12T18:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/tags/networking/</loc>
-    <lastmod>2020-03-12T18:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/tags/cryptography/</loc>
-    <lastmod>2020-03-09T18:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/tags/gpg/</loc>
-    <lastmod>2020-03-09T18:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/article/gpg-in-simple-terms/</loc>
-    <lastmod>2020-03-09T18:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -109,6 +74,13 @@
   
   <url>
     <loc>https://viggy28.dev/article/companies-where-i-can-refer/</loc>
+    <lastmod>2020-03-07T18:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/network/</loc>
     <lastmod>2020-03-07T18:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -185,13 +157,6 @@
   </url>
   
   <url>
-    <loc>https://viggy28.dev/book/books-recommendation/</loc>
-    <lastmod>2019-03-24T11:00:08-04:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://viggy28.dev/book/make-your-bed/</loc>
     <lastmod>2019-03-24T11:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -220,6 +185,13 @@
   </url>
   
   <url>
+    <loc>https://viggy28.dev/article/gpg-in-simple-terms/</loc>
+    <lastmod>2019-03-23T18:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://viggy28.dev/tags/hosting/</loc>
     <lastmod>2019-03-23T18:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -228,6 +200,13 @@
   
   <url>
     <loc>https://viggy28.dev/article/hosting-a-simple-website/</loc>
+    <lastmod>2019-03-23T18:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/article/how-to-secure-your-remote-applications/</loc>
     <lastmod>2019-03-23T18:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

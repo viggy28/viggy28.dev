@@ -6,10 +6,16 @@
     <description>Recent content in Vignesh Ravichandran on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 May 2020 11:00:08 -0400</lastBuildDate>
-    
-	<atom:link href="https://viggy28.dev/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 08 Feb 2021 11:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Don&#39;t Make Me Think, Revisited</title>
+      <link>https://viggy28.dev/book/dont-make-me-think/</link>
+      <pubDate>Mon, 08 Feb 2021 11:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/book/dont-make-me-think/</guid>
+      <description>This is a guest post by Suvam Prasad (https://www.linkedin.com/in/suvamprasad/). I am very glad to have his post.
+This book is very special to me because it helped me to discover new perspectives of web designing mythology. The book is written by Steve Krug(a famous user experience professional). The book contained hardly 216 pages that give you enough knowledge and idea to understand web design usability, user accessibility, and how to be a great user experience designer.</description>
+    </item>
     
     <item>
       <title>Hooked</title>
@@ -17,29 +23,39 @@
       <pubDate>Sat, 02 May 2020 11:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/book/hooked/</guid>
-      <description>TLDR; A short book on Product Development and especially explains how B2C (especially social media) companies make their users hooked on their products. Though Product owners, designers, and founders can use this book in improving their products, every user can read this to understand why some of the popular apps do things (like infinite scroll, weekly digest emails, notifications) which we use day-to-day. Hooked also overlaps with Nir Eyal&amp;rsquo;s other book Undistractable</description>
+      <description>TLDR; A short book on Product Development and especially explains how B2C (especially social media) companies make their users hooked on their products. Though Product owners, designers, and founders can use this book in improving their products, every user can read this to understand why some of the popular apps do things (like infinite scroll, weekly digest emails, notifications) which we use day-to-day. Hooked also overlaps with Nir Eyal’s other book Undistractable</description>
     </item>
     
     <item>
-      <title>One Up on Wall Street</title>
+      <title>One up on wall street</title>
       <link>https://viggy28.dev/book/one-up-on-wall-street/</link>
       <pubDate>Sat, 02 May 2020 11:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/book/one-up-on-wall-street/</guid>
       <description>Disclaimer: This book was published in 1989. So, we have to time travel to understand a few things, but overall the concepts are still relevant. Also, read this during COVID-19 (middle of a global pandemic).
 This review is a little different than other books. Going to share most of the notes as points.
-Peter Lynch is America&amp;rsquo;s money manager. He was Vice-Chairman of the Fidelity Management &amp;amp; Research Company. He was the portfolio manager of Fidelity Magellan Fund, which was the best performing fund in the world from May 1977 to May 1990.</description>
+Peter Lynch is America’s money manager. He was Vice-Chairman of the Fidelity Management &amp;amp; Research Company. He was the portfolio manager of Fidelity Magellan Fund, which was the best performing fund in the world from May 1977 to May 1990.</description>
     </item>
     
     <item>
-      <title>indistractable</title>
+      <title>Indistractable</title>
       <link>https://viggy28.dev/book/indistractable/</link>
       <pubDate>Sat, 25 Apr 2020 11:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/book/indistractable/</guid>
-      <description>Part 1 is about Master Internal Triggers which talks about that distractions are mainly caused by discomfort. Most people don&amp;rsquo;t want to acknolwedge the uncomfortable truth that distraction is always an unhealthy escape from reality. Being indistractable means striving to do what you say you will do.
- We are compelled to reach for things we supposedly need but really don&amp;rsquo;t. (eg. checking emails)
+      <description>Part 1 is about Master Internal Triggers which talks about that distractions are mainly caused by discomfort. Most people don’t want to acknolwedge the uncomfortable truth that distraction is always an unhealthy escape from reality. Being indistractable means striving to do what you say you will do.
+ We are compelled to reach for things we supposedly need but really don’t. (eg. checking emails)
  We tend to blame things like television, junk food, social media etc - but these are all promiate causes of our distraction, but not the root cause.</description>
+    </item>
+    
+    <item>
+      <title>Books recommendation</title>
+      <link>https://viggy28.dev/book/books-recommendation/</link>
+      <pubDate>Tue, 24 Mar 2020 11:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/book/books-recommendation/</guid>
+      <description>Here is a list of books which I really enjoyed reading. They are mostly around the topics such as Self Development, Management, Finance, Technology.
+ Give and Take by Adam Grant Atomic Habits by James Clear A random walkdown wall street Designing Data Intensive Application surely you’re joking mr. feynman How To Win Friends and Influence People Lean Startup The Go programming languate Make your bed Hard thing about hard things One Up On Wall Street Learn to Earn Indistractable Thinking fast and slow (I couldn’t complete this book.</description>
     </item>
     
     <item>
@@ -49,28 +65,8 @@ Peter Lynch is America&amp;rsquo;s money manager. He was Vice-Chairman of the Fi
       
       <guid>https://viggy28.dev/book/give-and-take/</guid>
       <description>Chapter 1 is Good Returns which explains the Dangers and Rewards of Giving more than you get with multiple examples. One of the things which striked me
- You can&amp;rsquo;t just ignore someone because you don&amp;rsquo;t think they&amp;rsquo;re important enough.
- I can&amp;rsquo;t agree more on that. I have seen first class that founders making this mistake. Its so easy to just ignore, but think about the long term or big picture.</description>
-    </item>
-    
-    <item>
-      <title>How to secure your remote applications</title>
-      <link>https://viggy28.dev/article/how-to-secure-your-remote-applications/</link>
-      <pubDate>Thu, 12 Mar 2020 18:00:00 +0000</pubDate>
-      
-      <guid>https://viggy28.dev/article/how-to-secure-your-remote-applications/</guid>
-      <description>I am writing this around the time where we are at the beginning of a global pandemic. Everyone is trying to figure out how to keep their business up and running during this challenging period. Most of the employers have mandated work from remote policy. One of the main challenges is how to connect to your applications remotely. Traditionally the answer is VPN. There are so many challenges wrt scalability, availability, and performance of these traditional VPN software.</description>
-    </item>
-    
-    <item>
-      <title>GPG in Simple Terms</title>
-      <link>https://viggy28.dev/article/gpg-in-simple-terms/</link>
-      <pubDate>Mon, 09 Mar 2020 18:00:00 +0000</pubDate>
-      
-      <guid>https://viggy28.dev/article/gpg-in-simple-terms/</guid>
-      <description>When I first heard GPG it was little daunting. I haven&amp;rsquo;t used it exactly, even though I was familar with the concept. So, I decided to dig deeper and understand how to use it.
-GnuPG (GPG) is an implementation of PGP
-The simple idea is that you generate a key pair: secret or private key and a public key. You can provide your public key to anyone. They can then encrypt either a secret or file using your public key.</description>
+ You can’t just ignore someone because you don’t think they’re important enough.
+ I can’t agree more on that. I have seen first class that founders making this mistake. Its so easy to just ignore, but think about the long term or big picture.</description>
     </item>
     
     <item>
@@ -113,16 +109,6 @@ Step1: Running 2 Postgres instances using docker container Thanks to [jgiannuzzi
     </item>
     
     <item>
-      <title>Books recommendation</title>
-      <link>https://viggy28.dev/book/books-recommendation/</link>
-      <pubDate>Sun, 24 Mar 2019 11:00:08 -0400</pubDate>
-      
-      <guid>https://viggy28.dev/book/books-recommendation/</guid>
-      <description>Here is a list of books which I really enjoyed reading. They are mostly around the topics such as Self Development, Management, Finance, Technology.
- Give and Take by Adam Grant Atomic Habits by James Clear A random walkdown wall street Designing Data Intensive Application surely you&amp;rsquo;re joking mr. feynman How To Win Friends and Influence People Lean Startup The Go programming languate Make your bed Hard thing about hard things One Up On Wall Street Indistractable Thinking fast and slow (I couldn&amp;rsquo;t complete this book.</description>
-    </item>
-    
-    <item>
       <title>Make Your Bed</title>
       <link>https://viggy28.dev/book/make-your-bed/</link>
       <pubDate>Sun, 24 Mar 2019 11:00:08 -0400</pubDate>
@@ -144,12 +130,36 @@ Both the functions and containers can be serverless. So, please avoid the notion
     </item>
     
     <item>
+      <title>GPG in simple terms</title>
+      <link>https://viggy28.dev/article/gpg-in-simple-terms/</link>
+      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/gpg-in-simple-terms/</guid>
+      <description>GPG in Simple Terms Understanding the basics of GPG ARTICLES
+GPG in Simple Terms March 9, 2020 - 2 minutes read - 342 words
+When I first heard GPG it was little daunting. I haven’t used it exactly, even though I was familar with the concept. So, I decided to dig deeper and understand how to use it.
+GnuPG (GPG) is an implementation of PGP
+The simple idea is that you generate a key pair: secret or private key and a public key.</description>
+    </item>
+    
+    <item>
       <title>How to host a simple static website</title>
       <link>https://viggy28.dev/article/hosting-a-simple-website/</link>
       <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/article/hosting-a-simple-website/</guid>
       <description>We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&amp;rsquo;t like. I will leave the reason to you Step1: Buying a domain [This] (https://viggy28.dev) websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.</description>
+    </item>
+    
+    <item>
+      <title>How to secure your remote applications</title>
+      <link>https://viggy28.dev/article/how-to-secure-your-remote-applications/</link>
+      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/how-to-secure-your-remote-applications/</guid>
+      <description>How to secure your remote applications An overview of how to use Cloudflare Access to secure your applications ARTICLES
+How to secure your remote applications March 12, 2020 - 3 minutes read - 541 words
+I am writing this around the time where we are at the beginning of a global pandemic. Everyone is trying to figure out how to keep their business up and running during this challenging period. Most of the employers have mandated work from remote policy.</description>
     </item>
     
     <item>

@@ -6,11 +6,7 @@
     <description>Recent content in docker on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Apr 2019 20:00:08 -0400</lastBuildDate>
-    
-	<atom:link href="https://viggy28.dev/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 09 Apr 2019 20:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to deploy a cloud run application using Gitlab CI/CD</title>
       <link>https://viggy28.dev/article/cloudrun-cicd/</link>

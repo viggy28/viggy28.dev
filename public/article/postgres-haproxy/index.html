@@ -9,10 +9,10 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.66.0" />
+    <meta name="generator" content="Hugo 0.80.0" />
     
     
-      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     
 
     
@@ -36,32 +36,20 @@
 <meta property="article:modified_time" content="2019-04-06T18:00:00+00:00" />
 <meta itemprop="name" content="Part 2/2: How to set up HAProxy for an active-active postgres databases">
 <meta itemprop="description" content="Postgres Active-Active Replication">
-<meta itemprop="datePublished" content="2019-04-06T18:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-04-06T18:00:00&#43;00:00" />
+<meta itemprop="datePublished" content="2019-04-06T18:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-04-06T18:00:00+00:00" />
 <meta itemprop="wordCount" content="655">
 
 
 
-<meta itemprop="keywords" content="postgres,docker,haproxy," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="postgres,docker,haproxy," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Part 2/2: How to set up HAProxy for an active-active postgres databases"/>
 <meta name="twitter:description" content="Postgres Active-Active Replication"/>
 
-      
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-138247776-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-    
   </head>
 
-  <body class="ma0 avenir bg-near-white production">
+  <body class="ma0 avenir bg-near-white">
 
     
    
@@ -195,43 +183,43 @@ if (!doNotTrack) {
 <p>The architecture would look something like this:
 <img src="/images/postgres-haproxy-wb1.jpg" alt="Postgres active-active replication using BDR set up with HAProxy"></p>
 <p>You can continue with your [docker-compose.yml] (<a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose.yml">https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/static/files/postgres-haproxy/docker-compose.yml</a>) file. Add the below section</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
  
-<span style="color:#66d9ef">services</span>:
- <span style="color:#66d9ef">database0</span>:
-   <span style="color:#66d9ef">image</span>: jgiannuzzi/postgres-bdr
-   <span style="color:#66d9ef">restart</span>: always
-   <span style="color:#66d9ef">ports</span>:
+<span style="color:#f92672">services</span>:
+ <span style="color:#f92672">database0</span>:
+   <span style="color:#f92672">image</span>: <span style="color:#ae81ff">jgiannuzzi/postgres-bdr</span>
+   <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+   <span style="color:#f92672">ports</span>:
      - <span style="color:#ae81ff">54325</span>:<span style="color:#ae81ff">5432</span>
-   <span style="color:#66d9ef">environment</span>:
-     - SERVICE_PORTS=<span style="color:#ae81ff">5432</span>
-   <span style="color:#66d9ef">volumes</span>:
-     - /Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data
-   <span style="color:#66d9ef">environment</span>:
-     <span style="color:#66d9ef">POSTGRES_PASSWORD</span>: <span style="color:#e6db74">&#34;replace with your password&#34;</span>
-     <span style="color:#66d9ef">TCP_PORTS</span>: <span style="color:#e6db74">&#34;5432&#34;</span>
+   <span style="color:#f92672">environment</span>:
+     - <span style="color:#ae81ff">SERVICE_PORTS=5432</span>
+   <span style="color:#f92672">volumes</span>:
+     - <span style="color:#ae81ff">/Users/viggy28/tech/docker/volumes/postgres0:/var/lib/postgresql/data</span>
+   <span style="color:#f92672">environment</span>:
+     <span style="color:#f92672">POSTGRES_PASSWORD</span>: <span style="color:#e6db74">&#34;replace with your password&#34;</span>
+     <span style="color:#f92672">TCP_PORTS</span>: <span style="color:#e6db74">&#34;5432&#34;</span>
 
- <span style="color:#66d9ef">database1</span>:
-   <span style="color:#66d9ef">image</span>: jgiannuzzi/postgres-bdr
-   <span style="color:#66d9ef">restart</span>: always
-   <span style="color:#66d9ef">ports</span>:
+ <span style="color:#f92672">database1</span>:
+   <span style="color:#f92672">image</span>: <span style="color:#ae81ff">jgiannuzzi/postgres-bdr</span>
+   <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+   <span style="color:#f92672">ports</span>:
      - <span style="color:#ae81ff">54326</span>:<span style="color:#ae81ff">5432</span>
-   <span style="color:#66d9ef">environment</span>:
-     - SERVICE_PORTS=<span style="color:#ae81ff">5432</span>
-   <span style="color:#66d9ef">volumes</span>:
-     - /Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data
-   <span style="color:#66d9ef">environment</span>:
-     <span style="color:#66d9ef">POSTGRES_PASSWORD</span>: <span style="color:#e6db74">&#34;replace with your password&#34;</span>
-     <span style="color:#66d9ef">TCP_PORTS</span>: <span style="color:#e6db74">&#34;5432&#34;</span>
+   <span style="color:#f92672">environment</span>:
+     - <span style="color:#ae81ff">SERVICE_PORTS=5432</span>
+   <span style="color:#f92672">volumes</span>:
+     - <span style="color:#ae81ff">/Users/viggy28/tech/docker/volumes/postgres1:/var/lib/postgresql/data</span>
+   <span style="color:#f92672">environment</span>:
+     <span style="color:#f92672">POSTGRES_PASSWORD</span>: <span style="color:#e6db74">&#34;replace with your password&#34;</span>
+     <span style="color:#f92672">TCP_PORTS</span>: <span style="color:#e6db74">&#34;5432&#34;</span>
 
- <span style="color:#66d9ef">proxy</span>:
-   <span style="color:#66d9ef">image</span>: dockercloud/haproxy
-   <span style="color:#66d9ef">links</span>:
-     - database0
-     - database1
-   <span style="color:#66d9ef">volumes</span>:
-     - /var/run/docker.sock:/var/run/docker.sock
-   <span style="color:#66d9ef">ports</span>:
+ <span style="color:#f92672">proxy</span>:
+   <span style="color:#f92672">image</span>: <span style="color:#ae81ff">dockercloud/haproxy</span>
+   <span style="color:#f92672">links</span>:
+     - <span style="color:#ae81ff">database0</span>
+     - <span style="color:#ae81ff">database1</span>
+   <span style="color:#f92672">volumes</span>:
+     - <span style="color:#ae81ff">/var/run/docker.sock:/var/run/docker.sock</span>
+   <span style="color:#f92672">ports</span>:
      - <span style="color:#e6db74">&#34;15432:5432&#34;</span>
 </code></pre></div><p>Note:</p>
 <ol>
@@ -357,7 +345,7 @@ A simple <a href="https://gitlab.com/viggy28-websites/viggy28.dev/tree/master/st
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://viggy28.dev" >
-    &copy; 2020 Home
+    &copy; 2021 Home
   </a>
     <div>
 

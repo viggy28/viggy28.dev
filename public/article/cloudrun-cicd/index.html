@@ -9,10 +9,10 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.66.0" />
+    <meta name="generator" content="Hugo 0.80.0" />
     
     
-      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     
 
     
@@ -42,26 +42,14 @@
 
 
 
-<meta itemprop="keywords" content="cloud run,gitlab,docker," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="cloud run,gitlab,docker," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to deploy a cloud run application using Gitlab CI/CD"/>
 <meta name="twitter:description" content="Deploying cloud run using Gitlab"/>
 
-      
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-138247776-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-    
   </head>
 
-  <body class="ma0 avenir bg-near-white production">
+  <body class="ma0 avenir bg-near-white">
 
     
    
@@ -227,44 +215,44 @@ if (!doNotTrack) {
 <li>To minimize the size of the docker image, We are doing multi-stage builds</li>
 </ul>
 <p>Up next is the [.gitlab-ci.yml] (<a href="https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/.gitlab-ci.yml">https://gitlab.com/viggy28-websites/viggy28.dev/blob/master/static/files/articles-cloudrun-cicd/.gitlab-ci.yml</a>) file.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">stages</span>:
-  - build-push-docker
-  - deploy-new-service
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">stages</span>:
+  - <span style="color:#ae81ff">build-push-docker</span>
+  - <span style="color:#ae81ff">deploy-new-service</span>
 
-<span style="color:#66d9ef">variables</span>:
-    <span style="color:#66d9ef">projectid</span>: <span style="color:#e6db74">&#34;cloudrundemo-237205&#34;</span>
-    <span style="color:#66d9ef">service</span>: <span style="color:#e6db74">&#34;cloudrun-cicd&#34;</span>
-    <span style="color:#66d9ef">region</span>: <span style="color:#e6db74">&#34;us-central1&#34;</span>
-    <span style="color:#66d9ef">image_name</span>: <span style="color:#e6db74">&#34;cloudrun-cicd&#34;</span>
+<span style="color:#f92672">variables</span>:
+    <span style="color:#f92672">projectid</span>: <span style="color:#e6db74">&#34;cloudrundemo-237205&#34;</span>
+    <span style="color:#f92672">service</span>: <span style="color:#e6db74">&#34;cloudrun-cicd&#34;</span>
+    <span style="color:#f92672">region</span>: <span style="color:#e6db74">&#34;us-central1&#34;</span>
+    <span style="color:#f92672">image_name</span>: <span style="color:#e6db74">&#34;cloudrun-cicd&#34;</span>
 
-<span style="color:#66d9ef">build-push-docker-job</span>:
-  <span style="color:#66d9ef">stage</span>: build-push-docker
-  <span style="color:#66d9ef">image</span>: docker:latest
-  <span style="color:#66d9ef">services</span>:
-    - docker:dind
-  <span style="color:#66d9ef">before_script</span>:
-    - echo $CLOUDRUN_CICD_SA_KEY &gt; ${HOME}/service_key.json
-    - cat ${HOME}/service_key.json | docker login -u _json_key --password-stdin https://gcr.io
-  <span style="color:#66d9ef">script</span>:
-    - docker build -t gcr.io/$projectid/$image_name:latest .
-    - docker push gcr.io/$projectid/$image_name:latest
+<span style="color:#f92672">build-push-docker-job</span>:
+  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">build-push-docker</span>
+  <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker:latest</span>
+  <span style="color:#f92672">services</span>:
+    - <span style="color:#ae81ff">docker:dind</span>
+  <span style="color:#f92672">before_script</span>:
+    - <span style="color:#ae81ff">echo $CLOUDRUN_CICD_SA_KEY &gt; ${HOME}/service_key.json</span>
+    - <span style="color:#ae81ff">cat ${HOME}/service_key.json | docker login -u _json_key --password-stdin https://gcr.io</span>
+  <span style="color:#f92672">script</span>:
+    - <span style="color:#ae81ff">docker build -t gcr.io/$projectid/$image_name:latest .</span>
+    - <span style="color:#ae81ff">docker push gcr.io/$projectid/$image_name:latest</span>
 
-<span style="color:#66d9ef">deploy-new-service-job</span>:
-  <span style="color:#66d9ef">stage</span>: deploy-new-service
-  <span style="color:#66d9ef">before_script</span>:
+<span style="color:#f92672">deploy-new-service-job</span>:
+  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">deploy-new-service</span>
+  <span style="color:#f92672">before_script</span>:
     <span style="color:#75715e"># Download and install Google Cloud SDK. Source it so you can use it from any where</span>
-    - mkdir /software
-    - cd /software
-    - wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz
-    - tar zxvf google-cloud-sdk.tar.gz <span style="color:#75715e">&amp;&amp;</span> ./google-cloud-sdk/install.sh --usage-reporting=<span style="color:#66d9ef">false</span> --path-update=<span style="color:#66d9ef">true</span>
-    - source /root/.bashrc
-    - gcloud components install beta
+    - <span style="color:#ae81ff">mkdir /software</span>
+    - <span style="color:#ae81ff">cd /software</span>
+    - <span style="color:#ae81ff">wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz</span>
+    - <span style="color:#ae81ff">tar zxvf google-cloud-sdk.tar.gz &amp;&amp; ./google-cloud-sdk/install.sh --usage-reporting=false --path-update=true</span>
+    - <span style="color:#ae81ff">source /root/.bashrc</span>
+    - <span style="color:#ae81ff">gcloud components install beta</span>
     <span style="color:#75715e"># Write our GCP service account private key into a file</span>
-    - echo $CLOUDRUN_CICD_SA_KEY &gt; ${HOME}/service_key.json
-  <span style="color:#66d9ef">script</span>:
-    - gcloud auth activate-service-account --key-file ${HOME}/service_key.json
-    - gcloud beta run deploy $service --region $region --project $projectid --image gcr.io/$projectid/$image_name:latest
-    - gcloud beta run services add-iam-policy-binding $service --project $projectid --member=<span style="color:#e6db74">&#34;allUsers&#34;</span> --role=<span style="color:#e6db74">&#34;roles/run.invoker&#34;</span> --region $region
+    - <span style="color:#ae81ff">echo $CLOUDRUN_CICD_SA_KEY &gt; ${HOME}/service_key.json</span>
+  <span style="color:#f92672">script</span>:
+    - <span style="color:#ae81ff">gcloud auth activate-service-account --key-file ${HOME}/service_key.json</span>
+    - <span style="color:#ae81ff">gcloud beta run deploy $service --region $region --project $projectid --image gcr.io/$projectid/$image_name:latest</span>
+    - <span style="color:#ae81ff">gcloud beta run services add-iam-policy-binding $service --project $projectid --member=&#34;allUsers&#34; --role=&#34;roles/run.invoker&#34; --region $region</span>
 </code></pre></div><p><strong>Prerequisites</strong>:</p>
 <ul>
 <li>
@@ -354,7 +342,7 @@ if (!doNotTrack) {
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://viggy28.dev" >
-    &copy; 2020 Home
+    &copy; 2021 Home
   </a>
     <div>
 

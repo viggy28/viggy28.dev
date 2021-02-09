@@ -6,62 +6,13 @@
     <description>Recent content in Tags on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 May 2020 11:00:08 -0400</lastBuildDate>
-    
-	<atom:link href="https://viggy28.dev/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 08 Feb 2021 11:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>books</title>
       <link>https://viggy28.dev/tags/books/</link>
-      <pubDate>Sat, 02 May 2020 11:00:08 -0400</pubDate>
+      <pubDate>Mon, 08 Feb 2021 11:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/tags/books/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cloudflare</title>
-      <link>https://viggy28.dev/tags/cloudflare/</link>
-      <pubDate>Thu, 12 Mar 2020 18:00:00 +0000</pubDate>
-      
-      <guid>https://viggy28.dev/tags/cloudflare/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>network</title>
-      <link>https://viggy28.dev/tags/network/</link>
-      <pubDate>Thu, 12 Mar 2020 18:00:00 +0000</pubDate>
-      
-      <guid>https://viggy28.dev/tags/network/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>networking</title>
-      <link>https://viggy28.dev/tags/networking/</link>
-      <pubDate>Thu, 12 Mar 2020 18:00:00 +0000</pubDate>
-      
-      <guid>https://viggy28.dev/tags/networking/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>cryptography</title>
-      <link>https://viggy28.dev/tags/cryptography/</link>
-      <pubDate>Mon, 09 Mar 2020 18:00:00 +0000</pubDate>
-      
-      <guid>https://viggy28.dev/tags/cryptography/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>gpg</title>
-      <link>https://viggy28.dev/tags/gpg/</link>
-      <pubDate>Mon, 09 Mar 2020 18:00:00 +0000</pubDate>
-      
-      <guid>https://viggy28.dev/tags/gpg/</guid>
       <description></description>
     </item>
     
@@ -71,6 +22,15 @@
       <pubDate>Sat, 07 Mar 2020 18:00:00 +0000</pubDate>
       
       <guid>https://viggy28.dev/tags/community/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>network</title>
+      <link>https://viggy28.dev/tags/network/</link>
+      <pubDate>Sat, 07 Mar 2020 18:00:00 +0000</pubDate>
+      
+      <guid>https://viggy28.dev/tags/network/</guid>
       <description></description>
     </item>
     

@@ -9,10 +9,10 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.66.0" />
+    <meta name="generator" content="Hugo 0.80.0" />
     
     
-      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     
 
     
@@ -37,26 +37,14 @@
 <meta property="og:url" content="https://viggy28.dev/article/" />
 <meta property="og:updated_time" content="2017-03-02T12:00:00-05:00" />
 <meta itemprop="name" content="Articles">
-<meta itemprop="description" content="Most of them are quick How-To articles"><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="Most of them are quick How-To articles">
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Articles"/>
 <meta name="twitter:description" content="Most of them are quick How-To articles"/>
 
-      
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-138247776-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-    
   </head>
 
-  <body class="ma0 avenir bg-near-white production">
+  <body class="ma0 avenir bg-near-white">
 
     
 
@@ -169,13 +157,12 @@ if (!doNotTrack) {
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Article</span>
     <h1 class="f3 near-black">
-      <a href="/article/functions-vs-containers/" class="link black dim">
-        Functions vs Containers
+      <a href="/article/hosting-a-simple-website/" class="link black dim">
+        How to host a simple static website
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Mark my word. We had so many competitions in the past. Eg. vim vs emacs, tabs vs spaces etc. The new comparison which is added in this decade is functions vs containers
-Both the functions and containers can be serverless. So, please avoid the notion of serverless means functions. In fact, predominantly all the functions (like lambda, cloud functions) are running behind the screen as containers. (there are few products like Cloudflare workers are running without containers)
+      We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&rsquo;t like. I will leave the reason to you Step1: Buying a domain [This] (https://viggy28.dev) websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.
     </div>
   </div>
 </div>
@@ -185,12 +172,14 @@ Both the functions and containers can be serverless. So, please avoid the notion
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Article</span>
     <h1 class="f3 near-black">
-      <a href="/article/hosting-a-simple-website/" class="link black dim">
-        How to host a simple static website
+      <a href="/article/how-to-secure-your-remote-applications/" class="link black dim">
+        How to secure your remote applications
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&rsquo;t like. I will leave the reason to you Step1: Buying a domain [This] (https://viggy28.dev) websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.
+      How to secure your remote applications An overview of how to use Cloudflare Access to secure your applications ARTICLES
+How to secure your remote applications March 12, 2020 - 3 minutes read - 541 words
+I am writing this around the time where we are at the beginning of a global pandemic. Everyone is trying to figure out how to keep their business up and running during this challenging period. Most of the employers have mandated work from remote policy.
     </div>
   </div>
 </div>
@@ -213,49 +202,25 @@ On a leisurely Saturday afternoon, I thought its nice to play with containers. I
 </div>
       
     </section>
-
 <ul class="pagination">
-    
-    <li class="page-item">
-        <a href="/article/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-    
-    <li class="page-item">
+  <li class="page-item">
+    <a href="/article/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+  </li>
+  <li class="page-item">
     <a href="/article/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/article/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="/article/page/2/">2</a></li>
-    
-    
-    <li class="page-item disabled">
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="/article/">1</a>
+  </li>
+  <li class="page-item active">
+    <a class="page-link" href="/article/page/2/">2</a>
+  </li>
+  <li class="page-item disabled">
     <a  class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/article/page/2/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
+  </li>
+  <li class="page-item">
+    <a href="/article/page/2/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+  </li>
 </ul>
 
 </article>
@@ -264,7 +229,7 @@ On a leisurely Saturday afternoon, I thought its nice to play with containers. I
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://viggy28.dev" >
-    &copy; 2020 Home
+    &copy; 2021 Home
   </a>
     <div>
 

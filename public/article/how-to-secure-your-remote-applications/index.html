@@ -9,10 +9,10 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.66.0" />
+    <meta name="generator" content="Hugo 0.80.0" />
     
     
-      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     
 
     
@@ -29,39 +29,27 @@
     
 
     <meta property="og:title" content="How to secure your remote applications" />
-<meta property="og:description" content="An overview of how to use Cloudflare Access to secure your applications" />
+<meta property="og:description" content="How to secure your remote applications" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://viggy28.dev/article/how-to-secure-your-remote-applications/" />
-<meta property="article:published_time" content="2020-03-12T18:00:00+00:00" />
-<meta property="article:modified_time" content="2020-03-12T18:00:00+00:00" />
+<meta property="article:published_time" content="2019-03-23T18:00:08-04:00" />
+<meta property="article:modified_time" content="2019-03-23T18:00:08-04:00" />
 <meta itemprop="name" content="How to secure your remote applications">
-<meta itemprop="description" content="An overview of how to use Cloudflare Access to secure your applications">
-<meta itemprop="datePublished" content="2020-03-12T18:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-03-12T18:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="541">
+<meta itemprop="description" content="How to secure your remote applications">
+<meta itemprop="datePublished" content="2019-03-23T18:00:08-04:00" />
+<meta itemprop="dateModified" content="2019-03-23T18:00:08-04:00" />
+<meta itemprop="wordCount" content="578">
 
 
 
-<meta itemprop="keywords" content="networking,Cloudflare," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="firebase,hugo,hosting," />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to secure your remote applications"/>
-<meta name="twitter:description" content="An overview of how to use Cloudflare Access to secure your applications"/>
+<meta name="twitter:description" content="How to secure your remote applications"/>
 
-      
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-138247776-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-    
   </head>
 
-  <body class="ma0 avenir bg-near-white production">
+  <body class="ma0 avenir bg-near-white">
 
     
    
@@ -159,7 +147,7 @@ if (!doNotTrack) {
           <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">How to secure your remote applications</h1>
           
             <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
-              An overview of how to use Cloudflare Access to secure your applications
+              How to secure your remote applications
             </h2>
           
         
@@ -181,56 +169,111 @@ if (!doNotTrack) {
       </p>
       <h1 class="f1 athelas mb1">How to secure your remote applications</h1>
       
-      <time class="f6 mv4 dib tracked" datetime="2020-03-12T18:00:00Z">March 12, 2020</time>      
+      <time class="f6 mv4 dib tracked" datetime="2019-03-23T18:00:08-04:00">March 23, 2019</time>      
       
       
         <span class="f6 mv4 dib tracked"> - 3 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 541 words</span>
+        <span class="f6 mv4 dib tracked"> - 578 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>I am writing this around the time where we are at the beginning of a <a href="https://www.forbes.com/sites/brucelee/2020/03/11/the-covid-19-coronavirus-is-now-a-pandemic-what-does-that-mean/#d9bcd0277699"><strong>global pandemic</strong></a>. Everyone is trying to figure out how to keep their business up and running during this challenging period. Most of the employers have mandated work from remote policy. One of the main challenges is how to connect to your applications remotely. Traditionally the answer is <a href="https://en.wikipedia.org/wiki/Virtual_private_network">VPN</a>. There are so many challenges wrt scalability, availability, and performance of these traditional VPN software. Don&rsquo;t worry, there are alternatives.</p>
-<p>Here I am going to explain the setup that I have used to secure my <a href="https://viggy28.dev/book">application</a> using <a href="https://teams.cloudflare.com/access/index.html">Cloudflare Access</a>, which  provides Simple, secure access for internal apps. Check out the link which provides a great explanation on how Access works. Also, another good news is that this product is completely <strong>free</strong> (at least for the next 6 months due to the outbreak of COVID-19). Yes, you read it right. Honestly, this is a massive news. Here is an excerpt from the <a href="https://blog.cloudflare.com/cloudflare-during-the-coronavirus-emergency/">announcement</a>.</p>
-<p><em><strong>If you are not yet using Cloudflare for Teams, and if you or your employer are struggling with limits on the capacity of your existing VPN or Firewall, we stand ready to help and have removed the limits on the free trials of our Access and Gateway products for at least the next six months.</strong></em></p>
-<p>I always wanted to try how Access works and there can&rsquo;t be a better time than now to try. Here is the simple 4 steps which I did to get up and running:</p>
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h1 class="f2 f1-l fw2 white-90 mb0 lh-title" id="how-to-secure-your-remote-applications">How to secure your remote applications</h1>
+<h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4" id="an-overview-of-how-to-use-cloudflare-access-to-secure-your-applications">An overview of how to use Cloudflare Access to secure your applications</h2>
+<p>ARTICLES</p>
+<h1 class="f1 athelas mb1" id="how-to-secure-your-remote-applications-1">How to secure your remote applications</h1>
+<p>March 12, 2020 - 3 minutes read - 541 words</p>
+<p>I am writing this around the time where we are at the beginning of a
+<a href="https://www.forbes.com/sites/brucelee/2020/03/11/the-covid-19-coronavirus-is-now-a-pandemic-what-does-that-mean/#d9bcd0277699"><strong>global
+pandemic</strong></a>.
+Everyone is trying to figure out how to keep their business up and
+running during this challenging period. Most of the employers have
+mandated work from remote policy. One of the main challenges is how to
+connect to your applications remotely. Traditionally the answer is
+<a href="https://en.wikipedia.org/wiki/Virtual_private_network">VPN</a>. There are
+so many challenges wrt scalability, availability, and performance of
+these traditional VPN software. Don’t worry, there are alternatives.</p>
+<p>Here I am going to explain the setup that I have used to secure my
+<a href="https://viggy28.dev/book">application</a> using <a href="https://teams.cloudflare.com/access/index.html">Cloudflare
+Access</a>, which provides
+Simple, secure access for internal apps. Check out the link which
+provides a great explanation on how Access works. Also, another good
+news is that this product is completely <strong>free</strong> (at least for the next
+6 months due to the outbreak of COVID-19). Yes, you read it right.
+Honestly, this is a massive news. Here is an excerpt from the
+<a href="https://blog.cloudflare.com/cloudflare-during-the-coronavirus-emergency/">announcement</a>.</p>
+<p><em><strong>If you are not yet using Cloudflare for Teams, and if you or your
+employer are struggling with limits on the capacity of your existing VPN
+or Firewall, we stand ready to help and have removed the limits on the
+free trials of our Access and Gateway products for at least the next six
+months.</strong></em></p>
+<p>I always wanted to try how Access works and there can’t be a better time
+than now to try. Here is the simple 4 steps which I did to get up and
+running:</p>
 <ol>
 <li>
-<p>Select an Identify provider:
-Identity provider is nothing but an authentication method that your end user is going to be authenticated. It can be your existing identity provider such as Gmail, Facebook, Github. Of course, you can also use Okta, AzureAD but thats available for enterprise plan. I have chosen One-Time pin, and Github.</p>
+<p>Select an Identify provider: Identity provider is nothing but an
+authentication method that your end user is going to be
+authenticated. It can be your existing identity provider such as
+Gmail, Facebook, Github. Of course, you can also use Okta, AzureAD
+but thats available for enterprise plan. I have chosen One-Time pin,
+and Github.</p>
 </li>
 <li>
-<p>Get a Login Page Domain:
-Here is what I created for this demo. <a href="https://covid19-how-to-secure-remote-application.cloudflareaccess.com/">covid19-how-to-secure-remote-application.cloudflareaccess.com</a>. Feel free to click, I assure there is no catch.
-<img src="/images/identity-provider.png" alt="set up with identity provider"></p>
+<p>Get a Login Page Domain: Here is what I created for this demo.
+<a href="https://covid19-how-to-secure-remote-application.cloudflareaccess.com/">covid19-how-to-secure-remote-application.cloudflareaccess.com</a>.
+Feel free to click, I assure there is no catch. <img src="/images/identity-provider.png" alt="set up withidentity provider"></p>
 </li>
 <li>
-<p>Set up an Access Control Policy:
-<a href="https://en.wikipedia.org/wiki/Access-control_list">Access-control List</a> defines who can do what. Similar to authorization in the databases.</p>
+<p>Set up an Access Control Policy: <a href="https://en.wikipedia.org/wiki/Access-control_list">Access-control
+List</a> defines who
+can do what. Similar to authorization in the databases.</p>
 <ul>
 <li>Provide a suitable Application Name.</li>
-<li>Specify the domain where your application is hosted on. For example, mine runs on <a href="https://viggy28.dev/book">viggy28.dev/book</a></li>
-<li>I have added Github organization, emails from a specific domain and individual emails as a different authentication method to reach my application. There are other ways like IP ranges. This shows how granular you can get into when it comes to policies.
+<li>Specify the domain where your application is hosted on. For
+example, mine runs on
+<a href="https://viggy28.dev/book">viggy28.dev/book</a></li>
+<li>I have added Github organization, emails from a specific domain
+and individual emails as a different authentication method to
+reach my application. There are other ways like IP ranges. This
+shows how granular you can get into when it comes to policies.
 <img src="/images/access-policies.png" alt="Access Policies"></li>
 </ul>
 </li>
 <li>
-<p>Access App Launch:
-We are almost there. I have set it up as <strong>Everyone</strong> to access the App. Since I have secured it using ACL in the above step I am not concerned about anyone trying to reach my application. If you want you can still use the same authentication methods used as your Identity Provider.
-<img src="/images/app-policies.png" alt="App Policies"></p>
+<p>Access App Launch: We are almost there. I have set it up as
+<strong>Everyone</strong> to access the App. Since I have secured it using ACL in
+the above step I am not concerned about anyone trying to reach my
+application. If you want you can still use the same authentication
+methods used as your Identity Provider. <img src="/images/app-policies.png" alt="AppPolicies"></p>
 </li>
 </ol>
-<p>That&rsquo;s it !!! Check out your app access URL. Mine is <a href="https://covid19-how-to-secure-remote-application.cloudflareaccess.com/">https://covid19-how-to-secure-remote-application.cloudflareaccess.com/</a></p>
-<p>I am using the One-Time pin Identity provider method to authenticate. <img src="/images/authentication.png" alt="authenticate"></p>
-<p>That email address is already added to our access policy. So I did get a 6 digit pin within a minute to that email! <a href="/images/one-time-pin.png">email</a>.</p>
-<p>Note: Not only HTTP based application, you can also secure SSH, RDP based applications. Access with [Gateway] (<a href="https://teams.cloudflare.com/gateway/">https://teams.cloudflare.com/gateway/</a>) one can build a fully fledged VPN.</p>
+<p>That’s it !!! Check out your app access URL. Mine is
+<a href="https://covid19-how-to-secure-remote-application.cloudflareaccess.com/">https://covid19-how-to-secure-remote-application.cloudflareaccess.com/</a></p>
+<p>I am using the One-Time pin Identity provider method to authenticate.
+<img src="/images/authentication.png" alt="authenticate"></p>
+<p>That email address is already added to our access policy. So I did get a
+6 digit pin within a minute to that email!
+<a href="/images/one-time-pin.png">email</a>.</p>
+<p>Note: Not only HTTP based application, you can also secure SSH, RDP
+based applications. Access with [Gateway]
+(<a href="https://teams.cloudflare.com/gateway/">https://teams.cloudflare.com/gateway/</a>)
+one can build a fully fledged VPN.</p>
+<ul>
+<li><a href="/tags/networking">networking</a></li>
+<li><a href="/tags/cloudflare">Cloudflare</a></li>
+</ul>
 <ul class="pa0">
   
    <li class="list">
-     <a href="/tags/networking" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">networking</a>
+     <a href="/tags/firebase" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">firebase</a>
    </li>
   
    <li class="list">
-     <a href="/tags/cloudflare" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Cloudflare</a>
+     <a href="/tags/hugo" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">hugo</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/hosting" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">hosting</a>
    </li>
   
 </ul>
@@ -263,6 +306,21 @@ We are almost there. I have set it up as <strong>Everyone</strong> to access the
 
 
 
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/article/gpg-in-simple-terms/">GPG in simple terms</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/article/hosting-a-simple-website/">How to host a simple static website</a>
+        </li>
+	    
+    </ul>
+</div>
+
 </aside>
 
   </article>
@@ -271,7 +329,7 @@ We are almost there. I have set it up as <strong>Everyone</strong> to access the
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://viggy28.dev" >
-    &copy; 2020 Home
+    &copy; 2021 Home
   </a>
     <div>
 
