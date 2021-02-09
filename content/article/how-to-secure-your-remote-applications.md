@@ -1,23 +1,10 @@
 ---
-date: 2019-03-23T18:00:08-04:00
+date: 2019-03-25T18:00:08-04:00
 description: "How to secure your remote applications"
 featured_image: "/images/vpn1.png"
 tags: ["firebase", "hugo", "hosting"]
 title: "How to secure your remote applications"
 ---
-
-How to secure your remote applications {.f2 .f1-l .fw2 .white-90 .mb0 .lh-title}
-======================================
-
-An overview of how to use Cloudflare Access to secure your applications {.fw1 .f5 .f3-l .white-80 .measure-wide-l .center .lh-copy .mt3 .mb4}
------------------------------------------------------------------------
-
-ARTICLES
-
-How to secure your remote applications {.f1 .athelas .mb1}
-======================================
-
-March 12, 2020 - 3 minutes read - 541 words
 
 I am writing this around the time where we are at the beginning of a
 [**global

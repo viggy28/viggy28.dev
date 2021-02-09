@@ -1,23 +1,10 @@
 ---
-date: 2019-03-23T18:00:08-04:00
+date: 2019-03-24T18:00:08-04:00
 description: "GPG in simple terms"
 featured_image: "/images/gpg.png"
 tags: ["firebase", "hugo", "hosting"]
 title: "GPG in simple terms"
 ---
-
-GPG in Simple Terms {.f2 .f1-l .fw2 .white-90 .mb0 .lh-title}
-===================
-
-Understanding the basics of GPG {.fw1 .f5 .f3-l .white-80 .measure-wide-l .center .lh-copy .mt3 .mb4}
--------------------------------
-
-ARTICLES
-
-GPG in Simple Terms {.f1 .athelas .mb1}
-===================
-
-March 9, 2020 - 2 minutes read - 342 words
 
 When I first heard GPG it was little daunting. I haven’t used it
 exactly, even though I was familar with the concept. So, I decided to
