@@ -89,18 +89,9 @@
     </item>
     
     <item>
-      <title>containers</title>
-      <link>https://viggy28.dev/tags/containers/</link>
-      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
-      
-      <guid>https://viggy28.dev/tags/containers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>firebase</title>
       <link>https://viggy28.dev/tags/firebase/</link>
-      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
+      <pubDate>Mon, 25 Mar 2019 18:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/tags/firebase/</guid>
       <description></description>
@@ -109,7 +100,7 @@
     <item>
       <title>hosting</title>
       <link>https://viggy28.dev/tags/hosting/</link>
-      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
+      <pubDate>Mon, 25 Mar 2019 18:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/tags/hosting/</guid>
       <description></description>
@@ -118,9 +109,18 @@
     <item>
       <title>hugo</title>
       <link>https://viggy28.dev/tags/hugo/</link>
-      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
+      <pubDate>Mon, 25 Mar 2019 18:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>containers</title>
+      <link>https://viggy28.dev/tags/containers/</link>
+      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/tags/containers/</guid>
       <description></description>
     </item>
     
