@@ -6,18 +6,25 @@
     <description>Recent content in firebase on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Mar 2019 18:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/firebase/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Mar 2019 18:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/firebase/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to secure your remote applications</title>
+      <link>https://viggy28.dev/article/how-to-secure-your-remote-applications/</link>
+      <pubDate>Mon, 25 Mar 2019 18:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/how-to-secure-your-remote-applications/</guid>
+      <description>I am writing this around the time where we are at the beginning of a global pandemic. Everyone is trying to figure out how to keep their business up and running during this challenging period. Most of the employers have mandated work from remote policy. One of the main challenges is how to connect to your applications remotely. Traditionally the answer is VPN. There are so many challenges wrt scalability, availability, and performance of these traditional VPN software.</description>
+    </item>
+    
     <item>
       <title>GPG in simple terms</title>
       <link>https://viggy28.dev/article/gpg-in-simple-terms/</link>
-      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
+      <pubDate>Sun, 24 Mar 2019 18:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/article/gpg-in-simple-terms/</guid>
-      <description>GPG in Simple Terms Understanding the basics of GPG ARTICLES
-GPG in Simple Terms March 9, 2020 - 2 minutes read - 342 words
-When I first heard GPG it was little daunting. I haven’t used it exactly, even though I was familar with the concept. So, I decided to dig deeper and understand how to use it.
+      <description>When I first heard GPG it was little daunting. I haven’t used it exactly, even though I was familar with the concept. So, I decided to dig deeper and understand how to use it.
 GnuPG (GPG) is an implementation of PGP
-The simple idea is that you generate a key pair: secret or private key and a public key.</description>
+The simple idea is that you generate a key pair: secret or private key and a public key. You can provide your public key to anyone. They can then encrypt either a secret or file using your public key.</description>
     </item>
     
     <item>
@@ -27,17 +34,6 @@ The simple idea is that you generate a key pair: secret or private key and a pub
       
       <guid>https://viggy28.dev/article/hosting-a-simple-website/</guid>
       <description>We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&amp;rsquo;t like. I will leave the reason to you Step1: Buying a domain [This] (https://viggy28.dev) websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.</description>
-    </item>
-    
-    <item>
-      <title>How to secure your remote applications</title>
-      <link>https://viggy28.dev/article/how-to-secure-your-remote-applications/</link>
-      <pubDate>Sat, 23 Mar 2019 18:00:08 -0400</pubDate>
-      
-      <guid>https://viggy28.dev/article/how-to-secure-your-remote-applications/</guid>
-      <description>How to secure your remote applications An overview of how to use Cloudflare Access to secure your applications ARTICLES
-How to secure your remote applications March 12, 2020 - 3 minutes read - 541 words
-I am writing this around the time where we are at the beginning of a global pandemic. Everyone is trying to figure out how to keep their business up and running during this challenging period. Most of the employers have mandated work from remote policy.</description>
     </item>
     
   </channel>
