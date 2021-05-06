@@ -3,6 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://viggy28.dev/tags/c/</loc>
+    <lastmod>2021-05-05T20:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/go/</loc>
+    <lastmod>2021-05-05T20:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/postgres/</loc>
+    <lastmod>2021-05-05T20:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/</loc>
+    <lastmod>2021-05-05T20:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/article/libpq-postgres-go/</loc>
+    <lastmod>2021-05-05T20:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/</loc>
+    <lastmod>2021-05-05T20:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://viggy28.dev/gopostgres/</loc>
     <lastmod>2021-02-10T11:00:00-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -24,15 +66,8 @@
   </url>
   
   <url>
-    <loc>https://viggy28.dev/tags/</loc>
-    <lastmod>2021-02-08T11:00:08-04:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/</loc>
-    <lastmod>2021-02-08T11:00:08-04:00</lastmod>
+    <loc>https://viggy28.dev/gopostgres/go-context/</loc>
+    <lastmod>2020-10-02T11:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -130,13 +165,6 @@
   
   <url>
     <loc>https://viggy28.dev/article/postgres-haproxy/</loc>
-    <lastmod>2019-04-06T18:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/tags/postgres/</loc>
     <lastmod>2019-04-06T18:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

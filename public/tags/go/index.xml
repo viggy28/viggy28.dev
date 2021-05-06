@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on Home</title>
+    <link>https://viggy28.dev/tags/go/</link>
+    <description>Recent content in Go on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 May 2021 20:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding libpq in Postgres, Debian and Go</title>
+      <link>https://viggy28.dev/article/libpq-postgres-go/</link>
+      <pubDate>Wed, 05 May 2021 20:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/libpq-postgres-go/</guid>
+      <description>Libpq-Postgres-Go After I started working on Postgres, I have heard this term libpq enough times, but never had a good grasp of it. After digging around this topic for a couple of days, here is my understanding.
+From the Postgres doc https://www.postgresql.org/docs/9.5/libpq.html,
+ libpq is the C application programmer&amp;rsquo;s interface to PostgreSQL. libpq is a set of library functions that allow client programs to pass queries to the PostgreSQL backend server and to receive the results of these queries</description>
+    </item>
+    
+    <item>
+      <title>go context</title>
+      <link>https://viggy28.dev/gopostgres/go-context/</link>
+      <pubDate>Fri, 02 Oct 2020 11:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/gopostgres/go-context/</guid>
+      <description>Understanding context in Golang through Postgres I was trying to learn Go package context especially with respect to Postgres. On a very high level context provides context to the operation. Yeah, I agree, the previous statement doesn&amp;rsquo;t really add much value, but hold on I don&amp;rsquo;t really know how to explain it, rather let&amp;rsquo;s go over some code. Sometimes its easier to understand by seeing it in action :)
+The complete program is here</description>
+    </item>
+    
+  </channel>
+</rss>
