@@ -6,14 +6,16 @@
     <description>Recent content in Vignesh Ravichandran on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Feb 2021 11:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 May 2021 20:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>gopostgres</title>
-      <link>https://viggy28.dev/gopostgres/</link>
-      <pubDate>Wed, 10 Feb 2021 11:00:00 -0500</pubDate>
+      <title>Understanding libpq in Postgres, Debian and Go</title>
+      <link>https://viggy28.dev/article/libpq-postgres-go/</link>
+      <pubDate>Wed, 05 May 2021 20:00:08 -0400</pubDate>
       
-      <guid>https://viggy28.dev/gopostgres/</guid>
-      <description></description>
+      <guid>https://viggy28.dev/article/libpq-postgres-go/</guid>
+      <description>Libpq-Postgres-Go After I started working on Postgres, I have heard this term libpq enough times, but never had a good grasp of it. After digging around this topic for a couple of days, here is my understanding.
+From the Postgres doc https://www.postgresql.org/docs/9.5/libpq.html,
+ libpq is the C application programmer&amp;rsquo;s interface to PostgreSQL. libpq is a set of library functions that allow client programs to pass queries to the PostgreSQL backend server and to receive the results of these queries</description>
     </item>
     
     <item>
@@ -24,6 +26,16 @@
       <guid>https://viggy28.dev/book/dont-make-me-think/</guid>
       <description>This is a guest post by Suvam Prasad (https://www.linkedin.com/in/suvamprasad/). I am very glad to have his post.
 This book is very special to me because it helped me to discover new perspectives of web designing mythology. The book is written by Steve Krug(a famous user experience professional). The book contained hardly 216 pages that give you enough knowledge and idea to understand web design usability, user accessibility, and how to be a great user experience designer.</description>
+    </item>
+    
+    <item>
+      <title>go context</title>
+      <link>https://viggy28.dev/gopostgres/go-context/</link>
+      <pubDate>Fri, 02 Oct 2020 11:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/gopostgres/go-context/</guid>
+      <description>Understanding context in Golang through Postgres I was trying to learn Go package context especially with respect to Postgres. On a very high level context provides context to the operation. Yeah, I agree, the previous statement doesn&amp;rsquo;t really add much value, but hold on I don&amp;rsquo;t really know how to explain it, rather let&amp;rsquo;s go over some code. Sometimes its easier to understand by seeing it in action :)
+The complete program is here</description>
     </item>
     
     <item>

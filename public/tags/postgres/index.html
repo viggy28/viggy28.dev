@@ -12,7 +12,7 @@
     <meta name="generator" content="Hugo 0.80.0" />
     
     
-      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+      <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     
 
     
@@ -35,16 +35,29 @@
 <meta property="og:description" content="The last theme you&#39;ll ever need. Maybe." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://viggy28.dev/tags/postgres/" />
-<meta property="og:updated_time" content="2019-04-06T18:00:00+00:00" />
+<meta property="og:updated_time" content="2021-05-05T20:00:08-04:00" />
 <meta itemprop="name" content="postgres">
 <meta itemprop="description" content="The last theme you&#39;ll ever need. Maybe.">
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="postgres"/>
 <meta name="twitter:description" content="The last theme you&#39;ll ever need. Maybe."/>
 
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-138247776-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
   </head>
 
-  <body class="ma0 avenir bg-near-white">
+  <body class="ma0 avenir bg-near-white production">
 
     
 
@@ -78,6 +91,12 @@
           <li class="list f5 f4-ns fw4 dib pr3">
             <a class="hover-white no-underline white-90" href="/book/" title="Books page">
               Books
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/gopostgres/" title="gopostgres page">
+              gopostgres
             </a>
           </li>
           
@@ -154,6 +173,43 @@
   </article>
   <div class="mw8 center">    
     <section class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100  mb4 bg-white">
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Article</span>
+    <h1 class="f3 near-black">
+      <a href="/article/libpq-postgres-go/" class="link black dim">
+        Understanding libpq in Postgres, Debian and Go
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Libpq-Postgres-Go After I started working on Postgres, I have heard this term libpq enough times, but never had a good grasp of it. After digging around this topic for a couple of days, here is my understanding.
+From the Postgres doc https://www.postgresql.org/docs/9.5/libpq.html,
+ libpq is the C application programmer&rsquo;s interface to PostgreSQL. libpq is a set of library functions that allow client programs to pass queries to the PostgreSQL backend server and to receive the results of these queries
+    </div>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Gopostgres</span>
+    <h1 class="f3 near-black">
+      <a href="/gopostgres/go-context/" class="link black dim">
+        go context
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Understanding context in Golang through Postgres I was trying to learn Go package context especially with respect to Postgres. On a very high level context provides context to the operation. Yeah, I agree, the previous statement doesn&rsquo;t really add much value, but hold on I don&rsquo;t really know how to explain it, rather let&rsquo;s go over some code. Sometimes its easier to understand by seeing it in action :)
+The complete program is here
+    </div>
+  </div>
+</div>
+
+        </div>
       
         <div class="relative w-100  mb4 bg-white">
           <div class="relative w-100 mb4 bg-white nested-copy-line-height">
