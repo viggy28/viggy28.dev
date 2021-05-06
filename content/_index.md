@@ -1,7 +1,7 @@
 ---
 title: "Vignesh Ravichandran"
 featured_image: ''
-description: "Yet another engineer"
+description: "SRE @ orange cloud company"
 ---
 
-I believe an honest feedback is the biggest gift. I would appreciate if you can give me one.
+Tech world is smaller than one imagines. I have countless examples.

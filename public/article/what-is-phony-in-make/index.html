@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Home  | Vignesh Ravichandran</title>
+    <title>Home  | Understanding .phony in makefile</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -27,20 +27,25 @@
     
 
     
-      <link href="https://viggy28.dev/index.xml" rel="alternate" type="application/rss+xml" title="Home" />
-      <link href="https://viggy28.dev/index.xml" rel="feed" type="application/rss+xml" title="Home" />
-    
 
-    <meta property="og:title" content="Vignesh Ravichandran" />
-<meta property="og:description" content="SRE @ orange cloud company" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://viggy28.dev/" />
-<meta property="og:updated_time" content="2021-05-05T23:00:08-04:00" />
-<meta itemprop="name" content="Vignesh Ravichandran">
-<meta itemprop="description" content="SRE @ orange cloud company">
+    <meta property="og:title" content="Understanding .phony in makefile" />
+<meta property="og:description" content=".phony is a keyword in makefile" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://viggy28.dev/article/what-is-phony-in-make/" />
+<meta property="article:published_time" content="2021-05-05T23:00:08-04:00" />
+<meta property="article:modified_time" content="2021-05-05T23:00:08-04:00" />
+<meta itemprop="name" content="Understanding .phony in makefile">
+<meta itemprop="description" content=".phony is a keyword in makefile">
+<meta itemprop="datePublished" content="2021-05-05T23:00:08-04:00" />
+<meta itemprop="dateModified" content="2021-05-05T23:00:08-04:00" />
+<meta itemprop="wordCount" content="268">
+
+
+
+<meta itemprop="keywords" content="make,linux," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Vignesh Ravichandran"/>
-<meta name="twitter:description" content="SRE @ orange cloud company"/>
+<meta name="twitter:title" content="Understanding .phony in makefile"/>
+<meta name="twitter:description" content=".phony is a keyword in makefile"/>
 
       
 <script type="application/javascript">
@@ -60,9 +65,13 @@ if (!doNotTrack) {
   <body class="ma0 avenir bg-near-white production">
 
     
+   
+  
 
-  <header>
-    <div class="pb3-m pb6-l bg-black">
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://viggy28.dev/images/rpi.jpeg');">
+    <div class="pb3-m pb6-l bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
     <a href="https://viggy28.dev" class="f3 fw2 hover-white no-underline white-90 dib">
@@ -152,249 +161,137 @@ if (!doNotTrack) {
   </div>
 </nav>
 
-      <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          Vignesh Ravichandran
-        </h1>
+      <div class="tc-l pv6 ph3 ph4-ns">
         
-          <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
-            SRE @ orange cloud company
-          </h2>
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Understanding .phony in makefile</h1>
+          
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              .phony is a keyword in makefile
+            </h2>
+          
         
       </div>
     </div>
   </header>
 
 
+
     <main class="pb7" role="main">
       
-  <article class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray">
-    <p>Tech world is smaller than one imagines. I have countless examples.</p>
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        ARTICLES
+      </p>
+      <h1 class="f1 athelas mb1">Understanding .phony in makefile</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2021-05-05T23:00:08-04:00">May 5, 2021</time>      
+      
+      
+        <span class="f6 mv4 dib tracked"> - 2 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 268 words</span>
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>This is a crosspost from my <a href="https://github.com/viggy28/til/blob/master/docs/2021-04-15T10-02-48-makefile.md">TIL</a></p>
+<p>What the heck is <code>.PHONY</code> in makefile? I have seen this for so long but I always shrugged off. Whatever that is. Well, finally I decided to learn about it.</p>
+<p>A bit of introduction to Makefile syntax.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">target: prerequisites
+&lt;TAB&gt; recipe
+</code></pre></div><p>The first target in a <code>Makefile</code> will be executed by default when we call <code>make</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">blah</span><span style="color:#f92672">:</span> blah.o
+    cc blah.o -o blah <span style="color:#75715e"># Runs third</span>
+
+<span style="color:#a6e22e">blah.o</span><span style="color:#f92672">:</span> blah.c
+    cc -c blah.c -o blah.o <span style="color:#75715e"># Runs second</span>
+
+<span style="color:#a6e22e">blah.c</span><span style="color:#f92672">:</span>
+    echo <span style="color:#e6db74">&#34;int main() { return 0; }&#34;</span> &gt; blah.c <span style="color:#75715e"># Runs first</span>
+</code></pre></div><p>In the above example, blah, blah.o and blah.c are targets and they are all files.</p>
+<p>Then I created a Makefile</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">viggy28@localhost</span><span style="color:#f92672">:</span>~$ cat Makefile
+<span style="color:#a6e22e">date</span><span style="color:#f92672">:</span>
+	date
+<span style="color:#a6e22e">hostname</span><span style="color:#f92672">:</span>
+	hostname
+<span style="color:#a6e22e">hostnameee</span><span style="color:#f92672">:</span>
+	hostnameee	
+</code></pre></div><p>If you have a file named as the target already in your filesystem, then make <code>target  </code> doesn&rsquo;t work.</p>
+<p>Example.  <code>date</code> is a target, however I have touched a file called <code>date</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">viggy28@localhost:~$ touch date
+
+viggy28@localhost:~$ make date
+make: <span style="color:#e6db74">&#39;date&#39;</span> is up to date.
+
+viggy28@localhost:~$ rm date
+
+viggy28@localhost:~$ make date
+date
+Thu Apr <span style="color:#ae81ff">15</span> 23:28:01 UTC <span style="color:#ae81ff">2021</span>
+</code></pre></div><p>So, how can I avoid that? Enter <code>.PHONY</code>. If you are not targeting a file then change that target to .PHONY</p>
+<p>Let&rsquo;s continue the same example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">viggy28@localhost</span><span style="color:#f92672">:</span>~$ cat Makefile
+<span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> date
+<span style="color:#a6e22e">date</span><span style="color:#f92672">:</span>
+	date
+<span style="color:#a6e22e">hostname</span><span style="color:#f92672">:</span>
+	hostname
+<span style="color:#a6e22e">hostnameee</span><span style="color:#f92672">:</span>
+	hostnameee
+</code></pre></div><p>I have made target <code>date</code> as a phony target.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">viggy28@localhost:~$ ls -lrth date
+-rw-r--r-- <span style="color:#ae81ff">1</span> viggy28 viggy28 <span style="color:#ae81ff">0</span> Apr <span style="color:#ae81ff">15</span> 23:51 date
+
+viggy28@localhost:~$ make date
+date
+Thu Apr <span style="color:#ae81ff">15</span> 23:28:01 UTC <span style="color:#ae81ff">2021</span>
+</code></pre></div><p>Even though the file named date does exist, still the target <code>date</code> does work. That answers what <code>.PHONY</code> does.</p>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/make" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">make</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/linux" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">linux</a>
+   </li>
+  
+</ul>
+<div class="mt6">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "viggy28-dev" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
 
   </article>
-  
-  
-  
-  
-  
-  
-  
-    
-    
-
-    <div class="pa3 pa4-ns w-100 w-70-ns center">
-      
-       
-          <h1 class="flex-none">
-            Recent Articles
-          </h1>
-        
-
-      
-
-      <section class="w-100 mw8">
-        
-        
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-          
-        
-        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/article/what-is-phony-in-make/" class="db grow">
-            <img src="https://viggy28.dev/images/rpi.jpeg" class="img" alt="image from Understanding .phony in makefile">
-          </a>
-        </div>
-      
-      <div class="blah w-100 w-60-ns pl3-ns">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/article/what-is-phony-in-make/" class="color-inherit dim link">
-            Understanding .phony in makefile
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          This is a crosspost from my TIL
-What the heck is .PHONY in makefile? I have seen this for so long but I always shrugged off. Whatever that is. Well, finally I decided to learn about it.
-A bit of introduction to Makefile syntax.
-target: prerequisites &lt;TAB&gt; recipe The first target in a Makefile will be executed by default when we call make.
-blah: blah.o cc blah.o -o blah # Runs third blah.
-        </div>
-          <a href="/article/what-is-phony-in-make/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-          
-        
-        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/article/libpq-postgres-go/" class="db grow">
-            <img src="https://viggy28.dev/images/postgres-logo.png" class="img" alt="image from Understanding libpq in Postgres, Debian and Go">
-          </a>
-        </div>
-      
-      <div class="blah w-100 w-60-ns pl3-ns">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/article/libpq-postgres-go/" class="color-inherit dim link">
-            Understanding libpq in Postgres, Debian and Go
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          Libpq-Postgres-Go After I started working on Postgres, I have heard this term libpq enough times, but never had a good grasp of it. After digging around this topic for a couple of days, here is my understanding.
-From the Postgres doc https://www.postgresql.org/docs/9.5/libpq.html,
- libpq is the C application programmer&rsquo;s interface to PostgreSQL. libpq is a set of library functions that allow client programs to pass queries to the PostgreSQL backend server and to receive the results of these queries
-        </div>
-          <a href="/article/libpq-postgres-go/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-          
-        
-        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/article/companies-where-i-can-refer/" class="db grow">
-            <img src="https://viggy28.dev/images/forhire.jpeg" class="img" alt="image from Here is one way how I can help">
-          </a>
-        </div>
-      
-      <div class="blah w-100 w-60-ns pl3-ns">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/article/companies-where-i-can-refer/" class="color-inherit dim link">
-            Here is one way how I can help
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          This aricle is inspired by [Give and Take] (https://www.adamgrant.net/give-and-take) by [Adam Grant] (https://www.adamgrant.net/). I was wondering how can I help my friends and network. Searching a job is something stressful and we all have been through. Once my wife and I searched for a year and finally we moved to San Francisco.
-So far its been a challenge for my network to know whether I can refer to a particular company.
-        </div>
-          <a href="/article/companies-where-i-can-refer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/article/cloudrun-cicd/" class="color-inherit dim link">
-            How to deploy a cloud run application using Gitlab CI/CD
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          In Google Cloud Next 2019, they introduced a new product called [Cloud Run] (https://cloud.google.com/run/). I&rsquo;ve been using it from the EAP (Early Access Program) days. [As the name suggests, basically it runs your docker image. You might be familiar with other serverless products such as [Cloud Function] (https://cloud.google.com/functions/) or [lambda] (https://aws.amazon.com/lambda/) where you provide your source code instead of a docker image. In my opinion, Cloud Run is more flexible than functions.
-        </div>
-          <a href="/article/cloudrun-cicd/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-          
-        
-        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/article/postgres-haproxy/" class="db grow">
-            <img src="https://viggy28.dev/images/postgres-logo.png" class="img" alt="image from Part 2/2: How to set up HAProxy for an active-active postgres databases">
-          </a>
-        </div>
-      
-      <div class="blah w-100 w-60-ns pl3-ns">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/article/postgres-haproxy/" class="color-inherit dim link">
-            Part 2/2: How to set up HAProxy for an active-active postgres databases
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          Step 1: Setting up HAProxy I hope you gone through [Part1] (https://viggy28.dev/article/postgres-active-active-replication/) of this series. Perhaps, one thing you might have noticed is that I&rsquo;ve to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In a production environment, most likely you going to run the databases on a different host). The main reason for active-active replication is high availability.
-        </div>
-          <a href="/article/postgres-haproxy/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-      </section>
-
-      
-      <section class="w-100">
-        <h1 class="f3">More</h1>
-        
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/article/postgres-active-active-replication/" class="link black dim">
-              Part 1/2: How to set up active-active replication in postgres using BDR
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/article/how-to-secure-your-remote-applications/" class="link black dim">
-              How to secure your remote applications
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/article/gpg-in-simple-terms/" class="link black dim">
-              GPG in simple terms
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/article/functions-vs-containers/" class="link black dim">
-              Functions vs Containers
-            </a>
-          </h2>
-        
-
-        
-        
-          <a href="/article/" class="link db f6 pa2 br3 bg-mid-gray white dim w4 tc">All Articles</a>
-        
-        </section>
-      
-
-      </div>
-  
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">

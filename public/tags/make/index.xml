@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>make on Home</title>
+    <link>https://viggy28.dev/tags/make/</link>
+    <description>Recent content in make on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 May 2021 23:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/make/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding .phony in makefile</title>
+      <link>https://viggy28.dev/article/what-is-phony-in-make/</link>
+      <pubDate>Wed, 05 May 2021 23:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/what-is-phony-in-make/</guid>
+      <description>This is a crosspost from my TIL
+What the heck is .PHONY in makefile? I have seen this for so long but I always shrugged off. Whatever that is. Well, finally I decided to learn about it.
+A bit of introduction to Makefile syntax.
+target: prerequisites &amp;lt;TAB&amp;gt; recipe The first target in a Makefile will be executed by default when we call make.
+blah: blah.o cc blah.o -o blah # Runs third blah.</description>
+    </item>
+    
+  </channel>
+</rss>

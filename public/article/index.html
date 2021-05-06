@@ -176,6 +176,25 @@ if (!doNotTrack) {
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Article</span>
     <h1 class="f3 near-black">
+      <a href="/article/what-is-phony-in-make/" class="link black dim">
+        Understanding .phony in makefile
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      This is a crosspost from my TIL
+What the heck is .PHONY in makefile? I have seen this for so long but I always shrugged off. Whatever that is. Well, finally I decided to learn about it.
+A bit of introduction to Makefile syntax.
+target: prerequisites &lt;TAB&gt; recipe The first target in a Makefile will be executed by default when we call make.
+blah: blah.o cc blah.o -o blah # Runs third blah.
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Article</span>
+    <h1 class="f3 near-black">
       <a href="/article/libpq-postgres-go/" class="link black dim">
         Understanding libpq in Postgres, Debian and Go
       </a>
@@ -247,21 +266,6 @@ So far its been a challenge for my network to know whether I can refer to a part
       Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with [BDR] (https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/).
 I didn&rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp; docker compose.
 Step1: Running 2 Postgres instances using docker container Thanks to [jgiannuzzi] (https://github.com/jgiannuzzi), who created a docker [image] (https://hub.docker.com/r/jgiannuzzi/postgres-bdr) with Postgres and BDR.
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Article</span>
-    <h1 class="f3 near-black">
-      <a href="/article/how-to-secure-your-remote-applications/" class="link black dim">
-        How to secure your remote applications
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      I am writing this around the time where we are at the beginning of a global pandemic. Everyone is trying to figure out how to keep their business up and running during this challenging period. Most of the employers have mandated work from remote policy. One of the main challenges is how to connect to your applications remotely. Traditionally the answer is VPN. There are so many challenges wrt scalability, availability, and performance of these traditional VPN software.
     </div>
   </div>
 </div>

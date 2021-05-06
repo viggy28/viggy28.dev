@@ -5,7 +5,7 @@ deploy-job:
   stage: deploy
   image: vira28/hugo-firebase:1.0
   script:
-    - HUGO_ENV=production && hugo
+    - HUGO_ENV=production hugo
     - firebase --token "$FIREBASE_TOKEN" --project $PROD_GCP_PROJECTID deploy
   environment:
     name: prod

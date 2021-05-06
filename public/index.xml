@@ -6,7 +6,20 @@
     <description>Recent content in Vignesh Ravichandran on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 May 2021 20:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 May 2021 23:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding .phony in makefile</title>
+      <link>https://viggy28.dev/article/what-is-phony-in-make/</link>
+      <pubDate>Wed, 05 May 2021 23:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/what-is-phony-in-make/</guid>
+      <description>This is a crosspost from my TIL
+What the heck is .PHONY in makefile? I have seen this for so long but I always shrugged off. Whatever that is. Well, finally I decided to learn about it.
+A bit of introduction to Makefile syntax.
+target: prerequisites &amp;lt;TAB&amp;gt; recipe The first target in a Makefile will be executed by default when we call make.
+blah: blah.o cc blah.o -o blah # Runs third blah.</description>
+    </item>
+    
     <item>
       <title>Understanding libpq in Postgres, Debian and Go</title>
       <link>https://viggy28.dev/article/libpq-postgres-go/</link>
