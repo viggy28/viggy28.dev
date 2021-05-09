@@ -5,8 +5,7 @@ featured_image: ''
 ---
 <!--- {{< figure src="/images/monumental_valley.png" title="A drop in the ocean" >}} --> 
 
+Currently working as a Site Reliability Engineer at an Orange Cloud Company in San Francisco.
 Started as an Oracle DBA. Worked on High-Availability, Performance tuning and reliability.
 
-Currently working on AWS, Google Cloud & some other interesting projects.
-
-Alumni of University of Arkansas (Walton College of Business) & SASTRA university
+Alumni of University of Arkansas (Walton College of Business) & SASTRA university.
