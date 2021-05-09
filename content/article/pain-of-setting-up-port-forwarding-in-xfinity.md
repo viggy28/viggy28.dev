@@ -1,7 +1,7 @@
 ---
 date: 2021-05-07T23:00:08-04:00
 description: "Challenges and concepts learnt during port forwarding set up"
-featured_image: "/images/rpi.jpeg"
+featured_image: "/images/modem.JPG"
 tags: ["networking"]
 title: "port forwarding in xfinity"
 ---
