@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JWT on Home</title>
+    <link>https://viggy28.dev/tags/jwt/</link>
+    <description>Recent content in JWT on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Aug 2021 00:20:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with JWT</title>
+      <link>https://viggy28.dev/article/getting-started-with-jwt/</link>
+      <pubDate>Mon, 09 Aug 2021 00:20:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/getting-started-with-jwt/</guid>
+      <description>Disclaimer: Whatever I write here is my learnings. So, don&amp;rsquo;t take these words as granted or reference. Also, please lmk if there are any errors.
+I have often come across this term JWT. I knew the definition - Json Web Token, but honestly that&amp;rsquo;s all I knew for a veryyyy longgg time. Recently, I came across a problem where I have been told that JWT might be a good solution for it.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -8,6 +8,35 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 02 Mar 2017 12:00:00 -0500</lastBuildDate><atom:link href="https://viggy28.dev/article/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Getting Started with JWT</title>
+      <link>https://viggy28.dev/article/getting-started-with-jwt/</link>
+      <pubDate>Mon, 09 Aug 2021 00:20:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/getting-started-with-jwt/</guid>
+      <description>Disclaimer: Whatever I write here is my learnings. So, don&amp;rsquo;t take these words as granted or reference. Also, please lmk if there are any errors.
+I have often come across this term JWT. I knew the definition - Json Web Token, but honestly that&amp;rsquo;s all I knew for a veryyyy longgg time. Recently, I came across a problem where I have been told that JWT might be a good solution for it.</description>
+    </item>
+    
+    <item>
+      <title>Setting up ghost in raspberry pi for free</title>
+      <link>https://viggy28.dev/article/setting-up-ghost-in-raspberry-pi-for-free/</link>
+      <pubDate>Sun, 09 May 2021 13:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/setting-up-ghost-in-raspberry-pi-for-free/</guid>
+      <description>This is part of my Today I Learnt series where I share whatever I am learning something new. After having issues with port forwarding in Xfinity I decided to look for alternative solutions. I have used Cloudflare tunnel (used to be called Argo Tunnel) in the past to expose websites running on my laptop to the Internet. So, I decided to try it out for Ghost blogging site which I am setting up for my dad.</description>
+    </item>
+    
+    <item>
+      <title>port forwarding in xfinity</title>
+      <link>https://viggy28.dev/article/pain-of-setting-up-port-forwarding-in-xfinity/</link>
+      <pubDate>Fri, 07 May 2021 23:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/article/pain-of-setting-up-port-forwarding-in-xfinity/</guid>
+      <description>This article is part of my Today I Learnt. I have been trying to share whatever I learnt newly on the day. Some of them are basic, but still I want to write it down for two reasons.
+ To help me understand the concepts better Potential help other people who running in to same issue.  Alright, It&amp;rsquo;s all started when I bought a new domain (synergy.net) for my Dad.</description>
+    </item>
+    
+    <item>
       <title>Understanding .phony in makefile</title>
       <link>https://viggy28.dev/article/what-is-phony-in-make/</link>
       <pubDate>Wed, 05 May 2021 23:00:08 -0400</pubDate>

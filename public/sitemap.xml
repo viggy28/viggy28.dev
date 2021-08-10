@@ -3,6 +3,76 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://viggy28.dev/article/getting-started-with-jwt/</loc>
+    <lastmod>2021-08-09T00:20:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/go/</loc>
+    <lastmod>2021-08-09T00:20:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/jwt/</loc>
+    <lastmod>2021-08-09T00:20:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/</loc>
+    <lastmod>2021-08-09T00:20:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/</loc>
+    <lastmod>2021-08-09T00:20:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/cloudflare/</loc>
+    <lastmod>2021-05-09T13:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/raspberrypi/</loc>
+    <lastmod>2021-05-09T13:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/article/setting-up-ghost-in-raspberry-pi-for-free/</loc>
+    <lastmod>2021-05-09T13:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/tags/networking/</loc>
+    <lastmod>2021-05-07T23:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://viggy28.dev/article/pain-of-setting-up-port-forwarding-in-xfinity/</loc>
+    <lastmod>2021-05-07T23:00:08-04:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://viggy28.dev/tags/linux/</loc>
     <lastmod>2021-05-05T23:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -17,13 +87,6 @@
   </url>
   
   <url>
-    <loc>https://viggy28.dev/tags/</loc>
-    <lastmod>2021-05-05T23:00:08-04:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://viggy28.dev/article/what-is-phony-in-make/</loc>
     <lastmod>2021-05-05T23:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -31,21 +94,7 @@
   </url>
   
   <url>
-    <loc>https://viggy28.dev/</loc>
-    <lastmod>2021-05-05T23:00:08-04:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://viggy28.dev/tags/c/</loc>
-    <lastmod>2021-05-05T20:00:08-04:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://viggy28.dev/tags/go/</loc>
     <lastmod>2021-05-05T20:00:08-04:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

@@ -6,18 +6,15 @@
     <description>Recent content in networking on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Mar 2020 18:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://viggy28.dev/tags/networking/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 07 May 2021 23:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>How to secure your remote applications</title>
-      <link>https://viggy28.dev/article/how-to-secure-your-remote-applications/</link>
-      <pubDate>Thu, 12 Mar 2020 18:00:00 +0000</pubDate>
+      <title>port forwarding in xfinity</title>
+      <link>https://viggy28.dev/article/pain-of-setting-up-port-forwarding-in-xfinity/</link>
+      <pubDate>Fri, 07 May 2021 23:00:08 -0400</pubDate>
       
-      <guid>https://viggy28.dev/article/how-to-secure-your-remote-applications/</guid>
-      <description>I am writing this around the time where we are at the beginning of a global pandemic. Everyone is trying to figure out how to keep their business up and running during this challenging period. Most of the employers have mandated work from remote policy. One of the main challenges is how to connect to your applications remotely. Traditionally the answer is VPN. There are so many challenges wrt scalability, availability, and performance of these traditional VPN software.</description>
+      <guid>https://viggy28.dev/article/pain-of-setting-up-port-forwarding-in-xfinity/</guid>
+      <description>This article is part of my Today I Learnt. I have been trying to share whatever I learnt newly on the day. Some of them are basic, but still I want to write it down for two reasons.
+ To help me understand the concepts better Potential help other people who running in to same issue.  Alright, It&amp;rsquo;s all started when I bought a new domain (synergy.net) for my Dad.</description>
     </item>
     
   </channel>

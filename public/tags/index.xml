@@ -6,7 +6,52 @@
     <description>Recent content in Tags on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 May 2021 23:00:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Aug 2021 00:20:08 -0400</lastBuildDate><atom:link href="https://viggy28.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go</title>
+      <link>https://viggy28.dev/tags/go/</link>
+      <pubDate>Mon, 09 Aug 2021 00:20:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JWT</title>
+      <link>https://viggy28.dev/tags/jwt/</link>
+      <pubDate>Mon, 09 Aug 2021 00:20:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/tags/jwt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloudflare</title>
+      <link>https://viggy28.dev/tags/cloudflare/</link>
+      <pubDate>Sun, 09 May 2021 13:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/tags/cloudflare/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raspberrypi</title>
+      <link>https://viggy28.dev/tags/raspberrypi/</link>
+      <pubDate>Sun, 09 May 2021 13:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/tags/raspberrypi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>networking</title>
+      <link>https://viggy28.dev/tags/networking/</link>
+      <pubDate>Fri, 07 May 2021 23:00:08 -0400</pubDate>
+      
+      <guid>https://viggy28.dev/tags/networking/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>linux</title>
       <link>https://viggy28.dev/tags/linux/</link>
@@ -31,15 +76,6 @@
       <pubDate>Wed, 05 May 2021 20:00:08 -0400</pubDate>
       
       <guid>https://viggy28.dev/tags/c/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go</title>
-      <link>https://viggy28.dev/tags/go/</link>
-      <pubDate>Wed, 05 May 2021 20:00:08 -0400</pubDate>
-      
-      <guid>https://viggy28.dev/tags/go/</guid>
       <description></description>
     </item>
     

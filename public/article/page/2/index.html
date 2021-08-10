@@ -176,6 +176,53 @@ if (!doNotTrack) {
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Article</span>
     <h1 class="f3 near-black">
+      <a href="/article/cloudrun-cicd/" class="link black dim">
+        How to deploy a cloud run application using Gitlab CI/CD
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      In Google Cloud Next 2019, they introduced a new product called [Cloud Run] (https://cloud.google.com/run/). I&rsquo;ve been using it from the EAP (Early Access Program) days. [As the name suggests, basically it runs your docker image. You might be familiar with other serverless products such as [Cloud Function] (https://cloud.google.com/functions/) or [lambda] (https://aws.amazon.com/lambda/) where you provide your source code instead of a docker image. In my opinion, Cloud Run is more flexible than functions.
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Article</span>
+    <h1 class="f3 near-black">
+      <a href="/article/postgres-haproxy/" class="link black dim">
+        Part 2/2: How to set up HAProxy for an active-active postgres databases
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Step 1: Setting up HAProxy I hope you gone through [Part1] (https://viggy28.dev/article/postgres-active-active-replication/) of this series. Perhaps, one thing you might have noticed is that I&rsquo;ve to connect to the specific master database. In our case, since both the databases are running on docker, only the localhost port is different. (In a production environment, most likely you going to run the databases on a different host). The main reason for active-active replication is high availability.
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Article</span>
+    <h1 class="f3 near-black">
+      <a href="/article/postgres-active-active-replication/" class="link black dim">
+        Part 1/2: How to set up active-active replication in postgres using BDR
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Postgres doesn&rsquo;t support active-active replication natively. As of this writing, we have to rely on 3rd party tools. I decided to go with [BDR] (https://www.2ndquadrant.com/en/resources/postgres-bdr-2ndquadrant/).
+I didn&rsquo;t want to spin up multiple VMs. So, the obvious choice is docker. Make sure you have docker on mac &amp; docker compose.
+Step1: Running 2 Postgres instances using docker container Thanks to [jgiannuzzi] (https://github.com/jgiannuzzi), who created a docker [image] (https://hub.docker.com/r/jgiannuzzi/postgres-bdr) with Postgres and BDR.
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Article</span>
+    <h1 class="f3 near-black">
       <a href="/article/how-to-secure-your-remote-applications/" class="link black dim">
         How to secure your remote applications
       </a>
@@ -220,37 +267,6 @@ Both the functions and containers can be serverless. So, please avoid the notion
 </div>
 </div>
       
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Article</span>
-    <h1 class="f3 near-black">
-      <a href="/article/hosting-a-simple-website/" class="link black dim">
-        How to host a simple static website
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      We all at some point in time thought about having a personal website. It may be for writing about your travel trips, posting pictures of food that you cooked or ranting about the tech which you don&rsquo;t like. I will leave the reason to you Step1: Buying a domain [This] (https://viggy28.dev) websites domain name is viggy28.dev. You want a human friendly name, so that your friends, family and rest of the internet can reach your website.
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Article</span>
-    <h1 class="f3 near-black">
-      <a href="/article/dockererize-python-application/" class="link black dim">
-        How to dockerize a python application
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      In this article we will see how to convert a simple python application to a containerized (Docker) one Go to the profile of vignesh ravichandran vignesh ravichandran Sep 23, 2017 TL;DR -&gt; Containerize a python app. Push the image and execute from Google Cloud.
-On a leisurely Saturday afternoon, I thought its nice to play with containers. I was fascinated with the idea of containerizing an app and running it across different environments.
-    </div>
-  </div>
-</div>
-</div>
-      
     </section>
 <ul class="pagination">
   <li class="page-item">
@@ -265,11 +281,14 @@ On a leisurely Saturday afternoon, I thought its nice to play with containers. I
   <li class="page-item active">
     <a class="page-link" href="/article/page/2/">2</a>
   </li>
-  <li class="page-item disabled">
-    <a  class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+  <li class="page-item">
+    <a class="page-link" href="/article/page/3/">3</a>
   </li>
   <li class="page-item">
-    <a href="/article/page/2/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+    <a href="/article/page/3/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+  </li>
+  <li class="page-item">
+    <a href="/article/page/3/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
   </li>
 </ul>
 
