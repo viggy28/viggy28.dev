@@ -11,8 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: set environment variable
-        run: HUGO_ENV=production hugo
-
       - name: deploy to firebase
-        run: firebase --token ${{ secrets.FIREBASE_TOKEN }} --project ${{ secrets.PROD_GCP_PROJECTID }} deploy
+        run: HUGO_ENV=production hugo && firebase --token ${{ secrets.FIREBASE_TOKEN }} --project ${{ secrets.PROD_GCP_PROJECTID }} deploy
