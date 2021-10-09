@@ -56,6 +56,11 @@ A channel with defined size is buffered channel. It blocks at the sender when th
 
 Whichever `responses` come first that will be returned.
 
+**Channel Directions**:
+
+1. During the channel declaration, a direction can be specified to mention whether the channel is a send or receive only. 
+2. A two-way channel can be sent as an argument to a one-way channel (implicitly gets converted) but can't be done other way around.
+
 
 https://replit.com/@viggy28/concurrency#main.go
 https://replit.com/@viggy28/concurrency-1#main.go
