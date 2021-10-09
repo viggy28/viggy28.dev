@@ -45,7 +45,7 @@ for _, f := range rmdirs {
     f()
 }
 ```
-![explanation](/static/images/TIL-Go-loop-iteration.png)
+![explanation](/images/TIL-Go-loop-iteration.png)
 
 Reference:
 1. [https://stackoverflow.com/questions/52980172/cannot-understand-5-6-1-caveat-capturing-iteration-variables](https://stackoverflow.com/questions/52980172/cannot-understand-5-6-1-caveat-capturing-iteration-variables)
