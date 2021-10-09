@@ -12,7 +12,8 @@ tags: ["firebase", "hugo", "hosting"]
 title: "GPG in simple terms"
 ---
 ```
-3. Store any images in static/images directory
+3. Store any images in static/images directory and refer them like ![whatever name](/images/filename.png)
+
 
 ## To learn more about the hosting and development checkout the [article](<https://viggy28.dev/post/hosting-a-simple-website/>)
 
