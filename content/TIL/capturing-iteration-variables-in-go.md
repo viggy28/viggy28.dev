@@ -1,5 +1,5 @@
 ---
-date: 2021-10-09T15:30:00UTC-7
+date: 2021-10-09
 description: "A caveat with respect to using loop variables"
 featured_image: ""
 tags: ["Go"]
@@ -45,7 +45,7 @@ for _, f := range rmdirs {
     f()
 }
 ```
-![explanation](images/TIL-Go-loop-iteration.png)
+![explanation](/static/images/TIL-Go-loop-iteration.png)
 
 Reference:
 1. [https://stackoverflow.com/questions/52980172/cannot-understand-5-6-1-caveat-capturing-iteration-variables](https://stackoverflow.com/questions/52980172/cannot-understand-5-6-1-caveat-capturing-iteration-variables)
