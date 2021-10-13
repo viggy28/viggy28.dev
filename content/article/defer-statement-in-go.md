@@ -83,3 +83,4 @@ func f() {
     The output of this function is 0,1. since i is an argument passed to the closure, its value is being evaluated at the time of defer statement whereas j is evaluated when the surrounding function returns.
 
     
+The same logic applies to deferred methods too. (value receivers evaluated immediately and pointer receivers evaluated with whatever the final value is).
