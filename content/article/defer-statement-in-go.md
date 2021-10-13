@@ -65,4 +65,21 @@ viggy28@MacBook-Pro defer % go run defer.go
 
 2. The (deferred) function’s arguments are evaluated right away, not once the surrounding function returns.
 
-    a. If you would like the function's arguments evaluated at the time of the surround function return then make the argument as a pointer
+    a. If you would like the deferred function's arguments evaluated at the time of the surrounding function returns then make the argument as a pointer. However that involves changing the signature of the function being deferred.
+
+    b. Another option is to convert the deferred function as a closure (not pass the argument to be evaluated)
+
+```Go
+func f() {
+    i := 0
+    j := 0
+    defer func(i int) {
+        fmt.Println(i, j)
+    }(i)
+    i++
+    j++ 
+}
+```
+    The output of this function is 0,1. since i is an argument passed to the closure, its value is being evaluated at the time of defer statement whereas j is evaluated when the surrounding function returns.
+
+    
