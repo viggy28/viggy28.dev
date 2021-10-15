@@ -39,3 +39,4 @@ ERROR:  could not open file "pg_xlog/00000001.history": No such file or director
 
 I learnt you can directly postgres using other than SQL by sending messages to the backend (server) through the wire protocol !!
 
+The systemid is same for all the instances (servers) in a cluster (primary, replica)
