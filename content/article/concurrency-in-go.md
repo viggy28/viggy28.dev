@@ -68,3 +68,5 @@ https://replit.com/@viggy28/concurrency-1#main.go
 Also, didn't understand the select statement example https://tour.golang.org/concurrency/5
 
 Channels are good for communication between goroutines. However, we don't need to communicate all the time, rather we just need to make sure one goroutine is accessing a variable at a time. That's where mutex helps.
+
+Also, `WaitGroup{}` from `sync` package is useful for dealing with multiple go-routines status. It has `Add()`, `Done()` and `Wait()` methods
