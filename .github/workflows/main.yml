@@ -1,15 +1,15 @@
-name: deploy
+#name: deploy
 
-on: 
-  push:
-    branches: [ master ]
+#on: 
+#  push:
+#    branches: [ master ]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    container: vira28/hugo-firebase:1.0
-    steps:
-      - uses: actions/checkout@v2
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    container: vira28/hugo-firebase:1.0
+#    steps:
+#      - uses: actions/checkout@v2
 
-      - name: deploy to firebase
-        run: HUGO_ENV=production hugo && firebase --token ${{ secrets.FIREBASE_TOKEN }} --project ${{ secrets.PROD_GCP_PROJECTID }} deploy
+#      - name: deploy to firebase
+#        run: HUGO_ENV=production hugo && firebase --token ${{ secrets.FIREBASE_TOKEN }} --project ${{ secrets.PROD_GCP_PROJECTID }} deploy
