@@ -15,7 +15,7 @@ The complete program is [here](https://gitlab.com/viggy28-websites/viggy28.dev/b
 - **Time based context:**
 
   There are two methods. `context.WithTimeout()` `context.WithDeadline()`
-
+  
   ```go
   package main
   
@@ -91,8 +91,7 @@ The complete program is [here](https://gitlab.com/viggy28-websites/viggy28.dev/b
   	cancel()
   ```
 
-  Achieving the same thing (time out queries which takes more than 2 seconds) but using `cancel()`. In a separate go routine we checking whether its been 2 seconds and by calling `cancel()` it cancels the context.
+Achieving the same thing (time out queries which takes more than 2 seconds) but using `cancel()`. In a separate go routine we checking whether its been 2 seconds and by calling `cancel()` it cancels the context.
 
   
-
-  I don't know is there any preferable method. Certainly for time based contexts,  `context.WithTimeout()` or `context.WithDeadline()` seems more straightforward.
+I don't know is there any preferable method. Certainly for time based contexts,  `context.WithTimeout()` or `context.WithDeadline()` seems more straightforward.
