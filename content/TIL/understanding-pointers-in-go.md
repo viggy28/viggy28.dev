@@ -118,6 +118,7 @@ func main() {
 		fn4()
 		fmt.Printf("dd4.Name: %q\n", dd4.Name)
 	}
-}```
+}
+```
 
 ![explanation](../../public/images/understanding-pointers-in-go.jpeg)
