@@ -14,7 +14,10 @@ There is a bit of a background on why I need to use function pattern.
 ```go
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 type Config struct {
 	Host       string
@@ -29,13 +32,19 @@ func newConfig(host string, opts ...clientOption) Config {
 		Host: host,
 	}
 	for _, option := range opts {
-		option(&c)
+		err := option(&c)
+		if err != nil {
+			log.Printf("error %v", err)
+		}
 	}
 	return c
 }
 
 func withPort(port uint) clientOption {
 	return func(c *Config) error {
+		if port > 65000 {
+			return fmt.Errorf("port can't be higher than 65000")
+		}
 		c.Port = port
 		if c.Port == 0 {
 			c.Port = 5432
@@ -45,7 +54,8 @@ func withPort(port uint) clientOption {
 }
 
 func main() {
-	c := newConfig("localhost", withPort(100))
+	c := newConfig("localhost", withPort(100000))
 	fmt.Println("config: ", c)
 }
+
 ```
