@@ -32,3 +32,5 @@ PostgreSQL can determine which character set is implied by the LC_CTYPE setting
 `psql` If both standard input and standard output are a terminal, then psql sets the client encoding to “auto”, which will detect the appropriate client encoding from the locale settings (LC_CTYPE environment variable on Unix systems). If this doesn't work out as expected, the client encoding can be overridden using the environment variable PGCLIENTENCODING. ref https://www.postgresql.org/docs/current/app-psql.html#AEN88713
 
 There is also `locale` executable.
+
+UTF-32 stores four bytes. It does waste a lot of memory. So UTF-8 is a better one. Go, uses UTF-8
