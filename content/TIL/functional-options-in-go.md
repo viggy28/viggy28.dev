@@ -9,7 +9,9 @@ title: "functional options"
 I saw this pattern of a function taking optional parameters (variadic arguments) and I never understood
 why they do that until today.
 
-There is a bit of a background on why I need to use function pattern.
+There is a bit of a background on why I need to use functional pattern.
+
+Let's say I don't use functional option. Then, all the arguments need to be passed. Also, difficult to set default values and implement logic for default values.
 
 ```go
 package main
