@@ -12,7 +12,7 @@ If you have known me, you know I enjoy solving technical challenges. Have done a
 
 I went to the drawing board last year and asked myself what do I think my strengths are? Is it Tech? I realized (or agreed) that I am actually an average engineer. I wouldn't put myself in the top percentiles. It took a bit of maturation to accept that answer. Part of me wanted to try to become that top engineer. However, I realized it's okay. I don't need to fight that but rather pursue what I genuinely enjoy (at this point in my career) which is a combination of Tech + People + Vision/Communication. One of my teammates once mentioned *Vignesh, actually, there is more need for **good** managers than engineers*.
 
-![Whiteboard](../../public/images/IC-to-EM.jpg)
+![Whiteboard](/images/IC-to-EM.jpg)
 
 I felt I am ready to solve broader challenges. Time will answer how I fare.
 
