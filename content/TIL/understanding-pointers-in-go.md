@@ -122,3 +122,7 @@ func main() {
 ```
 
 ![explanation](../../public/images/understanding-pointers-in-go.jpeg)
+
+Reference:
+1. https://dave.cheney.net/2017/04/26/understand-go-pointers-in-less-than-800-words-or-your-money-back
+2. https://dave.cheney.net/2017/04/29/there-is-no-pass-by-reference-in-go Note: You can still manipulate the values in a map and channel that would impact. Copying entirely to new value doesn't impact.
