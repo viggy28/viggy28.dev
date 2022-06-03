@@ -1,5 +1,5 @@
 ---
-date: 2022-06-02T21:40:00-08:00
+date: 2022-06-02T21:00:08-04:00
 description: "A living doc on lessons learnt around postgres schema migrations"
 featured_image: "/images/postgres-logo.png"
 tags: ["postgres", "migration"]
