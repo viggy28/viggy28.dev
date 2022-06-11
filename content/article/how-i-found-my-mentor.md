@@ -25,8 +25,6 @@ He is one of the reasons that I got interested in the database field and went to
 I reached out again requesting to be a mentor recently and guess what he agreed. So, finally I got a chance to discuss with him on a more frequent basis on almost any topic. Also, Gaja welcomed the idea of publishing our discussions publicly with the interest of helping more people. So, Stay tuned here for the summary of our Guru Sishyan [meaning teacher-student] series.
 
 Also, I took a step back and thought about these entire events for a moment. It is very in-line with my two strong beliefs.
-   1. Tech world is smaller than one imagines
-   2. Always be nice
 
-
-
+1. Tech world is smaller than one imagines
+2. Always be nice
