@@ -18,7 +18,7 @@ My ideal mentor would be someone
 2. Who has experience building and leading diverse teams at different places in varying capacity
 3. Of course, should love tech (Bonus point for Databases :) )
 
-It didn't take that long for me to identify that person. It's [Gaja](https://www.linkedin.com/in/gvaidyan/), an Oracle Performance tuning wizard. I first came to know through a workshop he conducted in 2013 or 2014 (I don't remember exactly when) at [Loyola college, Chennai](https://en.wikipedia.org/wiki/Loyola_College,_Chennai). That workshop was just 8 hours but the impact that he created was very deep. I really loved his approach to teaching combined with his humor. ![I became a fan immediately](../../public/images/How-to-find-the-right-mentor-1.png)
+It didn't take that long for me to identify that person. It's [Gaja](https://www.linkedin.com/in/gvaidyan/), an Oracle Performance tuning wizard. I first came to know through a workshop he conducted in 2013 or 2014 (I don't remember exactly when) at [Loyola college, Chennai](https://en.wikipedia.org/wiki/Loyola_College,_Chennai). That workshop was just 8 hours but the impact that he created was very deep. I really loved his approach to teaching combined with his humor. ![I became a fan immediately](/images/How-to-find-the-right-mentor-1.png)
 
 He is one of the reasons that I got interested in the database field and went to pursue information systems in grad school. Life moves on, I finished my grad school and was looking for a job. Of course, I reached out to him; however he was in a transition on his next phase of life. Anyways, I stayed in touch over the next five years.
 
