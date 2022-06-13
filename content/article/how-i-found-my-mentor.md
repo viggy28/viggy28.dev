@@ -6,7 +6,9 @@ tags: ["management", "mentorship"]
 title: "How I found my mentor"
 ---
 
-**TL;DR; Connect with people whom you admire. Things can take longer so stay in touch. At the right moment, don't hesitate to ask.**
+**TL;DR:**
+
+*Connect with people whom you admire. Things can take longer so stay in touch. At the right moment, don't hesitate to ask.*
 
 
 I recently became an Engineering Manager after being an Individual Contributor for almost 8 years. [If you are interested to know more about the reasoning behind the change](https://viggy28.dev/article/ic-to-em/). As like many other jobs in Tech, there is no formal training for an Engineering Manager. Reminds me of my dad's saying "How do you teach one to swim? Just throw on the water !". I felt it would be great to have a mentor with whom I can chat/discuss regularly around management, leadership, politics, team building etc etc...
