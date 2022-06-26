@@ -23,7 +23,7 @@ What is Citus?
 
 1. It is a Postgres extension to store data, query (which includes transactions) acorss a cluster of PostgreSQL servers.
 2. [Open sourced](https://github.com/citusdata/citus)
- 
+
 Postgres core itself doesn't come with features for horizontal scaling. [Postgres' wiki on sharding](https://wiki.postgresql.org/wiki/WIP_PostgreSQL_Sharding#:~:text=PostgreSQL%20provides%20a%20number%20of,pushed%20down%20to%20the%20shards) and [Gitlab's experiment using FDW](https://about.gitlab.com/handbook/engineering/development/enablement/database/doc/fdw-sharding.html) are good resources.
 
 Alternate approaches are:
@@ -58,20 +58,39 @@ The types of applications that requires distributed postgres is broadly divided 
 How citus provides solutions for the above use cases is the rest of the paper. That's basically the nitty-gritty of citus.
 
 **Architecture**
-All servers in a Citus cluster, runs vanilla PostgreSQL. It uses extensions api to change the behavior. It replicates [custom types](https://www.postgresql.org/docs/current/sql-createtype.html) and functions across all servers. Adds two new tables a) Distributed table b) Reference table
+All servers in a Citus cluster, runs PostgreSQL with Citus extension. It has two components -- Coordinator and Worker. Typically set up will have 1 Coordinator and 0 or more workers. Coordinator can also be scaled if throughput becomes the bottleneck. If there is no worker then Coordinator will take that role.
 
-a. PostgreSQL extension APIs
-This is perhaps one of the best features of Postgres. One can change the behavior of PostgreSQL by defining hooks (custom logic). AFAIK, Oracle, MySQL does not have extensions. 
+It uses extensions api to change the behavior. It replicates [custom types](https://www.postgresql.org/docs/current/sql-createtype.html) and functions across all servers.
 
-Citus the following hooks 
+PostgreSQL extension APIs
+This is perhaps one of the best features of Postgres. One can change the behavior of PostgreSQL by defining hooks (custom logic). AFAIK, Oracle, MySQL does not have extensions. Citus uses the following hooks
 
 1. User-defined functions
 Callable from SQL inside a transaction usually to manipulate Citus metadata
 
 2. Planner and executor hooks
 Citus checks whether the query involves a Citus table, if so intercepts it and creates a plan that contains a CustomScan node
-    a. CustomScan is an execution node in the query plan. It calls the Citus query executor which returns results then that will be returned to Postgres query executor.
+    a. CustomScan is an execution node in the query plan. It calls the Citus distributed query executor which returns results then that will be returned to Postgres query executor.
+
+3. Transaction callbacks, utility hook and background workers are other hooks used by Citus.
+
+![citus-architecture](/images/citus-architecture.png)
+
+Citus has two types of tables
+**1. Distributed table**
+    They are hash-partitioned along a distribution colum into multiple logical shards with each shard containing a contigous range of hash values. From the above diagram, *items* and *users* table are distirbuted tables with distributed column of *user_id*. One worker node can contain multiple logical shards, so that they can be rebalanced.
+
+**2. Reference table**
+    These are replicated to all nodes including coordinator. Joins between distributed tables and reference tables used the local replica of the reference table. From above, *Categories* is a reference table.
+
+I see semblance of star schema (fact and dimension tables)
+
+**Co-location:**
+Citus can make sure that the same range hash values is always on the same worker node among distibuted tables. From above, users_4, items_4 (both have hash value of 4) will reside on the same worker node. Main benefit is joins and foreign keys are implemented within a worker node.
+
+**Data rebalancing:**
 
 
 Open Questions:
 1. What's the difference (in features) between open source Citus and paid?
+2. How many tenants (by hash parition) forms a shard in a worker node? Does each tenant will have its own shard in a worker node?
