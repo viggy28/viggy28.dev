@@ -112,7 +112,7 @@ The last part of the paper is about benchmarks. It seems like Citus is winning i
 
 #### Open Questions:
 1. What's the difference (in features) between open source Citus and paid?
-   - Nothing. [While I was reading the paper](https://twitter.com/viggy28/status/1537665649241075712), [Citus completely open sourced all their enterprise features](https://github.com/citusdata/citus/pull/6008).
+   - Nothing. [While I was reading the paper](https://twitter.com/viggy28/status/1537665649241075712), Citus completely [open sourced all their enterprise features](https://github.com/citusdata/citus/pull/6008). Impressed with their work. ![Citus open source](/images/citus-tweet-2.png)
 2. Does each tenant have its own shard (aka table) in a worker node?
 3. How does it manages things like DDL change, sequences, truncate?
 
