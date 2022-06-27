@@ -6,23 +6,23 @@ tags: ["postgres", "distributed systems"]
 title: "Notes from citus data white paper"
 ---
 
-[Citus: Distributed PostgreSQL for Data-Intensive Applications](https://dl.acm.org/doi/pdf/10.1145/3448016.3457551)
+[Citus: Distributed PostgreSQL for Data-Intensive Applications](https://dl.acm.org/doi/pdf/10.1145/3448016.3457551). If you find something wrong, please send a [pull request](https://github.com/viggy28/viggy28.dev/tree/master/content/article).
 
-Context: Recently, our team got a request to provide a solution to shard Postgres. One of the solutions that was discussed Citus. I have heard about them and seen their blogs related to Postgres in the past but never used the product. I thought it would be fun to read about its internal working.
+> Recently, our team got a request to provide a solution to shard Postgres. One of the solutions that we discussed was [Citus](https://www.citusdata.com/). I have heard about the product and seen their blogs related to Postgres in the past but never used it. I thought it would be fun to read about its internal workings.
 
-Before digging their white paper, taking a step back and asking what is sharding and why do I need to shard?
+Before digging their white paper, let's take a step back and ask what is sharding and why do we need sharding?
 
-Certainly, I haven't used the word "shard" in my ![day-to-day](/images/my-notes-on-citus-data-1.png) life. In CS, there two ways one can scale:
+Certainly, I haven't used the word "shard" in my ![day-to-day](/images/my-notes-on-citus-data-1.png) life. There two ways one can scale their systems:
 
     1. Vertical Scaling     - Adding more resources (eg. CPU, Memory, Disk) on the **same** hardware (eg. server, switch)
     2. Horizontal Scaling   - Adding more resources by adding more hardware (eg. server)
 
-Sharding comes from the concept of Horizontal Scaling. I have seen servers with a maximum of 22 TB disk. What if I want to store more than that in a single table/database? Traditional approach is vertical scaling i.e) trying to add more disks on the server, but at some point it will hit the ceiling. Nothing one can do other than growing horizontally. [A good introduction about database sharding from Digital Ocean](https://www.digitalocean.com/community/tutorials/understanding-database-sharding).
+Sharding comes from the concept of Horizontal Scaling. I have seen servers with a maximum of 22 TB disk. What if we want to store more than that in a single table/database? Traditional approach is vertical scaling i.e) trying to add more disks on the server, but at some point it will hit the ceiling. Nothing one can do other than growing horizontally. [A good introduction about database sharding from Digital Ocean](https://www.digitalocean.com/community/tutorials/understanding-database-sharding).
 
-What is Citus?
+### What is Citus?
 
-1. It is a Postgres extension to store data, query (which includes transactions) acorss a cluster of PostgreSQL servers.
-2. [Open sourced](https://github.com/citusdata/citus)
+1. It is a PostgreSQL extension to store data, query (which includes transactions) acorss a cluster of PostgreSQL servers
+2. [Open sourced](https://github.com/citusdata/citus) [1]
 
 Postgres core itself doesn't come with features for horizontal scaling. [Postgres' wiki on sharding](https://wiki.postgresql.org/wiki/WIP_PostgreSQL_Sharding#:~:text=PostgreSQL%20provides%20a%20number%20of,pushed%20down%20to%20the%20shards) and [Gitlab's experiment using FDW](https://about.gitlab.com/handbook/engineering/development/enablement/database/doc/fdw-sharding.html) are good resources.
 
@@ -32,15 +32,19 @@ Alternate approaches are:
 2. Fork an open source database systems and build new features on top of it - aka [Orioledb](https://github.com/orioledb/orioledb), [Neondatabase](https://github.com/neondatabase/neon)
 3. Provide new features through a layer that sits between the application and database, as middleware - aka [ShardingSphere](https://github.com/apache/shardingsphere)
 
+![citus-intro-tweet](/images/citus-tweet-1.png).
+
+[I couldn't find a lot of options for horizontal scaling Postgres](https://twitter.com/viggy28/status/1536157371465990144). [MySQL has Vitess](https://github.com/vitessio/vitess)
+
 The types of applications that requires distributed postgres is broadly divided into four categories:
 
 1. Multi-tenant/SaaS
     * An application which stores data of multiple tenants in the same database.
     * Data is relatively specific to the tenant
-    * Traditional approach (application level sharding) is spinning up individual database/server for each tenant and then mapping that information on the application itself. There is an operation overhead when moving data around, schema changes and doing analytics across tenants.
-    * The alternative approach is the database level sharding. Application doesn't need to track which tenant is stored where. Use shared schema with tenant ID columns. The dbms should be capable of routing arbitrarily complex SQL queries of a specific tenant to a specific server. Should provide support for flexible data type (achieved using JSONB) and control over tenant placements to avoid noisy-neighbor problems
+    * Traditional approach (application level sharding) is spinning up individual database/server for each tenant and then mapping that information on the application itself. There is an operation overhead when moving data around, performing schema changes and analytics across tenants.
+    * The alternative approach is the database level sharding. Application doesn't need to track which tenant is stored in which server. Use a shared schema with tenant ID columns. The dbms should be capable of routing arbitrarily complex SQL queries of a specific tenant to a specific server. Should provide support for flexible data type (achieved using JSONB) and control over tenant placements to avoid noisy-neighbor problems
 
-![An example of messaging system which stores multiple tenant data](/images/citus-slack.png). AKA slack.
+![An example of a messaging system which stores multiple tenant data](/images/citus-slack.png). AKA slack.
 
 2. Real-time analytics
     * Used for system monitoring, ingesting IoT data, user browsing/behavioral data etc.
@@ -55,10 +59,10 @@ The types of applications that requires distributed postgres is broadly divided 
     * Combines data from different sources into a single database system to generate ad-hoc reports
     * Generally don't have low latency, high concurrency requirements
 
-How citus provides solutions for the above use cases is the rest of the paper. That's basically the nitty-gritty of citus.
+How citus provides solutions for the above use cases is the rest of the paper.
 
-**Architecture**
-All servers in a Citus cluster, runs PostgreSQL with Citus extension. It has two components -- Coordinator and Worker. Typically set up will have 1 Coordinator and 0 or more workers. Coordinator can also be scaled if throughput becomes the bottleneck. If there is no worker then Coordinator will take that role.
+## Architecture
+All servers in a Citus cluster, run PostgreSQL with Citus extension. It has two components -- Coordinator and Worker. Typically set up will have 1 Coordinator and 0 or more workers. Coordinator can also be scaled if throughput becomes the bottleneck. If there is no worker then the Coordinator will take that role.
 
 It uses extensions api to change the behavior. It replicates [custom types](https://www.postgresql.org/docs/current/sql-createtype.html) and functions across all servers.
 
@@ -69,28 +73,47 @@ This is perhaps one of the best features of Postgres. One can change the behavio
 Callable from SQL inside a transaction usually to manipulate Citus metadata
 
 2. Planner and executor hooks
-Citus checks whether the query involves a Citus table, if so intercepts it and creates a plan that contains a CustomScan node
+Citus checks whether the query involves a Citus table, if so intercepts it and creates a plan that contains a **CustomScan** node
     a. CustomScan is an execution node in the query plan. It calls the Citus distributed query executor which returns results then that will be returned to Postgres query executor.
 
 3. Transaction callbacks, utility hook and background workers are other hooks used by Citus.
 
 ![citus-architecture](/images/citus-architecture.png)
 
-Citus has two types of tables
+Citus has two types of tables:
+
 **1. Distributed table**
-    They are hash-partitioned along a distribution colum into multiple logical shards with each shard containing a contigous range of hash values. From the above diagram, *items* and *users* table are distirbuted tables with distributed column of *user_id*. One worker node can contain multiple logical shards, so that they can be rebalanced.
+    They are hash-partitioned along a distribution column into multiple logical shards with each shard containing a contiguous range of hash values. From the above diagram, *items* and *users* table are distributed tables with distributed column of *user_id*. One worker node can contain multiple logical shards, so that they can be rebalanced.
 
 **2. Reference table**
     These are replicated to all nodes including coordinator. Joins between distributed tables and reference tables used the local replica of the reference table. From above, *Categories* is a reference table.
 
-I see semblance of star schema (fact and dimension tables)
+I see a semblance of [Star schema](https://en.wikipedia.org/wiki/Star_schema) (fact and dimension tables).
 
-**Co-location:**
-Citus can make sure that the same range hash values is always on the same worker node among distibuted tables. From above, users_4, items_4 (both have hash value of 4) will reside on the same worker node. Main benefit is joins and foreign keys are implemented within a worker node.
+### Co-location:
+Citus can make sure that the same range hash values are always on the same worker node among distributed tables. From above, users_4, items_4 (both have hash value of 4) will reside on the same worker node [2]. Main benefit is joins and foreign keys are implemented within a worker node.
 
-**Data rebalancing:**
+### Data rebalancing:
+AKA shard rebalancing.
+By default, the rebalancer moves shards until it reaches an even number of shards across worker nodes. Also, one can rebalance based on data size or using custom definitions by cost, capacity and constraint function. They do that using PostgreSQL logical replication [3].
 
+### Distributed Query planner and executor:
+Fast path planner handles queries on a single table with a single distribution column value.
+Router planner handles complex queries that can be scoped to one set of co-located shards.
+Logical planner handles queries across shards by constructing a multi-relational algebra tree.
 
-Open Questions:
+Executor runs in parallel by opening multiple connections per shard instead of using PostgreSQL [parallel query](https://www.postgresql.org/docs/current/parallel-query.html) capability. They found that it is more versatile and performant however with the downside of opening multiple connections. PostgreSQL connections are expensive. They avoid using "slow start" - technique to open a new connection for ever 10ms. Also, paper specified that Crunchy is working on improving the connection handling with the upstream - a welcoming news.
+
+Distributed transactions are implemented using [Two-Phase commit protocol](https://martinfowler.com/articles/patterns-of-distributed-systems/two-phase-commit.html). Citus uses [pg_auto_failover](https://github.com/citusdata/pg_auto_failover) extension for implementing HA.
+
+The last part of the paper is about benchmarks. It seems like Citus is winning in most of the scenarios. I generally take benchmarks with a pinch of salt.
+
+#### Open Questions:
 1. What's the difference (in features) between open source Citus and paid?
-2. How many tenants (by hash parition) forms a shard in a worker node? Does each tenant will have its own shard in a worker node?
+   - Nothing. [While I was reading the paper](https://twitter.com/viggy28/status/1537665649241075712), [Citus completely open sourced all their enterprise features](https://github.com/citusdata/citus/pull/6008).
+2. Does each tenant have its own shard (aka table) in a worker node?
+3. How does it manages things like DDL change, sequences, truncate?
+
+#### References:
+ - [v11 release notes](https://www.citusdata.com/updates/v11-0/)
+ - https://www.youtube.com/watch?v=JwjjUT8K7po
