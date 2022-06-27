@@ -1,21 +1,21 @@
 ---
 date: 2022-06-12
-description: "Notes from citus data sigmod 2021 white paper"
+description: "Notes from Citus Data sigmod 2021 white paper"
 featured_image: "/images/postgres-logo.png"
 tags: ["postgres", "distributed systems"]
-title: "Notes from citus data white paper"
+title: "Citus Data - How it enables distributed postgres"
 ---
 
-[Citus: Distributed PostgreSQL for Data-Intensive Applications](https://dl.acm.org/doi/pdf/10.1145/3448016.3457551). If you find something wrong, please send a [pull request](https://github.com/viggy28/viggy28.dev/tree/master/content/article).
+Citus: Distributed PostgreSQL for Data-Intensive Applications paper can be downloaded [here](https://dl.acm.org/doi/pdf/10.1145/3448016.3457551).
 
 > Recently, our team got a request to provide a solution to shard Postgres. One of the solutions that we discussed was [Citus](https://www.citusdata.com/). I have heard about the product and seen their blogs related to Postgres in the past but never used it. I thought it would be fun to read about its internal workings.
 
-Before digging their white paper, let's take a step back and ask what is sharding and why do we need sharding?
+If you find something wrong on the notes, please send a [pull request](https://github.com/viggy28/viggy28.dev/tree/master/content/article). Before digging their white paper, let's take a step back and ask what is sharding and why do we need sharding?
 
-Certainly, I haven't used the word "shard" in my ![day-to-day](/images/my-notes-on-citus-data-1.png) life. There two ways one can scale their systems:
+Certainly, I haven't used the word "shard" in my day-to-day life.[shard-meaning](/images/my-notes-on-citus-data-1.png). There two ways one can scale their systems:
 
-    1. Vertical Scaling     - Adding more resources (eg. CPU, Memory, Disk) on the **same** hardware (eg. server, switch)
-    2. Horizontal Scaling   - Adding more resources by adding more hardware (eg. server)
+1. Vertical Scaling - Adding more resources (eg. CPU, Memory, Disk) on the **same** hardware (eg. server, switch)
+2. Horizontal Scaling - Adding more resources by adding more hardware (eg. server)
 
 Sharding comes from the concept of Horizontal Scaling. I have seen servers with a maximum of 22 TB disk. What if we want to store more than that in a single table/database? Traditional approach is vertical scaling i.e) trying to add more disks on the server, but at some point it will hit the ceiling. Nothing one can do other than growing horizontally. [A good introduction about database sharding from Digital Ocean](https://www.digitalocean.com/community/tutorials/understanding-database-sharding).
 
