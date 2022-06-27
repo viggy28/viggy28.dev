@@ -16,10 +16,10 @@ Certainly, I haven't used the word "shard" in my day-to-day life. ![shard-meanin
 
 There two ways one can scale their systems:
 
-1. Vertical Scaling - Adding more resources (eg. CPU, Memory, Disk) on the **same** hardware (eg. server, switch)
-2. Horizontal Scaling - Adding more resources by adding more hardware (eg. server)
+1. Vertical Scaling - Acquiring more resources (eg. CPU, Memory, Disk) on the **same** hardware
+2. Horizontal Scaling - Acquiring more resources by adding additional hardware
 
-Sharding comes from the concept of Horizontal Scaling. I have seen servers with a maximum of 22 TB disk. What if we want to store more than that in a single table/database? Traditional approach is vertical scaling i.e) trying to add more disks on the server, but at some point it will hit the ceiling. Nothing one can do other than growing horizontally. [A good introduction about database sharding from Digital Ocean](https://www.digitalocean.com/community/tutorials/understanding-database-sharding).
+Sharding comes from the concept of Horizontal Scaling. Say, the maximum disk space of servers that you have is 11 TB. What if we want to store more than that in a single table/database? Traditional approach is vertical scaling i.e) trying to add more disks on the server, but at some point it will hit the ceiling. Nothing one can do other than growing horizontally. [A good introduction about database sharding from Digital Ocean](https://www.digitalocean.com/community/tutorials/understanding-database-sharding).
 
 ### What is Citus?
 
