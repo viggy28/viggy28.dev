@@ -12,7 +12,9 @@ Citus: Distributed PostgreSQL for Data-Intensive Applications paper can be downl
 
 If you find something wrong on the notes, please send a [pull request](https://github.com/viggy28/viggy28.dev/tree/master/content/article). Before digging their white paper, let's take a step back and ask what is sharding and why do we need sharding?
 
-Certainly, I haven't used the word "shard" in my day-to-day life.[shard-meaning](/images/my-notes-on-citus-data-1.png). There two ways one can scale their systems:
+Certainly, I haven't used the word "shard" in my day-to-day life. ![shard-meaning](/images/my-notes-on-citus-data-1.png).
+
+There two ways one can scale their systems:
 
 1. Vertical Scaling - Adding more resources (eg. CPU, Memory, Disk) on the **same** hardware (eg. server, switch)
 2. Horizontal Scaling - Adding more resources by adding more hardware (eg. server)
@@ -28,13 +30,13 @@ Postgres core itself doesn't come with features for horizontal scaling. [Postgre
 
 Alternate approaches are:
 
-1. Build the database engine from scratch and write a layer to provide over-the-wire SQL compatibility - aka [YugaByte](https://github.com/yugabyte/yugabyte-db), [Cockroachdb](https://github.com/cockroachdb/cockroach) etc.
-2. Fork an open source database systems and build new features on top of it - aka [Orioledb](https://github.com/orioledb/orioledb), [Neondatabase](https://github.com/neondatabase/neon)
-3. Provide new features through a layer that sits between the application and database, as middleware - aka [ShardingSphere](https://github.com/apache/shardingsphere)
+1. Build the database engine from scratch and write a layer to provide over-the-wire SQL compatibility - [YugaByte](https://github.com/yugabyte/yugabyte-db), [Cockroachdb](https://github.com/cockroachdb/cockroach) etc.
+2. Fork an open source database systems and build new features on top of it - [Orioledb](https://github.com/orioledb/orioledb), [Neondatabase](https://github.com/neondatabase/neon)
+3. Provide new features through a layer that sits between the application and database, as middleware - [ShardingSphere](https://github.com/apache/shardingsphere)
 
 ![citus-intro-tweet](/images/citus-tweet-1.png).
 
-[I couldn't find a lot of options for horizontal scaling Postgres](https://twitter.com/viggy28/status/1536157371465990144). [MySQL has Vitess](https://github.com/vitessio/vitess)
+I couldn't find a lot of options for horizontal scaling Postgres. [Looks like many agrees](https://twitter.com/viggy28/status/1536157371465990144). MySQL has [Vitess](https://github.com/vitessio/vitess)
 
 The types of applications that requires distributed postgres is broadly divided into four categories:
 
@@ -44,7 +46,7 @@ The types of applications that requires distributed postgres is broadly divided 
     * Traditional approach (application level sharding) is spinning up individual database/server for each tenant and then mapping that information on the application itself. There is an operation overhead when moving data around, performing schema changes and analytics across tenants.
     * The alternative approach is the database level sharding. Application doesn't need to track which tenant is stored in which server. Use a shared schema with tenant ID columns. The dbms should be capable of routing arbitrarily complex SQL queries of a specific tenant to a specific server. Should provide support for flexible data type (achieved using JSONB) and control over tenant placements to avoid noisy-neighbor problems
 
-![An example of a messaging system which stores multiple tenant data](/images/citus-slack.png). AKA slack.
+An example of a messaging system which stores multiple tenant data. AKA slack. ![An example multi tenant messaging app](/images/citus-slack.png).
 
 2. Real-time analytics
     * Used for system monitoring, ingesting IoT data, user browsing/behavioral data etc.
