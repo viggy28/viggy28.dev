@@ -1,5 +1,5 @@
 ---
-date: 2022-09-06T22:20:00UTC
+date: 2022-09-06
 description: "Postgres unable to find replication slot file"
 featured_image: ""
 tags: ["postgres"]
