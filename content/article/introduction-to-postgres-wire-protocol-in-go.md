@@ -170,10 +170,15 @@ To respond to a SELECT query, we need two things.
 Similarly, I implemented other statements such as `INSERT`, `UPDATE`, `DELETE`. Complete code is available https://github.com/viggy28/pglite
 
 Future ideas:
+
 a. Write a parser from scratch or implement https://github.com/pganalyze/pg_query_go
+
 b. Add caching feature so you can respond faster for the same queries
 
 References:
+
 1. https://gavinray97.github.io/blog/postgres-wire-protocol-jdk-21
+   
 2. https://github.com/jackc/pgproto3/tree/master/example/pgfortune
+   
 3. https://15721.courses.cs.cmu.edu/spring2023/slides/15-networking.pdf
