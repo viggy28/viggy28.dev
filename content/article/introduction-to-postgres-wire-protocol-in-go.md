@@ -8,13 +8,13 @@ title: "pglite"
 
 I kept hearing about the term wire protocol especially Postgres wire protocol in the recent days (Looking at you cockroachdb, yugabytedb - in a good way) but never really quite understood it. Decided to implement something simple in Go to understand it better. As always, if you find anything wrong or I misunderstood please correct me.
 
-Debunking these complex terms.
+In simple terms,
 
 "wire"      - something over network generally (but PG also supports over domain sockets)
 
 "protocol"  - contract or an agreement between frontend and backend 
 
-Refer https://www.postgresql.org/docs/current/protocol.html and https://www.postgresql.org/docs/current/protocol-flow.html. If you are like me who has seen those links multiple times but didn't know how to implement something using that, then this is for you :) Also, if you just want to see the code it is [here](https://github.com/viggy28/pglite). 
+Refer https://www.postgresql.org/docs/current/protocol.html and https://www.postgresql.org/docs/current/protocol-flow.html. If you are like me who has seen those links multiple times but didn't know how to implement something using that, then this is for you :) Also, if you just want to get to the code, it is [here](https://github.com/viggy28/pglite). 
 
 ## step 1: Create a TCP server on port 5432
 ```go
@@ -50,8 +50,10 @@ The first step is "startup" phase. During which the byte order is as below
 	// byte ordering
 	// message-length		message
 	// [][][][] 			[][][][][][]....
-	// message-length count includes its own byte value. For eg. if the content of message-length is [0 0 0 84]
-	// then 80 is the number of message byte which contains the message (ie. subtract 4 since that's the number of bytes it takes to store an integer)
+	// message-length count includes its own byte value. 
+    // For eg. if the content of message-length is [0 0 0 84]
+	// then 80 is the number of message byte which contains the message 
+    // (ie. subtract 4 since that's the number of bytes it takes to store an integer)
 	// 
 ```
 
@@ -106,7 +108,7 @@ The byte order after startup phase is like below:
 	// message-type		message-length		message
 	// []  				[][][][] 			[][][][][][]....
 	// Note: message-length count includes itself
-	// Note: The very first message sent by the client after the startup message has an message-type byte.
+	// Note: The very first message sent by the client after the startup message has a message-type byte.
 ```
 
 ```Go
@@ -125,7 +127,7 @@ The byte order after startup phase is like below:
 
 Rest of the message decoding of a Query phase is similar to startup phase. Once you have the query, then you can handle it. I decided to use sqlite as storage engine since it's an embeddable database. At this point the project started sounding similar to [postlite](https://github.com/benbjohnson/postlite). Anyway, I continued since I liked the rabbit hole that I was digging :)
 
-## Step 5: handling SELECT statements
+## Step 5: Handling SELECT statements
 
 Creating and filling bytes becoming cumbersome and lengthy. Thanks to Jackc who has a library in Go for the Postgres wire protocol.
 https://github.com/jackc/pgproto3
@@ -166,6 +168,10 @@ To respond to a SELECT query, we need two things.
 ```
 
 Similarly, I implemented other statements such as `INSERT`, `UPDATE`, `DELETE`. Complete code is available https://github.com/viggy28/pglite
+
+Future ideas:
+a. Write a parser from scratch or implement https://github.com/pganalyze/pg_query_go
+b. Add caching feature so you can respond faster for the same queries
 
 References:
 1. https://gavinray97.github.io/blog/postgres-wire-protocol-jdk-21
