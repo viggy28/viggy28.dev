@@ -16,6 +16,8 @@ The presentation also explores how HAProxy helps improve Cloudflare’s security
 
 [Slides for the presentation](https://docs.google.com/presentation/d/1NFaxHlnoWEcvUXqGfXOXpjL2lJDEWuCgGoSot11wvBU/edit?usp=sharing)
 
+[Recordings of the presentation](https://www.youtube.com/watch?v=HIOo4j-Tiq4)
+
 [Link from HAProxy website](https://www.haproxy.com/user-spotlight-series/load-balancing-and-high-availability-on-postgres-using-haproxy/)
 
 [Blog on Cloudflare about performance isolation](https://blog.cloudflare.com/performance-isolation-in-a-multi-tenant-database-environment/)
