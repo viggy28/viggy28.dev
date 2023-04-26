@@ -1,7 +1,7 @@
 ---
-title: "talks"
+title: "Talks"
 featured_image: ""
-date: 2021-02-10T11:00:00-05:00
+date: 2023-04-25T10:40:00-07:00
 description: "Talks and presentations that I gave"
 show_reading_time: true
 toc: true
