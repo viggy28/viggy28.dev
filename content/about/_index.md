@@ -5,7 +5,8 @@ featured_image: ''
 ---
 <!--- {{< figure src="/images/monumental_valley.png" title="A drop in the ocean" >}} --> 
 
-Currently working as a Site Reliability Engineer at an Orange Cloud Company in San Francisco.
-Started as an Oracle DBA. Worked on High-Availability, Performance tuning and reliability.
+Co-founder and CEO of Omnigres. Past build Cloudflare's Postgres database team.
+
+Started as an Oracle Database Administrator. Worked on High-Availability, Performance tuning and reliability.
 
 Alumni of University of Arkansas (Walton College of Business) & SASTRA university.
