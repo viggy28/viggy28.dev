@@ -1,7 +1,10 @@
 ---
 title: "Vignesh Ravichandran"
 featured_image: ''
-description: "Building Omnigres"
+description: "Co-founder of Omnigres. Obsessed about database platforms, specifically Postgres"
 ---
 
-Tech world is smaller than one imagines. I have countless examples.
+There are two things I strongly believe.
+
+1. The tech world is smaller than one imagines
+2. Always, try to be nice. 
