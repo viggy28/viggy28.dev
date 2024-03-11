@@ -6,7 +6,7 @@ tags: ["postgres", "cloud"]
 title: "RDS' margin is EC2's opportunity"
 ---
 
-I was writing an article on the topic "less spoken costs of managed databases" and one question that the editor asked is how much margin does RDS makes compared to running a postgres instance on EC2? That intrigued me and honestly I never did the math so far. I have been using AWS managed databases since 2016 and I thought what's a better time to do analysis about Cloud cost than today ?!
+I was writing an article on the topic [less spoken costs of managed databases](https://www.infoq.com/articles/managed-relational-databases-costs/) and one question that the editor asked is how much margin does RDS makes compared to running a postgres instance on EC2? That intrigued me and honestly I never did the math so far. I have been using AWS managed databases since 2016 and I thought what's a better time to do analysis about Cloud cost than today ?!
 
 I started with comparing instance types between EC2 and RDS. These are the same VMs (EC2) that's powering RDS. Correct me if I am wrong.
 
