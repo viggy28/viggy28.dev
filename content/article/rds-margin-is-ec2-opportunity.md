@@ -1,5 +1,5 @@
 
-I was writing an article on the topic [less spoken costs of managed databases](https://www.infoq.com/articles/managed-relational-databases-costs/) and one question that the editor asked is how much margin RDS makes compared to running a Postgres instance on EC2? That intrigued me and honestly, I never did the math so far. I have been using AWS-managed databases since 2016 and I thought what's a better time to do an analysis of Cloud cost than today ?!
+I was writing an article for Infoq on the topic [less spoken costs of managed databases](https://www.infoq.com/articles/managed-relational-databases-costs/) and one question that the editor asked is how much margin RDS makes compared to running a Postgres instance on EC2? That intrigued me and honestly, I never did the math so far. I have been using AWS-managed databases since 2016 and I thought what's a better time to do an analysis of Cloud cost than today ?!
 
 I started by comparing instance types between EC2 and RDS. As far as I understand, these are the same VMs (EC2) that are powering RDS. Anyone with the knowledge, correct me if I am wrong.
 
