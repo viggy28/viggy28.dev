@@ -59,3 +59,9 @@ No package 'icu-i18n' found
 ```
 
 A simple find for the file `icu-uc.pc` resulted in the directory `/usr/local/Cellar/icu4c/73.2/lib/pkgconfig/`. Setting `export PKG_CONFIG_PATH=/usr/local/opt/icu4c/lib/pkgconfig/` and then running `configure` built the postgres with ICU support.
+
+Note: This was an issue with MacOS intel chip. I ran into the same on Arm chip too. To fix this issue the path needs to be modified slighty. It could also be in other directory depends on where `icu4c` package is installed.
+
+```
+export PKG_CONFIG_PATH=/opt/homebrew/Cellar/icu4c/74.2/lib/pkgconfig/
+```
