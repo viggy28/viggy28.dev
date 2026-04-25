@@ -30,7 +30,4 @@ hugo server
 HUGO_ENV=production hugo
 ```
 
-### To deploy to firebase (do fl aka. firebase login )
-```
-fd
-```
+Production deploys are handled by Cloudflare Pages (configured in the Cloudflare dashboard) — it builds and serves on every push to `master`.
