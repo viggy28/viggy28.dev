@@ -66,3 +66,7 @@ node_modules/
 
 # Hugo build output
 public/
+.hugo_build.lock
+
+# macOS
+.DS_Store
