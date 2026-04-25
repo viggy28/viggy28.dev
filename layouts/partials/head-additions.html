@@ -1,0 +1,40 @@
+<script>
+  (function() {
+    var config = {
+      mode: "bubble",
+      expertUsername: "viggy28",
+      personaName: "default",
+      widgetToken: "wgt_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMDhjYmRkNTMtYzEyYi00MjU5LWE0YzctZDlmNDk3ZWQ4ZWFmIiwiZXhwZXJ0X3VzZXJuYW1lIjoidmlnZ3kyOCIsInRva2VuX3R5cGUiOiJ3aWRnZXQiLCJjcmVhdGVkX2F0IjoiMjAyNS0xMC0yNVQxNTo1OTowNy4xNDY4NzIrMDA6MDAiLCJqdGkiOiJlZmY2NmJmYTBmYWE1NWI3YjQ2YjQzNTg4NTY2YjE2YyJ9.lblAZ482dZzpmuv4nD2EyJgb5gkbwECJtxRboGw-QdE",
+      position: "bottom-right",
+      primaryColor: "#817156",
+      bubbleText: "Chat with me",
+      enableVoice: true,
+      welcomeMessage: "Hello! How can I help you?",
+      theme: {
+          primaryColor: "#817156",
+          textColor: "#111827"
+      },
+    };
+
+    function initWidget() {
+      if (window.MyClone) {
+        window.MyClone(config);
+      }
+    }
+
+    var existingScript = document.querySelector('script[src*="myclone-embed.js"]');
+    if (existingScript) {
+      initWidget();
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.src = "https://app.myclone.is" + '/embed/myclone-embed.js';
+    script.async = true;
+    script.onload = initWidget;
+    script.onerror = function() {
+      console.error('Failed to load MyClone widget');
+    };
+    document.body.appendChild(script);
+  })();
+</script>
