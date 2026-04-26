@@ -1,5 +1,5 @@
 ---
-date: 2021-10-04T00:22:00UTC-7
+date: 2021-10-04T00:22:00-07:00
 description: "Things that I didn't know about"
 featured_image: ""
 tags: ["Go"]

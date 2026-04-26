@@ -1,5 +1,5 @@
 ---
-date: 2021-09-19T16:20:00UTC
+date: 2021-09-19T16:20:00Z
 description: "Our experience working with Nivi, the realtor"
 featured_image: ""
 tags: ["personal"]

@@ -1,5 +1,5 @@
 ---
-date: 2021-10-05T08:45:00UTC-7
+date: 2021-10-05T08:45:00-07:00
 description: "A gotcha with respect to deadlocks"
 featured_image: ""
 tags: ["Go"]

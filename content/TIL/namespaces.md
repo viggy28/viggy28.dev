@@ -1,5 +1,5 @@
 ---
-date: 2021-09-15T16:20:00UTC
+date: 2021-09-15T16:20:00Z
 description: "What is namespaces in Linux"
 featured_image: ""
 tags: ["system"]

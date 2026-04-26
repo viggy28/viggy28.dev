@@ -1,5 +1,5 @@
 ---
-date: 2021-09-05T21:58:00UTC
+date: 2021-09-05T21:58:00Z
 description: "What is DHCP and DHCPCD"
 featured_image: ""
 tags: ["system"]
