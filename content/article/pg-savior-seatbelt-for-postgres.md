@@ -73,6 +73,6 @@ Getting to those three was not the first try. Earlier versions walked the parse 
 make && sudo make install
 ```
 
-Then add `shared_preload_libraries = 'pg_savior'` to `postgresql.conf`, restart, and `CREATE EXTENSION pg_savior;` in each database. Source and full config docs are at [github.com/viggy28/pg_savior](https://github.com/viggy28/pg_savior); the extension is also on PGXN.
+Then add `shared_preload_libraries = 'pg_savior'` to `postgresql.conf`, restart, and `CREATE EXTENSION pg_savior;` in each database. Source and full config docs are at [github.com/viggy28/pg_savior](https://github.com/viggy28/pg_savior); the extension is also published on [PGXN](https://pgxn.org/dist/pg_savior/).
 
 Defense in depth wins. CI catches what it can see. Linters catch what they can parse. Process catches what humans remember to follow. pg_savior catches what makes it through all of those — so the next time you're woken at 3 a.m. for a Postgres issue, at least you don't have to wonder if you accidentally ran the wrong command. Sleep peacefully. The database is watching.
