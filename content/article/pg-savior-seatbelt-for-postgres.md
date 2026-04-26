@@ -39,7 +39,7 @@ The pattern across all three: every one of these defenses lives **upstream** of 
 
 You should have all of the above. CI on every migration. Linters on application code. A culture where DBAs paste commands into Slack for a second pair of eyes before running them, even mid-incident. These are necessary.
 
-pg_savior is one more layer, sitting at the only place that sees every statement no matter who sent it: the database itself. psql, the application's ORM, a migration tool, a cron job, a support engineer's one-off script, an AI coding agent with database credentials — they all eventually hand a parse tree to Postgres. pg_savior hooks that step and refuses the obviously dangerous shapes.
+[pg_savior](https://github.com/viggy28/pg_savior) is one more layer, sitting at the only place that sees every statement no matter who sent it: the database itself. psql, the application's ORM, a migration tool, a cron job, a support engineer's one-off script, an AI coding agent with database credentials — they all eventually hand a parse tree to Postgres. pg_savior hooks that step and refuses the obviously dangerous shapes.
 
 ```
 postgres=# DELETE FROM emp;
@@ -47,7 +47,7 @@ ERROR:  pg_savior: DELETE without WHERE clause is blocked
 HINT:  Add a WHERE clause, or set pg_savior.bypass = on for this session.
 ```
 
-It catches the obvious shapes — `DELETE`/`UPDATE` without a `WHERE`, `CREATE INDEX` without `CONCURRENTLY`, `DROP DATABASE` — and the less obvious ones, like an `ALTER COLUMN TYPE` that quietly rewrites a billion-row table, or a `DELETE WHERE id > 0` whose planner estimate makes the intent clear. When you really do mean it, `SET LOCAL pg_savior.bypass = on` for the transaction and the guard steps aside. The full list of guards lives in the README; the point isn't to forbid, it's to make the destructive path require one extra deliberate keystroke.
+It catches the obvious shapes — `DELETE`/`UPDATE` without a `WHERE`, `CREATE INDEX` without `CONCURRENTLY`, `DROP DATABASE` — and the less obvious ones, like an `ALTER COLUMN TYPE` that quietly rewrites a billion-row table, or a `DELETE WHERE id > 0` whose planner estimate makes the intent clear. When you really do mean it, `SET LOCAL pg_savior.bypass = on` for the transaction and the guard steps aside. The full list of guards lives in the [README](https://github.com/viggy28/pg_savior#readme); the point isn't to forbid, it's to make the destructive path require one extra deliberate keystroke.
 
 ## Why an extension, not a proxy
 
