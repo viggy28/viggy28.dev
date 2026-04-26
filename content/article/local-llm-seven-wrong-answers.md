@@ -1,8 +1,13 @@
 ---
 date: 2026-04-25T00:00:00-04:00
-description: "Seven attempts, seven different wrong answers — a tour of the local LLM stack through its failures."
+description: "Seven attempts, seven different wrong answers — lessons from setting up a local LLM."
 tags: ["llm", "local-llm", "ollama", "ai"]
 title: "I Asked My Local LLM to Add 23 Numbers. I Got Seven Different Wrong Answers."
+toc: true
+---
+
+*Seven attempts, seven different wrong answers — lessons from setting up a local LLM.*
+
 ---
 
 It's tax season, which means I've been staring at a notes file full of stock sales — 23 transactions across the year that I needed to total up. The kind of data I'd rather not paste into a chat window I don't control.
