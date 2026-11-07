@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" role="img" aria-labelledby="title desc">
+  <title id="title">Cloudflare's economic layer</title>
+  <desc id="desc">An abstract network connecting software agents to digital payments.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff4e6"/>
+      <stop offset="0.48" stop-color="#f8f0fc"/>
+      <stop offset="1" stop-color="#e7f5ff"/>
+    </linearGradient>
+    <radialGradient id="orangeGlow" cx="0" cy="0" r="1" gradientTransform="translate(240 160) rotate(34) scale(520 430)">
+      <stop stop-color="#ff922b" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#ff922b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="purpleGlow" cx="0" cy="0" r="1" gradientTransform="translate(1380 650) rotate(-145) scale(560 430)">
+      <stop stop-color="#cc5de8" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#cc5de8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#1e293b" flood-opacity=".18"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="800" fill="url(#background)"/>
+  <rect width="1600" height="800" fill="url(#orangeGlow)"/>
+  <rect width="1600" height="800" fill="url(#purpleGlow)"/>
+
+  <g fill="none" stroke="#334155" stroke-width="5" stroke-linecap="round" opacity=".42">
+    <path d="M55 585 C210 445 330 500 475 365"/>
+    <path d="M125 250 C250 350 345 235 500 330"/>
+    <path d="M1125 425 C1280 310 1400 360 1570 220"/>
+    <path d="M1090 565 C1260 680 1425 580 1580 700"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <g fill="#fff" stroke="#1971c2" stroke-width="7">
+      <circle cx="90" cy="585" r="28"/>
+      <circle cx="210" cy="485" r="22"/>
+      <circle cx="330" cy="500" r="34"/>
+      <circle cx="470" cy="365" r="25"/>
+      <circle cx="125" cy="250" r="24"/>
+      <circle cx="260" cy="340" r="31"/>
+      <circle cx="385" cy="255" r="21"/>
+      <circle cx="500" cy="330" r="29"/>
+    </g>
+
+    <g transform="translate(1100 330)">
+      <circle cx="105" cy="105" r="92" fill="#fff" fill-opacity=".94" stroke="#e8590c" stroke-width="8"/>
+      <circle cx="105" cy="105" r="58" fill="#ffd8a8" stroke="#f08c00" stroke-width="6"/>
+      <path d="M70 105h70M105 70v70" stroke="#e8590c" stroke-width="13" stroke-linecap="round"/>
+
+      <circle cx="285" cy="235" r="76" fill="#fff" fill-opacity=".94" stroke="#f08c00" stroke-width="8"/>
+      <circle cx="285" cy="235" r="45" fill="#ffe8cc" stroke="#f59f00" stroke-width="6"/>
+      <path d="M255 235h60" stroke="#e8590c" stroke-width="13" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g fill="none" stroke="#e8590c" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M990 395c78-72 132-84 204-80"/>
+    <path d="M1160 279l42 36-45 31"/>
+    <path d="M1100 602c-86 58-176 72-270 38"/>
+    <path d="M861 611l-43 25 35 42"/>
+  </g>
+
+  <g opacity=".38" fill="none" stroke-width="5">
+    <rect x="235" y="675" width="1130" height="76" rx="38" stroke="#2f9e44"/>
+    <rect x="345" y="615" width="910" height="76" rx="38" stroke="#1971c2"/>
+    <rect x="455" y="555" width="690" height="76" rx="38" stroke="#9c36b5"/>
+    <rect x="565" y="495" width="470" height="76" rx="38" stroke="#e8590c"/>
+  </g>
+</svg>
