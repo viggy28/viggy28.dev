@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 800" role="img" aria-labelledby="title desc">
+  <title id="title">Cloudflare's four acts</title>
+  <desc id="desc">A four-layer pyramid showing application services, enterprise networking, developer platform, and the agentic economic layer.</desc>
+  <style>
+    text { font-family: "Comic Sans MS", "Bradley Hand", system-ui, sans-serif; fill: #1e1e1e; }
+    .box { stroke-width: 3; rx: 12; }
+    .head { font-size: 23px; font-weight: 700; }
+    .body { font-size: 18px; }
+    .side { font-size: 18px; font-weight: 700; }
+  </style>
+  <rect width="1300" height="800" fill="#fff"/>
+  <text x="80" y="55" font-size="34" font-weight="700">Cloudflare's four acts</text>
+  <text x="80" y="92" font-size="19" fill="#868e96">Each act turns the reach of the previous act into a higher-level platform</text>
+
+  <rect class="box" x="410" y="140" width="390" height="125" fill="#ffd8a8" stroke="#e8590c"/>
+  <text class="head" x="605" y="176" text-anchor="middle">ACT 4 · ECONOMIC LAYER</text>
+  <text class="body" x="605" y="208" text-anchor="middle">Agents ↔ publishers ↔ merchants</text>
+  <text class="body" x="605" y="238" text-anchor="middle">Crawl Control · AI Index · Pay Per Crawl · x402</text>
+  <text class="side" x="835" y="195" fill="#e8590c">Monetize access</text>
+  <text class="side" x="835" y="220" fill="#e8590c">and intent</text>
+
+  <rect class="box" x="310" y="290" width="590" height="125" fill="#eebefa" stroke="#9c36b5"/>
+  <text class="head" x="605" y="326" text-anchor="middle">ACT 3 · DEVELOPER PLATFORM</text>
+  <text class="body" x="605" y="358" text-anchor="middle">Run applications on the network</text>
+  <text class="body" x="605" y="388" text-anchor="middle">Workers · KV · Durable Objects · R2 · D1 · Workers AI</text>
+  <text class="side" x="935" y="345" fill="#9c36b5">Programmable</text>
+  <text class="side" x="935" y="370" fill="#9c36b5">network</text>
+
+  <rect class="box" x="210" y="440" width="790" height="125" fill="#a5d8ff" stroke="#1971c2"/>
+  <text class="head" x="605" y="476" text-anchor="middle">ACT 2 · ENTERPRISE NETWORK + ZERO TRUST</text>
+  <text class="body" x="605" y="508" text-anchor="middle">Control users and private networks</text>
+  <text class="body" x="605" y="538" text-anchor="middle">Access · Gateway · Tunnel · Spectrum · Magic Transit · Magic WAN</text>
+  <text class="side" x="1035" y="495" fill="#1971c2">Identity +</text>
+  <text class="side" x="1035" y="520" fill="#1971c2">policy</text>
+
+  <rect class="box" x="110" y="590" width="990" height="125" fill="#b2f2bb" stroke="#2f9e44"/>
+  <text class="head" x="605" y="626" text-anchor="middle">ACT 1 · APPLICATION SERVICES / REVERSE PROXY</text>
+  <text class="body" x="605" y="658" text-anchor="middle">Control traffic headed to websites</text>
+  <text class="body" x="605" y="688" text-anchor="middle">DNS · CDN/cache · DDoS · WAF · Universal SSL/TLS · bot management</text>
+  <text class="side" x="1130" y="645" fill="#2f9e44">Global reach +</text>
+  <text class="side" x="1130" y="670" fill="#2f9e44">traffic</text>
+</svg>
