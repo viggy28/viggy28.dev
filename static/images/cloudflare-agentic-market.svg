@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" role="img" aria-labelledby="title desc">
+  <title id="title">Two markets inside one agent request</title>
+  <desc id="desc">Cloudflare sits between an AI agent and a publisher. Agents can pay publishers for access, while advertisers may eventually pay for disclosed consideration by agents.</desc>
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1971c2"/></marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9c36b5"/></marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#e03131"/></marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f9e44"/></marker>
+  </defs>
+  <style>
+    text { font-family: "Comic Sans MS", "Bradley Hand", system-ui, sans-serif; fill: #1e1e1e; }
+    .box { stroke-width: 3; rx: 12; }
+    .head { font-size: 21px; font-weight: 700; }
+    .body { font-size: 17px; }
+    .arrow { fill: none; stroke-width: 3; stroke-linecap: round; }
+    .label { font-size: 16px; font-weight: 700; }
+  </style>
+  <rect width="1280" height="800" fill="#fff"/>
+  <text x="60" y="55" font-size="32" font-weight="700">Act 4: two markets hiding inside one agent request</text>
+
+  <text x="900" y="100" class="head" fill="#9c36b5">PAYMENTS · visible now</text>
+  <text x="900" y="130" class="body">Agent pays for access or use</text>
+  <text x="900" y="158" class="body">Money: agent → publisher</text>
+
+  <ellipse cx="145" cy="310" rx="80" ry="48" fill="#b2f2bb" stroke="#2f9e44" stroke-width="3"/>
+  <text x="145" y="302" class="head" text-anchor="middle">User</text>
+  <text x="145" y="330" class="body" text-anchor="middle">“Find a hotel”</text>
+
+  <rect class="box" x="290" y="240" width="210" height="140" fill="#a5d8ff" stroke="#1971c2"/>
+  <text x="395" y="275" class="head" text-anchor="middle">AI agent</text>
+  <text x="395" y="306" class="body" text-anchor="middle">Searches at machine scale</text>
+  <text x="395" y="334" class="body" text-anchor="middle">Carries identity, intent</text>
+  <text x="395" y="362" class="body" text-anchor="middle">and possibly a budget</text>
+
+  <rect class="box" x="600" y="210" width="260" height="200" fill="#ffd8a8" stroke="#e8590c" stroke-width="5"/>
+  <text x="730" y="254" font-size="24" font-weight="700" text-anchor="middle">CLOUDFLARE</text>
+  <text x="730" y="300" class="body" text-anchor="middle">identity · policy · pricing</text>
+  <text x="730" y="332" class="body" text-anchor="middle">routing · billing · settlement</text>
+  <text x="730" y="375" class="body" text-anchor="middle" fill="#e8590c">The transaction gate</text>
+
+  <rect class="box" x="980" y="240" width="230" height="140" fill="#eebefa" stroke="#9c36b5"/>
+  <text x="1095" y="274" class="head" text-anchor="middle">Publisher / merchant</text>
+  <text x="1095" y="306" class="body" text-anchor="middle">Owns content, API, data</text>
+  <text x="1095" y="334" class="body" text-anchor="middle">or inventory</text>
+  <text x="1095" y="362" class="body" text-anchor="middle">allow · block · charge</text>
+
+  <path class="arrow" d="M225 310 H288" stroke="#2f9e44" marker-end="url(#arrow-green)"/>
+  <text x="255" y="295" class="label" text-anchor="middle" fill="#2f9e44">intent</text>
+  <path class="arrow" d="M500 310 H598" stroke="#1971c2" marker-end="url(#arrow-blue)"/>
+  <text x="550" y="294" class="label" text-anchor="middle" fill="#1971c2">request + payment</text>
+  <path class="arrow" d="M860 310 H978" stroke="#9c36b5" marker-end="url(#arrow-purple)"/>
+  <text x="920" y="294" class="label" text-anchor="middle" fill="#9c36b5">policy + settlement</text>
+
+  <text x="65" y="520" class="head" fill="#e03131">ADS · the prediction</text>
+  <text x="65" y="550" class="body">Merchant pays to be considered</text>
+  <text x="65" y="578" class="body">Money: advertiser → marketplace</text>
+
+  <rect class="box" x="600" y="535" width="260" height="105" fill="#ffc9c9" stroke="#e03131"/>
+  <text x="730" y="570" class="head" text-anchor="middle">Advertiser / merchant</text>
+  <text x="730" y="602" class="body" text-anchor="middle">Bids for the user’s intent</text>
+  <path class="arrow" d="M730 535 V412" stroke="#e03131" stroke-dasharray="10 8" marker-end="url(#arrow-red)"/>
+  <text x="748" y="477" class="label" fill="#e03131">sponsored offer</text>
+
+  <rect class="box" x="300" y="460" width="220" height="100" fill="#ffc9c9" stroke="#e03131"/>
+  <text x="410" y="496" class="head" text-anchor="middle">Paid consideration</text>
+  <text x="410" y="526" class="body" text-anchor="middle">machine-readable</text>
+  <text x="410" y="550" class="body" text-anchor="middle">and clearly disclosed</text>
+  <path class="arrow" d="M600 390 Q555 445 520 480" stroke="#e03131" stroke-dasharray="10 8" marker-end="url(#arrow-red)"/>
+  <path class="arrow" d="M410 460 V382" stroke="#e03131" stroke-dasharray="10 8" marker-end="url(#arrow-red)"/>
+
+  <text x="640" y="720" font-size="21" font-weight="700" text-anchor="middle" fill="#e8590c">The strategic asset is not bandwidth. It is Cloudflare’s position where policy becomes a transaction.</text>
+</svg>
