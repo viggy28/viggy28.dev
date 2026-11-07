@@ -1,9 +1,11 @@
 ---
 date: 2026-11-06T00:00:00-04:00
 description: "Cloudflare's fourth act is the economic layer for the agentic Internet: payments first, and potentially advertising next."
-featured_image: "/images/cloudflare-four-acts.svg"
+featured_image: "/images/cloudflare-fourth-act-cover.svg"
 tags: ["cloudflare", "ai", "agents", "payments", "advertising"]
-title: "Cloudflare Is Going to Be an Ads and Payments Company"
+title: "Cloudflare’s Fourth Act Is Ads and Payments"
+compact_header: true
+omit_body_title: true
 toc: true
 draft: false
 ---
