@@ -1,70 +1,86 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" role="img" aria-labelledby="title desc">
-  <title id="title">Cloudflare's economic layer</title>
-  <desc id="desc">An abstract network connecting software agents to digital payments.</desc>
+  <title id="title">Cloudflare's fourth act</title>
+  <desc id="desc">An agent request enters a highlighted economic layer above three infrastructure layers, then branches into a payment and a sponsored offer.</desc>
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#fff4e6"/>
-      <stop offset="0.48" stop-color="#f8f0fc"/>
-      <stop offset="1" stop-color="#e7f5ff"/>
+      <stop offset=".52" stop-color="#fff9f2"/>
+      <stop offset="1" stop-color="#f3f0ff"/>
     </linearGradient>
-    <radialGradient id="orangeGlow" cx="0" cy="0" r="1" gradientTransform="translate(240 160) rotate(34) scale(520 430)">
-      <stop stop-color="#ff922b" stop-opacity=".7"/>
-      <stop offset="1" stop-color="#ff922b" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="purpleGlow" cx="0" cy="0" r="1" gradientTransform="translate(1380 650) rotate(-145) scale(560 430)">
-      <stop stop-color="#cc5de8" stop-opacity=".55"/>
-      <stop offset="1" stop-color="#cc5de8" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#1e293b" flood-opacity=".18"/>
+    <linearGradient id="economic" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe8cc"/>
+      <stop offset="1" stop-color="#ffc078"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#1e293b" flood-opacity=".16"/>
     </filter>
+    <marker id="arrowOrange" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M1 1l10 5-10 5" fill="none" stroke="#e8590c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M1 1l10 5-10 5" fill="none" stroke="#1971c2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
   </defs>
 
   <rect width="1600" height="800" fill="url(#background)"/>
-  <rect width="1600" height="800" fill="url(#orangeGlow)"/>
-  <rect width="1600" height="800" fill="url(#purpleGlow)"/>
+  <circle cx="150" cy="90" r="280" fill="#ff922b" opacity=".08"/>
+  <circle cx="1510" cy="740" r="330" fill="#9c36b5" opacity=".07"/>
 
-  <g fill="none" stroke="#334155" stroke-width="5" stroke-linecap="round" opacity=".42">
-    <path d="M55 585 C210 445 330 500 475 365"/>
-    <path d="M125 250 C250 350 345 235 500 330"/>
-    <path d="M1125 425 C1280 310 1400 360 1570 220"/>
-    <path d="M1090 565 C1260 680 1425 580 1580 700"/>
-  </g>
-
+  <!-- Three established infrastructure layers -->
   <g filter="url(#shadow)">
-    <g fill="#fff" stroke="#1971c2" stroke-width="7">
-      <circle cx="90" cy="585" r="28"/>
-      <circle cx="210" cy="485" r="22"/>
-      <circle cx="330" cy="500" r="34"/>
-      <circle cx="470" cy="365" r="25"/>
-      <circle cx="125" cy="250" r="24"/>
-      <circle cx="260" cy="340" r="31"/>
-      <circle cx="385" cy="255" r="21"/>
-      <circle cx="500" cy="330" r="29"/>
-    </g>
+    <rect x="500" y="500" width="600" height="82" rx="28" fill="#eebefa" fill-opacity=".58" stroke="#9c36b5" stroke-width="5"/>
+    <path d="M565 541l23-20m-23 20l23 20m50-40l23 20-23 20" fill="none" stroke="#9c36b5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
 
-    <g transform="translate(1100 330)">
-      <circle cx="105" cy="105" r="92" fill="#fff" fill-opacity=".94" stroke="#e8590c" stroke-width="8"/>
-      <circle cx="105" cy="105" r="58" fill="#ffd8a8" stroke="#f08c00" stroke-width="6"/>
-      <path d="M70 105h70M105 70v70" stroke="#e8590c" stroke-width="13" stroke-linecap="round"/>
+    <rect x="410" y="600" width="780" height="82" rx="28" fill="#a5d8ff" fill-opacity=".58" stroke="#1971c2" stroke-width="5"/>
+    <path d="M478 625l32-12 32 12v20c0 21-14 34-32 43-18-9-32-22-32-43z" fill="none" stroke="#1971c2" stroke-width="7" stroke-linejoin="round" opacity=".75"/>
 
-      <circle cx="285" cy="235" r="76" fill="#fff" fill-opacity=".94" stroke="#f08c00" stroke-width="8"/>
-      <circle cx="285" cy="235" r="45" fill="#ffe8cc" stroke="#f59f00" stroke-width="6"/>
-      <path d="M255 235h60" stroke="#e8590c" stroke-width="13" stroke-linecap="round"/>
+    <rect x="320" y="700" width="960" height="70" rx="28" fill="#b2f2bb" fill-opacity=".6" stroke="#2f9e44" stroke-width="5"/>
+    <g fill="#fff" stroke="#2f9e44" stroke-width="5" opacity=".82">
+      <circle cx="390" cy="735" r="13"/>
+      <circle cx="445" cy="720" r="11"/>
+      <circle cx="490" cy="744" r="14"/>
     </g>
+    <path d="M402 731l31-8m22 3l23 12" fill="none" stroke="#2f9e44" stroke-width="5" opacity=".72"/>
   </g>
 
-  <g fill="none" stroke="#e8590c" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M990 395c78-72 132-84 204-80"/>
-    <path d="M1160 279l42 36-45 31"/>
-    <path d="M1100 602c-86 58-176 72-270 38"/>
-    <path d="M861 611l-43 25 35 42"/>
+  <!-- Agent request -->
+  <g transform="translate(95 185)" filter="url(#shadow)">
+    <rect x="0" y="35" width="180" height="132" rx="38" fill="#fff" stroke="#1971c2" stroke-width="7"/>
+    <path d="M90 35V8m0 0l-17-18m17 18l17-18" fill="none" stroke="#1971c2" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="58" cy="91" r="10" fill="#1971c2"/>
+    <circle cx="122" cy="91" r="10" fill="#1971c2"/>
+    <path d="M55 128c22 18 48 18 70 0" fill="none" stroke="#1971c2" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <path d="M305 285h245" fill="none" stroke="#1971c2" stroke-width="10" stroke-linecap="round" marker-end="url(#arrowBlue)"/>
+  <g fill="#1971c2" opacity=".42">
+    <circle cx="340" cy="285" r="7"/>
+    <circle cx="382" cy="285" r="7"/>
+    <circle cx="424" cy="285" r="7"/>
   </g>
 
-  <g opacity=".38" fill="none" stroke-width="5">
-    <rect x="235" y="675" width="1130" height="76" rx="38" stroke="#2f9e44"/>
-    <rect x="345" y="615" width="910" height="76" rx="38" stroke="#1971c2"/>
-    <rect x="455" y="555" width="690" height="76" rx="38" stroke="#9c36b5"/>
-    <rect x="565" y="495" width="470" height="76" rx="38" stroke="#e8590c"/>
+  <!-- Prominent fourth layer -->
+  <g filter="url(#shadow)">
+    <rect x="590" y="220" width="430" height="130" rx="34" fill="url(#economic)" stroke="#e8590c" stroke-width="8"/>
+    <path d="M700 285h86m0 0l-25-25m25 25l-25 25M910 285h-86m0 0l25-25m-25 25l25 25" fill="none" stroke="#e8590c" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- The economic layer branches into a payment and a sponsored offer -->
+  <path d="M1040 272c85-4 120-58 184-83" fill="none" stroke="#e8590c" stroke-width="10" stroke-linecap="round" marker-end="url(#arrowOrange)"/>
+  <path d="M1040 303c88 12 120 94 178 129" fill="none" stroke="#e8590c" stroke-width="10" stroke-linecap="round" marker-end="url(#arrowOrange)"/>
+
+  <!-- Payment -->
+  <g transform="translate(1250 95)" filter="url(#shadow)">
+    <ellipse cx="105" cy="118" rx="92" ry="38" fill="#ffd8a8" stroke="#f08c00" stroke-width="7"/>
+    <path d="M13 118v70c0 21 41 38 92 38s92-17 92-38v-70" fill="#ffe8cc" stroke="#f08c00" stroke-width="7"/>
+    <path d="M13 153c0 21 41 38 92 38s92-17 92-38" fill="none" stroke="#f08c00" stroke-width="6" opacity=".8"/>
+    <circle cx="105" cy="118" r="19" fill="#fff4e6" stroke="#e8590c" stroke-width="6"/>
+  </g>
+
+  <!-- Sponsored offer -->
+  <g transform="translate(1230 390)" filter="url(#shadow)">
+    <rect width="260" height="175" rx="28" fill="#fff" stroke="#9c36b5" stroke-width="7"/>
+    <path d="M54 92h35l61-35v87l-61-32H54z" fill="#eebefa" stroke="#9c36b5" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M89 112l15 36" stroke="#9c36b5" stroke-width="9" stroke-linecap="round"/>
+    <path d="M180 45l8 16 18 3-13 13 3 18-16-8-16 8 3-18-13-13 18-3z" fill="#ffd43b" stroke="#f08c00" stroke-width="4" stroke-linejoin="round"/>
   </g>
 </svg>
