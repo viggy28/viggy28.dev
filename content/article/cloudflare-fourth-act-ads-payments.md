@@ -1,6 +1,6 @@
 ---
 date: 2026-11-06T00:00:00-04:00
-description: "Cloudflare's fourth act is the economic layer for the agentic Internet: payments first, and potentially advertising next."
+description: "Cloudflare's fourth act is the economic layer for the agentic Internet: payments first, advertising next."
 featured_image: "/images/cloudflare-fourth-act-cover.svg"
 tags: ["cloudflare", "ai", "agents", "payments", "advertising"]
 title: "Cloudflare’s Fourth Act Is Ads and Payments"
@@ -12,7 +12,7 @@ draft: false
 
 *I previously worked at Cloudflare. This is my personal analysis based entirely on public information. It does not represent Cloudflare, and it does not use confidential information.*
 
-Cloudflare likes to describe its strategy in **acts**.
+In its [Q2 2025 earnings call](https://cloudflare.net/files/doc_financials/2025/q2/CORRECTED-TRANSCRIPT_-Cloudflare-Inc-NET-US-Q2-2025-Earnin.pdf), Cloudflare CEO Matthew Prince described the company's product strategy in **four acts**.
 
 Its first act put Cloudflare in front of websites. Its second act extended the network to people and private networks. Its third act let developers run applications on that network.
 
@@ -20,7 +20,7 @@ For a long time, the fourth act was not obvious. Would Cloudflare become an ISP?
 
 I think we now have a clear answer.
 
-**Cloudflare's fourth act is the economic layer for the agentic Internet. Payments are already visible. Advertising is the logical next step.**
+**Cloudflare's fourth act is the economic layer for the agentic Internet. Payments came first. Advertising comes next.**
 
 ![Cloudflare's four acts](/images/cloudflare-four-acts.svg)
 
@@ -40,7 +40,7 @@ Once Cloudflare occupied that position, it could add services such as:
 - smart routing through Argo
 - free TLS through [Universal SSL](https://blog.cloudflare.com/introducing-universal-ssl/)
 
-Cloudflare's network was the foundation. Each new service made that network more valuable, while each new customer gave Cloudflare more traffic and better threat intelligence.
+Cloudflare called this its **product flywheel** in its [2019 S-1](https://www.sec.gov/Archives/edgar/data/1477333/000119312519222176/d735023ds1.htm): because customer traffic already passed through its network, it could add adjacent products without significantly increasing its incremental costs.
 
 ## Act 2: control enterprise and network traffic
 
@@ -164,11 +164,12 @@ In its Q3 2026 earnings call, Cloudflare said it had recorded its first Act 4 re
 
 That is a remarkable destination for a company that began by caching websites and blocking attacks.
 
-Cloudflare started by moving packets. Its fourth act may be about moving money.
+Cloudflare started by moving packets. Its fourth act is about moving money.
 
 ## References
 
 - [Cloudflare Q2 2025 earnings call: the four acts](https://cloudflare.net/files/doc_financials/2025/q2/CORRECTED-TRANSCRIPT_-Cloudflare-Inc-NET-US-Q2-2025-Earnin.pdf)
+- [Cloudflare 2019 Form S-1: the product flywheel](https://www.sec.gov/Archives/edgar/data/1477333/000119312519222176/d735023ds1.htm)
 - [Cloudflare Q3 2026 earnings-call transcript](https://stockanalysis.com/stocks/net/transcripts/726816-q3-2026/)
 - [Introducing Pay Per Crawl](https://blog.cloudflare.com/introducing-pay-per-crawl/)
 - [Cloudflare and Coinbase launch the x402 Foundation](https://blog.cloudflare.com/x402/)
