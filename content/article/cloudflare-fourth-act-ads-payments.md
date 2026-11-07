@@ -1,6 +1,7 @@
 ---
 date: 2026-11-06T00:00:00-04:00
 description: "Cloudflare's fourth act is the economic layer for the agentic Internet: payments first, advertising next."
+summary: "Cloudflare's first three acts built its network, enterprise products, and developer platform. Its fourth act is the economic layer for the agentic Internet: payments first, advertising next."
 featured_image: "/images/cloudflare-fourth-act-cover.svg"
 tags: ["cloudflare", "ai", "agents", "payments", "advertising"]
 title: "Cloudflare’s Fourth Act Is Ads and Payments"
@@ -9,8 +10,6 @@ omit_body_title: true
 toc: true
 draft: false
 ---
-
-*I previously worked at Cloudflare. This is my personal analysis based entirely on public information. It does not represent Cloudflare, and it does not use confidential information.*
 
 In its [Q2 2025 earnings call](https://cloudflare.net/files/doc_financials/2025/q2/CORRECTED-TRANSCRIPT_-Cloudflare-Inc-NET-US-Q2-2025-Earnin.pdf), Cloudflare CEO Matthew Prince described the company's product strategy in **four acts**.
 
@@ -21,6 +20,8 @@ For a long time, the fourth act was not obvious. Would Cloudflare become an ISP?
 I think we now have a clear answer.
 
 **Cloudflare's fourth act is the economic layer for the agentic Internet. Payments came first. Advertising comes next.**
+
+*I previously worked at Cloudflare. This is my personal analysis based entirely on public information. It does not represent Cloudflare, and it does not use confidential information.*
 
 ![Cloudflare's four acts](/images/cloudflare-four-acts.svg)
 
