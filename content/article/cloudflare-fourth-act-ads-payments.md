@@ -76,6 +76,8 @@ That became the developer platform:
 
 Act 3 made Cloudflare programmable. The network was no longer only a pipe or a security boundary. Developers could build complete applications on it.
 
+![Cloudflare at the intersection of hyperscalers and neoclouds as an agentic cloud](/images/cloudflare-agentic-cloud.png)
+
 Each act expanded what Cloudflare's network could mediate: first requests to websites, then access across company networks, and finally the applications themselves. As some of those applications become agents that fetch information, call tools, and make purchases, the next missing layer is economic: how those machines pay and get paid.
 
 That is the bridge from Act 3 to Act 4. Cloudflare does not automatically *own* either side of an agent transaction. But a publisher may already use Cloudflare to protect its website, while the agent may run on Workers or use Cloudflare's agent tooling. Cloudflare can provide infrastructure to both and often sits in the middle when they communicate.
